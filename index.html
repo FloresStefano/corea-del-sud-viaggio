@@ -563,6 +563,242 @@
     font-style: italic;
   }
 
+
+  /* ═══════════════════════════════════════════════
+     INTERACTIVE TIMELINE
+  ═══════════════════════════════════════════════ */
+  .itl-section { margin-bottom: 2.5rem; }
+
+  .itl-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  .itl-header h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 0.3rem;
+  }
+  .itl-header p { color: var(--muted); font-size: 0.85rem; font-style: italic; }
+
+  /* LEVEL 0 — overview strip */
+  .itl-strip {
+    display: flex;
+    gap: 0;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.1);
+    margin-bottom: 1.25rem;
+  }
+
+  .itl-seg {
+    flex: 1;
+    cursor: pointer;
+    padding: 0.85rem 0.5rem 0.75rem;
+    text-align: center;
+    transition: filter 0.2s, transform 0.15s;
+    position: relative;
+    user-select: none;
+  }
+  .itl-seg:hover { filter: brightness(1.12); transform: translateY(-2px); z-index: 2; }
+  .itl-seg.active { filter: brightness(1.18); transform: translateY(-3px); z-index: 3;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25); }
+
+  .itl-seg-num {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    font-family: 'Noto Serif KR', serif;
+  }
+  .itl-seg-name {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.9);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin-top: 0.15rem;
+  }
+  .itl-seg-days {
+    font-size: 0.58rem;
+    color: rgba(255,255,255,0.65);
+    margin-top: 0.1rem;
+  }
+  .itl-seg-arrow {
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.5);
+    margin-top: 0.3rem;
+  }
+
+  /* LEVEL 1 — stop overview panel */
+  .itl-stop-panel {
+    display: none;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 2px solid var(--border);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.09);
+    background: white;
+    margin-bottom: 1rem;
+    animation: slideDown 0.25s ease;
+  }
+  .itl-stop-panel.open { display: block; }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .itl-stop-banner {
+    padding: 1rem 1.5rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .itl-stop-banner-icon { font-size: 2rem; }
+  .itl-stop-banner h3 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.1rem;
+  }
+  .itl-stop-banner-sub { font-size: 0.8rem; opacity: 0.75; }
+
+  /* LEVEL 1 — day overview grid */
+  .itl-days-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.6rem;
+    padding: 1rem 1.2rem 1.2rem;
+  }
+
+  .itl-day-pill {
+    border: 1.5px solid var(--border);
+    border-radius: 0.6rem;
+    padding: 0.65rem 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--cream);
+    position: relative;
+  }
+  .itl-day-pill:hover { border-color: var(--gold); background: #fffbf0; transform: translateY(-1px); }
+  .itl-day-pill.open { border-color: var(--gold); background: #fffbf0; }
+
+  .itl-day-pill-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    margin-bottom: 0.2rem;
+  }
+  .itl-day-pill-title {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--blue);
+    line-height: 1.3;
+  }
+  .itl-day-pill-hint {
+    font-size: 0.68rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+  }
+  .itl-day-pill-chevron {
+    position: absolute;
+    top: 0.5rem; right: 0.6rem;
+    font-size: 0.7rem;
+    color: var(--muted);
+    transition: transform 0.2s;
+  }
+  .itl-day-pill.open .itl-day-pill-chevron { transform: rotate(180deg); color: var(--gold); }
+
+  /* LEVEL 2 — day detail */
+  .itl-day-detail {
+    display: none;
+    grid-column: 1 / -1;
+    background: white;
+    border: 1.5px solid var(--gold);
+    border-radius: 0.6rem;
+    overflow: hidden;
+    animation: slideDown 0.2s ease;
+  }
+  .itl-day-detail.open { display: block; }
+
+  .itl-detail-head {
+    padding: 0.7rem 1rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .itl-slots { padding: 0.7rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .itl-slot {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    padding: 0.5rem 0.6rem;
+    border-radius: 0.4rem;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  .itl-slot:hover { background: #fffbf0; border-color: #e8d8a0; }
+
+  .itl-slot-time {
+    font-size: 0.67rem;
+    font-weight: 700;
+    color: var(--gold);
+    min-width: 44px;
+    flex-shrink: 0;
+    padding-top: 0.1rem;
+  }
+  .itl-slot-icon { font-size: 0.95rem; flex-shrink: 0; }
+  .itl-slot-body { flex: 1; }
+  .itl-slot-body strong { display: block; font-size: 0.81rem; color: var(--blue); }
+  .itl-slot-body span { font-size: 0.75rem; color: var(--muted); }
+  .itl-slot-tip {
+    font-size: 0.72rem;
+    color: #7a6000;
+    background: #fffbf0;
+    border-left: 2px solid var(--gold);
+    padding: 0.2rem 0.5rem;
+    margin-top: 0.25rem;
+    border-radius: 0 0.3rem 0.3rem 0;
+  }
+
+  .itl-detail-note {
+    background: var(--cream);
+    border-top: 1px solid var(--border);
+    padding: 0.45rem 1rem;
+    font-size: 0.74rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* transport connector between stops */
+  .itl-connector {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    background: #1a3a5c;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    cursor: default;
+  }
+  .itl-connector-icon { font-size: 1.1rem; }
+  .itl-connector-body { flex: 1; }
+  .itl-connector-body strong { display: block; font-size: 0.8rem; color: #f0d080; }
+  .itl-connector-body span { font-size: 0.72rem; color: rgba(255,255,255,0.65); }
+
+  @media (max-width: 560px) {
+    .itl-seg-name { font-size: 0.58rem; }
+    .itl-days-grid { grid-template-columns: 1fr 1fr; }
+  }
+
   /* MISSED SECTION */
   .missed-section {
     margin-top: 3rem;
@@ -913,6 +1149,1325 @@
     <div id="korea-map"></div>
   </div>
 
+
+  <!-- INTERACTIVE TIMELINE -->
+  <div class="itl-section">
+    <div class="itl-header">
+      <h2>📅 Timeline interattiva del viaggio</h2>
+      <p>Clicca su una tappa per espanderla · poi clicca sul giorno per vedere gli orari nel dettaglio</p>
+    </div>
+
+    <div class="itl-strip">
+
+    <div class="itl-seg" id="seg-seul" style="background:#1a3a5c" onclick="toggleStop('seul')">
+      <div class="itl-seg-num">①</div>
+      <div class="itl-seg-name">Seoul</div>
+      <div class="itl-seg-days">Giorni 1–5</div>
+      <div class="itl-seg-arrow">▼</div>
+    </div>
+    <div class="itl-seg" id="seg-jeonju" style="background:#b8870a" onclick="toggleStop('jeonju')">
+      <div class="itl-seg-num">②</div>
+      <div class="itl-seg-name">Jeonju</div>
+      <div class="itl-seg-days">Giorni 6–7</div>
+      <div class="itl-seg-arrow">▼</div>
+    </div>
+    <div class="itl-seg" id="seg-gyeongju" style="background:#8e44ad" onclick="toggleStop('gyeongju')">
+      <div class="itl-seg-num">③</div>
+      <div class="itl-seg-name">Gyeongju</div>
+      <div class="itl-seg-days">Giorni 8–10</div>
+      <div class="itl-seg-arrow">▼</div>
+    </div>
+    <div class="itl-seg" id="seg-busan" style="background:#c0392b" onclick="toggleStop('busan')">
+      <div class="itl-seg-num">④</div>
+      <div class="itl-seg-name">Busan</div>
+      <div class="itl-seg-days">Giorni 11–14</div>
+      <div class="itl-seg-arrow">▼</div>
+    </div>
+    <div class="itl-seg" id="seg-jeju" style="background:#27ae60" onclick="toggleStop('jeju')">
+      <div class="itl-seg-num">⑤</div>
+      <div class="itl-seg-name">Jeju</div>
+      <div class="itl-seg-days">Giorni 15–19</div>
+      <div class="itl-seg-arrow">▼</div>
+    </div>
+    </div>
+
+
+  
+  <div class="itl-stop-panel" id="panel-seul">
+    <div class="itl-stop-banner" style="background:#1a3a5c">
+      <div class="itl-stop-banner-icon">🏯</div>
+      <div>
+        <h3>① Seoul <span style="font-family:'Noto Sans KR',sans-serif;font-size:0.8rem;opacity:0.7">서울</span></h3>
+        <div class="itl-stop-banner-sub">Giorni 1–5 · 5 notti · Capitale, storia, K-pop</div>
+      </div>
+    </div>
+    <div class="itl-days-grid">
+
+          <div class="itl-day-pill" id="pill-seul-0" onclick="toggleDay('pill-seul-0','detail-seul-0')">
+            <div class="itl-day-pill-label">Giorno 1</div>
+            <div class="itl-day-pill-title">Arrivo e orientamento</div>
+            <div class="itl-day-pill-hint">Ritmo lento, jet lag</div>
+            <div class="itl-day-pill-chevron">▼</div>
+          </div>
+          <div class="itl-day-detail" id="detail-seul-0">
+            <div class="itl-detail-head" style="background:#1a3a5c">
+              📅 Giorno 1 — Arrivo e orientamento
+            </div>
+            <div class="itl-slots">
+              <div class="itl-slot">
+                <div class="itl-slot-time">Mattina</div>
+                <div class="itl-slot-icon">🛬</div>
+                <div class="itl-slot-body">
+                  <strong>Arrivo e check-in</strong>
+                  <span>Deposita i bagagli, prima passeggiata libera</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">12:00</div>
+                <div class="itl-slot-icon">🍜</div>
+                <div class="itl-slot-body">
+                  <strong>Primo pasto coreano</strong>
+                  <span>Kimchi jjigae in un locale vicino all'hotel</span>
+                  <div class="itl-slot-tip">💡 Ordina con le foto — i menu coreani le hanno sempre</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">14:00</div>
+                <div class="itl-slot-icon">🏯</div>
+                <div class="itl-slot-body">
+                  <strong>Gyeongbokgung Palace</strong>
+                  <span>Entra all'apertura, cammina senza fretta</span>
+                  <div class="itl-slot-tip">💡 Chiuso il martedì — verifica il giorno di arrivo</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">17:00</div>
+                <div class="itl-slot-icon">🏘️</div>
+                <div class="itl-slot-body">
+                  <strong>Bukchon Hanok Village</strong>
+                  <span>Passeggiata tra i vicoli al tramonto</span>
+                  <div class="itl-slot-tip">💡 Luce del pomeriggio perfetta per le foto</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">19:30</div>
+                <div class="itl-slot-icon">🍽️</div>
+                <div class="itl-slot-body">
+                  <strong>Cena a Insadong</strong>
+                  <span>Ristorante tradizionale — galbi o bulgogi</span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="itl-detail-note">📌 Niente musei il primo giorno. Il jet lag si fa sentire.</div>
+          </div>
+          <div class="itl-day-pill" id="pill-seul-1" onclick="toggleDay('pill-seul-1','detail-seul-1')">
+            <div class="itl-day-pill-label">Giorno 2</div>
+            <div class="itl-day-pill-title">Storia e palazzi Joseon</div>
+            <div class="itl-day-pill-hint">UNESCO + mercato</div>
+            <div class="itl-day-pill-chevron">▼</div>
+          </div>
+          <div class="itl-day-detail" id="detail-seul-1">
+            <div class="itl-detail-head" style="background:#1a3a5c">
+              📅 Giorno 2 — Storia e palazzi Joseon
+            </div>
+            <div class="itl-slots">
+              <div class="itl-slot">
+                <div class="itl-slot-time">09:00</div>
+                <div class="itl-slot-icon">🏯</div>
+                <div class="itl-slot-body">
+                  <strong>Changdeokgung + Giardino Segreto</strong>
+                  <span>Visita guidata — prenotare online prima di partire</span>
+                  <div class="itl-slot-tip">💡 Solo 50 persone per turno — esaurisce in fretta</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">12:30</div>
+                <div class="itl-slot-icon">🛒</div>
+                <div class="itl-slot-body">
+                  <strong>Mercato Gwangjang</strong>
+                  <span>Pranzo tra i banchi: bindaetteok, gimbap, eomuk</span>
+                  <div class="itl-slot-tip">💡 Stefano: il suo posto preferito di Seul</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">14:30</div>
+                <div class="itl-slot-icon">🛍️</div>
+                <div class="itl-slot-body">
+                  <strong>Insadong shopping</strong>
+                  <span>Artigianato, hanji, tè, manhwa</span>
+                  <div class="itl-slot-tip">💡 Michela: librerie fumetti qui</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">16:30</div>
+                <div class="itl-slot-icon">🗼</div>
+                <div class="itl-slot-body">
+                  <strong>N Seoul Tower</strong>
+                  <span>Cable car o scalinata — tramonto sulla città</span>
+                  <div class="itl-slot-tip">💡 Elisabetta e Alessandra: lucchetti dell'amore</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">19:00</div>
+                <div class="itl-slot-icon">🍷</div>
+                <div class="itl-slot-body">
+                  <strong>Cena a Samcheong-dong</strong>
+                  <span>Quartiere chic, menu in inglese</span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="itl-detail-note">📌 Tutti i siti distano 15 minuti l'uno dall'altro — nessuna fretta.</div>
+          </div>
+          <div class="itl-day-pill" id="pill-seul-2" onclick="toggleDay('pill-seul-2','detail-seul-2')">
+            <div class="itl-day-pill-label">Giorno 3</div>
+            <div class="itl-day-pill-title">K-pop e vita moderna</div>
+            <div class="itl-day-pill-hint">HYBE Museum + Myeongdong</div>
+            <div class="itl-day-pill-chevron">▼</div>
+          </div>
+          <div class="itl-day-detail" id="detail-seul-2">
+            <div class="itl-detail-head" style="background:#1a3a5c">
+              📅 Giorno 3 — K-pop e vita moderna
+            </div>
+            <div class="itl-slots">
+              <div class="itl-slot">
+                <div class="itl-slot-time">10:00</div>
+                <div class="itl-slot-icon">🎵</div>
+                <div class="itl-slot-body">
+                  <strong>HYBE Insight Museum</strong>
+                  <span>Museo BTS e HYBE — prenotare settimane prima!</span>
+                  <div class="itl-slot-tip">💡 Elisabetta: tappa imperdibile. Durata 2h</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">12:30</div>
+                <div class="itl-slot-icon">🍜</div>
+                <div class="itl-slot-body">
+                  <strong>Pranzo a Yongsan</strong>
+                  <span>Food court del centro commerciale</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">14:00</div>
+                <div class="itl-slot-icon">🎨</div>
+                <div class="itl-slot-body">
+                  <strong>DDP Dongdaemun Design Plaza</strong>
+                  <span>Zaha Hadid + mostra temporanea</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">16:00</div>
+                <div class="itl-slot-icon">🛍️</div>
+                <div class="itl-slot-body">
+                  <strong>Myeongdong</strong>
+                  <span>K-beauty, cosmetici, street food</span>
+                  <div class="itl-slot-tip">💡 Kakao Friends Store è qui — Alessandra</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">19:30</div>
+                <div class="itl-slot-icon">🌃</div>
+                <div class="itl-slot-body">
+                  <strong>Hongdae di sera</strong>
+                  <span>Musica live, street food, street art</span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="itl-detail-note">📌 Giornata per i ragazzi — ritmo più vivace con pause.</div>
+          </div>
+          <div class="itl-day-pill" id="pill-seul-3" onclick="toggleDay('pill-seul-3','detail-seul-3')">
+            <div class="itl-day-pill-label">Giorno 4</div>
+            <div class="itl-day-pill-title">DMZ + Suwon (opzionale)</div>
+            <div class="itl-day-pill-hint">Gita fuori città</div>
+            <div class="itl-day-pill-chevron">▼</div>
+          </div>
+          <div class="itl-day-detail" id="detail-seul-3">
+            <div class="itl-detail-head" style="background:#1a3a5c">
+              📅 Giorno 4 — DMZ + Suwon (opzionale)
+            </div>
+            <div class="itl-slots">
+              <div class="itl-slot">
+                <div class="itl-slot-time">08:00</div>
+                <div class="itl-slot-icon">🚌</div>
+                <div class="itl-slot-body">
+                  <strong>Tour DMZ</strong>
+                  <span>Tour organizzato da Seul — JSA Panmunjom incluso</span>
+                  <div class="itl-slot-tip">💡 Prenotare con guida in italiano o inglese</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">13:00</div>
+                <div class="itl-slot-icon">🍱</div>
+                <div class="itl-slot-body">
+                  <strong>Pranzo sul percorso</strong>
+                  <span>Incluso nel tour o nei pressi di Imjingak</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">15:30</div>
+                <div class="itl-slot-icon">🏰</div>
+                <div class="itl-slot-body">
+                  <strong>Suwon Hwaseong</strong>
+                  <span>UNESCO — cinta muraria percorribile</span>
+                  <div class="itl-slot-tip">💡 Al ritorno dal DMZ, deviazione di 30 min</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">19:00</div>
+                <div class="itl-slot-icon">🏨</div>
+                <div class="itl-slot-body">
+                  <strong>Rientro e cena libera</strong>
+                  <span>Quartiere a scelta</span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="itl-detail-note">📌 In alternativa: giornata libera per shopping o siti non visti.</div>
+          </div>
+          <div class="itl-day-pill" id="pill-seul-4" onclick="toggleDay('pill-seul-4','detail-seul-4')">
+            <div class="itl-day-pill-label">Giorno 5</div>
+            <div class="itl-day-pill-title">Mattina libera + partenza</div>
+            <div class="itl-day-pill-hint">KTX per Jeonju</div>
+            <div class="itl-day-pill-chevron">▼</div>
+          </div>
+          <div class="itl-day-detail" id="detail-seul-4">
+            <div class="itl-detail-head" style="background:#1a3a5c">
+              📅 Giorno 5 — Mattina libera + partenza
+            </div>
+            <div class="itl-slots">
+              <div class="itl-slot">
+                <div class="itl-slot-time">09:00</div>
+                <div class="itl-slot-icon">☕</div>
+                <div class="itl-slot-body">
+                  <strong>Colazione e check-out</strong>
+                  <span>Lascia i bagagli, ultima passeggiata</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">10:30</div>
+                <div class="itl-slot-icon">🛍️</div>
+                <div class="itl-slot-body">
+                  <strong>Dongdaemun Market</strong>
+                  <span>Souvenir last minute</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">12:30</div>
+                <div class="itl-slot-icon">🚄</div>
+                <div class="itl-slot-body">
+                  <strong>KTX da Seoul Station</strong>
+                  <span>Treno per Jeonju · 1h 40min</span>
+                  <div class="itl-slot-tip">💡 Prenota su Korail.com — posti numerati</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">14:30</div>
+                <div class="itl-slot-icon">🏨</div>
+                <div class="itl-slot-body">
+                  <strong>Arrivo a Jeonju</strong>
+                  <span>Check-in e prima passeggiata nel Hanok Village</span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="itl-detail-note">📌 Partenza nel primo pomeriggio — godersi la mattina senza stress.</div>
+          </div>
+    </div>
+    
+        <div style="padding:0 1.2rem 1rem">
+          <div class="itl-connector">
+            <div class="itl-connector-icon">🚄</div>
+            <div class="itl-connector-body">
+              <strong>Prossima tappa — KTX Seoul → Jeonju</strong>
+              <span>1h 40min · ~16€ p.p. · Partenza 12:30–14:00</span>
+            </div>
+          </div>
+        </div>
+  </div>
+  
+        <div class="itl-connector">
+          <div class="itl-connector-icon">🚄</div>
+          <div class="itl-connector-body">
+            <strong>KTX Seoul → Jeonju</strong>
+            <span>1h 40min · ~16€ p.p.</span>
+          </div>
+        </div>
+  <div class="itl-stop-panel" id="panel-jeonju">
+    <div class="itl-stop-banner" style="background:#b8870a">
+      <div class="itl-stop-banner-icon">🏘️</div>
+      <div>
+        <h3>② Jeonju <span style="font-family:'Noto Sans KR',sans-serif;font-size:0.8rem;opacity:0.7">전주</span></h3>
+        <div class="itl-stop-banner-sub">Giorni 6–7 · 2 notti · Hanok Village, cibo, hanbok</div>
+      </div>
+    </div>
+    <div class="itl-days-grid">
+
+          <div class="itl-day-pill" id="pill-jeonju-0" onclick="toggleDay('pill-jeonju-0','detail-jeonju-0')">
+            <div class="itl-day-pill-label">Giorno 6</div>
+            <div class="itl-day-pill-title">Immersione nel Hanok Village</div>
+            <div class="itl-day-pill-hint">Hanbok + bibimbap + hanji</div>
+            <div class="itl-day-pill-chevron">▼</div>
+          </div>
+          <div class="itl-day-detail" id="detail-jeonju-0">
+            <div class="itl-detail-head" style="background:#b8870a">
+              📅 Giorno 6 — Immersione nel Hanok Village
+            </div>
+            <div class="itl-slots">
+              <div class="itl-slot">
+                <div class="itl-slot-time">09:00</div>
+                <div class="itl-slot-icon">🏘️</div>
+                <div class="itl-slot-body">
+                  <strong>Hanok Village mattina</strong>
+                  <span>Meno turisti, vicoli quieti e dorati</span>
+                  <div class="itl-slot-tip">💡 Partire dalla mappa all'ingresso principale</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">10:30</div>
+                <div class="itl-slot-icon">👘</div>
+                <div class="itl-slot-body">
+                  <strong>Noleggio Hanbok</strong>
+                  <span>Scelta degli abiti, foto nel villaggio</span>
+                  <div class="itl-slot-tip">💡 Elisabetta e Alessandra: il momento più atteso</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">12:30</div>
+                <div class="itl-slot-icon">🍚</div>
+                <div class="itl-slot-body">
+                  <strong>Bibimbap autentico</strong>
+                  <span>Set completo con dolsot (pietra calda)</span>
+                  <div class="itl-slot-tip">💡 Stefano: chiedi la versione tradizionale con 12 banchan</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">14:30</div>
+                <div class="itl-slot-icon">🎭</div>
+                <div class="itl-slot-body">
+                  <strong>Laboratorio hanji</strong>
+                  <span>Alessandra crea il suo souvenir fatto a mano</span>
+                  <div class="itl-slot-tip">💡 Economico, guidato, circa 1h</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">16:30</div>
+                <div class="itl-slot-icon">⛪</div>
+                <div class="itl-slot-body">
+                  <strong>Cattedrale Jeondong</strong>
+                  <span>Gotica del 1914 — bella per le foto</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">18:30</div>
+                <div class="itl-slot-icon">🍺</div>
+                <div class="itl-slot-body">
+                  <strong>Makgeolli tour</strong>
+                  <span>Vino di riso con 12+ banchan gratuiti</span>
+                  <div class="itl-slot-tip">💡 Bambini: sikhye — bibita di riso dolce</div>
+                </div>
+              </div>
+            </div>
+            <div class="itl-detail-note">📌 Il villaggio si gira tutto a piedi — nessun trasporto necessario.</div>
+          </div>
+          <div class="itl-day-pill" id="pill-jeonju-1" onclick="toggleDay('pill-jeonju-1','detail-jeonju-1')">
+            <div class="itl-day-pill-label">Giorno 7</div>
+            <div class="itl-day-pill-title">Mercato e partenza per Gyeongju</div>
+            <div class="itl-day-pill-hint">Mercato Nambu + bus</div>
+            <div class="itl-day-pill-chevron">▼</div>
+          </div>
+          <div class="itl-day-detail" id="detail-jeonju-1">
+            <div class="itl-detail-head" style="background:#b8870a">
+              📅 Giorno 7 — Mercato e partenza per Gyeongju
+            </div>
+            <div class="itl-slots">
+              <div class="itl-slot">
+                <div class="itl-slot-time">08:30</div>
+                <div class="itl-slot-icon">🌅</div>
+                <div class="itl-slot-body">
+                  <strong>Colazione in hanok</strong>
+                  <span>Tofu fatto in casa, kimchi, riso, zuppa di miso</span>
+                  <div class="itl-slot-tip">💡 Se dormi in un hanok guesthouse — inclusa</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">10:00</div>
+                <div class="itl-slot-icon">🛒</div>
+                <div class="itl-slot-body">
+                  <strong>Mercato Nambu</strong>
+                  <span>Il mercato più autentico — nessun turista</span>
+                  <div class="itl-slot-tip">💡 Stefano: il suo mercato preferito del viaggio</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">13:30</div>
+                <div class="itl-slot-icon">🍜</div>
+                <div class="itl-slot-body">
+                  <strong>Street food prima di partire</strong>
+                  <span>Hotteok, tteokbokki, bungeoppang</span>
+                  <div class="itl-slot-tip">💡 Alessandra: la sua tappa preferita di Jeonju</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">15:00</div>
+                <div class="itl-slot-icon">🚌</div>
+                <div class="itl-slot-body">
+                  <strong>Bus per Gyeongju</strong>
+                  <span>Da Jeonju Express Bus Terminal</span>
+                  <div class="itl-slot-tip">💡 Taxi dall'hotel al terminal (~5 min, 5.000 KRW)</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">18:30</div>
+                <div class="itl-slot-icon">🏨</div>
+                <div class="itl-slot-body">
+                  <strong>Arrivo a Gyeongju</strong>
+                  <span>Check-in e cena leggera vicino all'hotel</span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="itl-detail-note">📌 Non sovraccaricare la mattina — il bus parte nel pomeriggio.</div>
+          </div>
+    </div>
+    
+        <div style="padding:0 1.2rem 1rem">
+          <div class="itl-connector">
+            <div class="itl-connector-icon">🚌</div>
+            <div class="itl-connector-body">
+              <strong>Prossima tappa — Bus diretto Jeonju → Gyeongju</strong>
+              <span>3h 30min · ~12€ p.p. · Partenza 14:00–15:30</span>
+            </div>
+          </div>
+        </div>
+  </div>
+  
+        <div class="itl-connector">
+          <div class="itl-connector-icon">🚌</div>
+          <div class="itl-connector-body">
+            <strong>Bus diretto Jeonju → Gyeongju</strong>
+            <span>3h 30min · ~12€ p.p.</span>
+          </div>
+        </div>
+  <div class="itl-stop-panel" id="panel-gyeongju">
+    <div class="itl-stop-banner" style="background:#8e44ad">
+      <div class="itl-stop-banner-icon">⛪</div>
+      <div>
+        <h3>③ Gyeongju <span style="font-family:'Noto Sans KR',sans-serif;font-size:0.8rem;opacity:0.7">경주</span></h3>
+        <div class="itl-stop-banner-sub">Giorni 8–10 · 3 notti · La Roma d'Oriente · 2 siti UNESCO</div>
+      </div>
+    </div>
+    <div class="itl-days-grid">
+
+          <div class="itl-day-pill" id="pill-gyeongju-0" onclick="toggleDay('pill-gyeongju-0','detail-gyeongju-0')">
+            <div class="itl-day-pill-label">Giorno 8</div>
+            <div class="itl-day-pill-title">Bulguksa, Seokguram e Museo</div>
+            <div class="itl-day-pill-hint">UNESCO + corona d'oro Silla</div>
+            <div class="itl-day-pill-chevron">▼</div>
+          </div>
+          <div class="itl-day-detail" id="detail-gyeongju-0">
+            <div class="itl-detail-head" style="background:#8e44ad">
+              📅 Giorno 8 — Bulguksa, Seokguram e Museo
+            </div>
+            <div class="itl-slots">
+              <div class="itl-slot">
+                <div class="itl-slot-time">09:00</div>
+                <div class="itl-slot-icon">⛪</div>
+                <div class="itl-slot-body">
+                  <strong>Tempio Bulguksa</strong>
+                  <span>Arrivo all'apertura — luce morbida tra gli alberi</span>
+                  <div class="itl-slot-tip">💡 30 min di bus dalla città — partire presto</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">11:00</div>
+                <div class="itl-slot-icon">🪨</div>
+                <div class="itl-slot-body">
+                  <strong>Grotta Seokguram</strong>
+                  <span>Buddha di granito VIII sec. — vista sul mare</span>
+                  <div class="itl-slot-tip">💡 No flash — rispettare il silenzio</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">13:00</div>
+                <div class="itl-slot-icon">🍱</div>
+                <div class="itl-slot-body">
+                  <strong>Pranzo tipico</strong>
+                  <span>Ssambap (riso con foglie di montagna)</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">15:00</div>
+                <div class="itl-slot-icon">🏛️</div>
+                <div class="itl-slot-body">
+                  <strong>Museo Nazionale</strong>
+                  <span>Corona d'oro Silla + reperti Via della Seta</span>
+                  <div class="itl-slot-tip">💡 Stefano: almeno 2 ore qui</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">17:30</div>
+                <div class="itl-slot-icon">🚲</div>
+                <div class="itl-slot-body">
+                  <strong>Bici ai Tumuli reali</strong>
+                  <span>Noleggio bici — giro al tramonto</span>
+                  <div class="itl-slot-tip">💡 Alessandra: prato verde per correre</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">19:30</div>
+                <div class="itl-slot-icon">🌙</div>
+                <div class="itl-slot-body">
+                  <strong>Lago Anapji di notte</strong>
+                  <span>Riflessi del palazzo sull'acqua</span>
+                  <div class="itl-slot-tip">💡 10 min a piedi dai tumuli</div>
+                </div>
+              </div>
+            </div>
+            <div class="itl-detail-note">📌 Giornata ricca ma con ritmo lento — siti ravvicinati.</div>
+          </div>
+          <div class="itl-day-pill" id="pill-gyeongju-1" onclick="toggleDay('pill-gyeongju-1','detail-gyeongju-1')">
+            <div class="itl-day-pill-label">Giorno 9</div>
+            <div class="itl-day-pill-title">Villaggi e arte marziale buddista</div>
+            <div class="itl-day-pill-hint">Yangdong + Golgulsa</div>
+            <div class="itl-day-pill-chevron">▼</div>
+          </div>
+          <div class="itl-day-detail" id="detail-gyeongju-1">
+            <div class="itl-detail-head" style="background:#8e44ad">
+              📅 Giorno 9 — Villaggi e arte marziale buddista
+            </div>
+            <div class="itl-slots">
+              <div class="itl-slot">
+                <div class="itl-slot-time">09:30</div>
+                <div class="itl-slot-icon">🏘️</div>
+                <div class="itl-slot-body">
+                  <strong>Yangdong Folk Village</strong>
+                  <span>UNESCO — villaggio vivo del clan Moon</span>
+                  <div class="itl-slot-tip">💡 Michela: il villaggio più autentico del viaggio</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">12:00</div>
+                <div class="itl-slot-icon">🍜</div>
+                <div class="itl-slot-body">
+                  <strong>Pranzo nel villaggio</strong>
+                  <span>Cucina casalinga — menu fisso locale</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">14:00</div>
+                <div class="itl-slot-icon">⛩️</div>
+                <div class="itl-slot-body">
+                  <strong>Tempio Golgulsa</strong>
+                  <span>Tempio nella roccia + sunmudo buddista</span>
+                  <div class="itl-slot-tip">💡 Partecipare alla sessione pomeridiana se disponibile</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">16:30</div>
+                <div class="itl-slot-icon">🔭</div>
+                <div class="itl-slot-body">
+                  <strong>Cheomseongdae</strong>
+                  <span>Osservatorio astronomico 634 d.C.</span>
+                  <div class="itl-slot-tip">💡 30 minuti bastano</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">20:00</div>
+                <div class="itl-slot-icon">🍷</div>
+                <div class="itl-slot-body">
+                  <strong>Cena a Gyeongju</strong>
+                  <span>Dakgalbi (pollo piccante) con banchan</span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="itl-detail-note">📌 Budget taxi ~30.000 KRW per gli spostamenti di oggi.</div>
+          </div>
+          <div class="itl-day-pill" id="pill-gyeongju-2" onclick="toggleDay('pill-gyeongju-2','detail-gyeongju-2')">
+            <div class="itl-day-pill-label">Giorno 10</div>
+            <div class="itl-day-pill-title">Mattina libera + partenza Busan</div>
+            <div class="itl-day-pill-hint">KTX 38 min</div>
+            <div class="itl-day-pill-chevron">▼</div>
+          </div>
+          <div class="itl-day-detail" id="detail-gyeongju-2">
+            <div class="itl-detail-head" style="background:#8e44ad">
+              📅 Giorno 10 — Mattina libera + partenza Busan
+            </div>
+            <div class="itl-slots">
+              <div class="itl-slot">
+                <div class="itl-slot-time">09:00</div>
+                <div class="itl-slot-icon">☕</div>
+                <div class="itl-slot-body">
+                  <strong>Colazione lenta</strong>
+                  <span>Bingsu (granita di latte) — tipico d'estate</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">10:00</div>
+                <div class="itl-slot-icon">🏯</div>
+                <div class="itl-slot-body">
+                  <strong>Revisit preferito</strong>
+                  <span>Tornare al sito più amato a ritmo lentissimo</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">13:30</div>
+                <div class="itl-slot-icon">🚄</div>
+                <div class="itl-slot-body">
+                  <strong>KTX per Busan</strong>
+                  <span>38 minuti — la tratta più breve del viaggio</span>
+                  <div class="itl-slot-tip">💡 Ogni 30 min da Singyeongju Station</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">14:30</div>
+                <div class="itl-slot-icon">🏨</div>
+                <div class="itl-slot-body">
+                  <strong>Arrivo a Busan</strong>
+                  <span>Check-in e prima passeggiata sulla spiaggia</span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="itl-detail-note">📌 Mattina deliberatamente vuota — Gyeongju merita lentezza.</div>
+          </div>
+    </div>
+    
+        <div style="padding:0 1.2rem 1rem">
+          <div class="itl-connector">
+            <div class="itl-connector-icon">🚄</div>
+            <div class="itl-connector-body">
+              <strong>Prossima tappa — KTX Singyeongju → Busan</strong>
+              <span>38 min · ~10€ p.p. · Partenza 13:00–14:30</span>
+            </div>
+          </div>
+        </div>
+  </div>
+  
+        <div class="itl-connector">
+          <div class="itl-connector-icon">🚄</div>
+          <div class="itl-connector-body">
+            <strong>KTX Gyeongju → Busan</strong>
+            <span>38 min · ~10€ p.p.</span>
+          </div>
+        </div>
+  <div class="itl-stop-panel" id="panel-busan">
+    <div class="itl-stop-banner" style="background:#c0392b">
+      <div class="itl-stop-banner-icon">🏖️</div>
+      <div>
+        <h3>④ Busan <span style="font-family:'Noto Sans KR',sans-serif;font-size:0.8rem;opacity:0.7">부산</span></h3>
+        <div class="itl-stop-banner-sub">Giorni 11–14 · 4 notti · Mare, mercati, cultura urbana</div>
+      </div>
+    </div>
+    <div class="itl-days-grid">
+
+          <div class="itl-day-pill" id="pill-busan-0" onclick="toggleDay('pill-busan-0','detail-busan-0')">
+            <div class="itl-day-pill-label">Giorno 11</div>
+            <div class="itl-day-pill-title">Arrivo, mare e tempio sul mare</div>
+            <div class="itl-day-pill-hint">Prima impressione di Busan</div>
+            <div class="itl-day-pill-chevron">▼</div>
+          </div>
+          <div class="itl-day-detail" id="detail-busan-0">
+            <div class="itl-detail-head" style="background:#c0392b">
+              📅 Giorno 11 — Arrivo, mare e tempio sul mare
+            </div>
+            <div class="itl-slots">
+              <div class="itl-slot">
+                <div class="itl-slot-time">14:30</div>
+                <div class="itl-slot-icon">🏨</div>
+                <div class="itl-slot-body">
+                  <strong>Check-in</strong>
+                  <span>Deposita i bagagli — subito fuori</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">15:30</div>
+                <div class="itl-slot-icon">🏖️</div>
+                <div class="itl-slot-body">
+                  <strong>Spiaggia Gwangalli</strong>
+                  <span>Prima immersione — più tranquilla di Haeundae</span>
+                  <div class="itl-slot-tip">💡 Vista notturna del Gwangan Bridge</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">17:30</div>
+                <div class="itl-slot-icon">⛩️</div>
+                <div class="itl-slot-body">
+                  <strong>Haedong Yonggungsa</strong>
+                  <span>Tempio sul mare al tramonto</span>
+                  <div class="itl-slot-tip">💡 Uno dei luoghi più fotogenici della Corea</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">19:30</div>
+                <div class="itl-slot-icon">🐟</div>
+                <div class="itl-slot-body">
+                  <strong>Cena al Jagalchi</strong>
+                  <span>Scegli il pesce dalle vasche, cucinano al piano sopra</span>
+                  <div class="itl-slot-tip">💡 Stefano: tappa gastronomica cult</div>
+                </div>
+              </div>
+            </div>
+            <div class="itl-detail-note">📌 Primo giorno breve — arrivare, respirare il mare, cenare bene.</div>
+          </div>
+          <div class="itl-day-pill" id="pill-busan-1" onclick="toggleDay('pill-busan-1','detail-busan-1')">
+            <div class="itl-day-pill-label">Giorno 12</div>
+            <div class="itl-day-pill-title">Gamcheon e cultura urbana</div>
+            <div class="itl-day-pill-hint">Murales, K-pop, BIFF</div>
+            <div class="itl-day-pill-chevron">▼</div>
+          </div>
+          <div class="itl-day-detail" id="detail-busan-1">
+            <div class="itl-detail-head" style="background:#c0392b">
+              📅 Giorno 12 — Gamcheon e cultura urbana
+            </div>
+            <div class="itl-slots">
+              <div class="itl-slot">
+                <div class="itl-slot-time">09:30</div>
+                <div class="itl-slot-icon">🎨</div>
+                <div class="itl-slot-body">
+                  <strong>Gamcheon Culture Village</strong>
+                  <span>Arrivo presto — meno folla</span>
+                  <div class="itl-slot-tip">💡 Michela: murales e librerie indie</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">11:30</div>
+                <div class="itl-slot-icon">☕</div>
+                <div class="itl-slot-body">
+                  <strong>Caffè panoramico</strong>
+                  <span>Vista sulla città e il porto</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">13:00</div>
+                <div class="itl-slot-icon">🛒</div>
+                <div class="itl-slot-body">
+                  <strong>Mercato Gukje</strong>
+                  <span>Street food — milmyeon, hotteok, souvenir</span>
+                  <div class="itl-slot-tip">💡 Alessandra: gadget a prezzi bassi</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">15:00</div>
+                <div class="itl-slot-icon">🎬</div>
+                <div class="itl-slot-body">
+                  <strong>BIFF Square / Nampo-dong</strong>
+                  <span>Impronte star, negozi K-pop</span>
+                  <div class="itl-slot-tip">💡 Elisabetta: merchandise più economico che a Seul</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">17:30</div>
+                <div class="itl-slot-icon">🌉</div>
+                <div class="itl-slot-body">
+                  <strong>Oryukdo Skywalk</strong>
+                  <span>Vetro sul mare — vista sulle isolette</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">19:30</div>
+                <div class="itl-slot-icon">🍺</div>
+                <div class="itl-slot-body">
+                  <strong>Birra artigianale</strong>
+                  <span>Bar con vista Gwangan Bridge di notte</span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="itl-detail-note">📌 Tutto raggiungibile in metro o bus — nessun taxi necessario.</div>
+          </div>
+          <div class="itl-day-pill" id="pill-busan-2" onclick="toggleDay('pill-busan-2','detail-busan-2')">
+            <div class="itl-day-pill-label">Giorno 13</div>
+            <div class="itl-day-pill-title">Haeundae e montagna</div>
+            <div class="itl-day-pill-hint">Spiaggia + Beomeosa</div>
+            <div class="itl-day-pill-chevron">▼</div>
+          </div>
+          <div class="itl-day-detail" id="detail-busan-2">
+            <div class="itl-detail-head" style="background:#c0392b">
+              📅 Giorno 13 — Haeundae e montagna
+            </div>
+            <div class="itl-slots">
+              <div class="itl-slot">
+                <div class="itl-slot-time">09:00</div>
+                <div class="itl-slot-icon">🏖️</div>
+                <div class="itl-slot-body">
+                  <strong>Haeundae Beach</strong>
+                  <span>Mattina presto — bagno e relax</span>
+                  <div class="itl-slot-tip">💡 La spiaggia più grande della Corea</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">12:00</div>
+                <div class="itl-slot-icon">🍜</div>
+                <div class="itl-slot-body">
+                  <strong>Pranzo sul lungomare</strong>
+                  <span>Haemul pajeon (crêpe di pesce)</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">14:00</div>
+                <div class="itl-slot-icon">🏔️</div>
+                <div class="itl-slot-body">
+                  <strong>Geumjeongsan (opzionale)</strong>
+                  <span>Cable car o trekking — fortezza di montagna</span>
+                  <div class="itl-slot-tip">💡 Solo se la famiglia ha energie</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">17:00</div>
+                <div class="itl-slot-icon">🕌</div>
+                <div class="itl-slot-body">
+                  <strong>Tempio Beomeosa</strong>
+                  <span>Tempio buddista sul monte — sereno</span>
+                  <div class="itl-slot-tip">💡 20 min di metro + camminata</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">20:00</div>
+                <div class="itl-slot-icon">🍷</div>
+                <div class="itl-slot-body">
+                  <strong>Cena a Seomyeon</strong>
+                  <span>Galbi e samgyeopsal — il quartiere più vivo</span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="itl-detail-note">📌 Giornata mare-montagna — scegliere in base all'energia.</div>
+          </div>
+          <div class="itl-day-pill" id="pill-busan-3" onclick="toggleDay('pill-busan-3','detail-busan-3')">
+            <div class="itl-day-pill-label">Giorno 14</div>
+            <div class="itl-day-pill-title">Partenza per Jeju (zaino)</div>
+            <div class="itl-day-pill-hint">✈️ Volo A/R con solo zaino</div>
+            <div class="itl-day-pill-chevron">▼</div>
+          </div>
+          <div class="itl-day-detail" id="detail-busan-3">
+            <div class="itl-detail-head" style="background:#c0392b">
+              📅 Giorno 14 — Partenza per Jeju (zaino)
+            </div>
+            <div class="itl-slots">
+              <div class="itl-slot">
+                <div class="itl-slot-time">09:00</div>
+                <div class="itl-slot-icon">🌊</div>
+                <div class="itl-slot-body">
+                  <strong>Ultima mattina sul mare</strong>
+                  <span>Caffè sul lungomare di Gwangalli</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">11:00</div>
+                <div class="itl-slot-icon">🧳</div>
+                <div class="itl-slot-body">
+                  <strong>Deposito valigie</strong>
+                  <span>Hotel o coin locker Busan Station</span>
+                  <div class="itl-slot-tip">💡 Tenere solo lo zaino per Jeju</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">13:00</div>
+                <div class="itl-slot-icon">🚇</div>
+                <div class="itl-slot-body">
+                  <strong>Metro per Gimhae Airport</strong>
+                  <span>Linea Busan-Gimhae Airport (BGL) — 30 min</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">15:30</div>
+                <div class="itl-slot-icon">✈️</div>
+                <div class="itl-slot-body">
+                  <strong>Volo Busan → Jeju</strong>
+                  <span>55 minuti · Air Busan · Solo bagaglio a mano</span>
+                  <div class="itl-slot-tip">💡 Check-in online 24h prima</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">16:45</div>
+                <div class="itl-slot-icon">🚗</div>
+                <div class="itl-slot-body">
+                  <strong>Ritiro auto a nolo Jeju</strong>
+                  <span>Direttamente in aeroporto — prenotare dall'Italia</span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="itl-detail-note">📌 L'unico volo interno. Con solo zaino: nessuna stiva, imbarco rapidissimo.</div>
+          </div>
+    </div>
+    
+        <div style="padding:0 1.2rem 1rem">
+          <div class="itl-connector">
+            <div class="itl-connector-icon">✈️</div>
+            <div class="itl-connector-body">
+              <strong>Prossima tappa — Volo A/R Busan↔Jeju (solo zaino)</strong>
+              <span>55 min · ~32€ p.p. A/R · Bagagli a Busan</span>
+            </div>
+          </div>
+        </div>
+  </div>
+  
+        <div class="itl-connector">
+          <div class="itl-connector-icon">✈️</div>
+          <div class="itl-connector-body">
+            <strong>Volo Busan → Jeju (zaino)</strong>
+            <span>55 min · ~16€ p.p.</span>
+          </div>
+        </div>
+  <div class="itl-stop-panel" id="panel-jeju">
+    <div class="itl-stop-banner" style="background:#27ae60">
+      <div class="itl-stop-banner-icon">🌋</div>
+      <div>
+        <h3>⑤ Jeju <span style="font-family:'Noto Sans KR',sans-serif;font-size:0.8rem;opacity:0.7">제주도</span></h3>
+        <div class="itl-stop-banner-sub">Giorni 15–19 · 5 notti · Vulcani, mare, haenyeo · UNESCO x3</div>
+      </div>
+    </div>
+    <div class="itl-days-grid">
+
+          <div class="itl-day-pill" id="pill-jeju-0" onclick="toggleDay('pill-jeju-0','detail-jeju-0')">
+            <div class="itl-day-pill-label">Giorno 15</div>
+            <div class="itl-day-pill-title">Arrivo e costa ovest</div>
+            <div class="itl-day-pill-hint">Spiaggia Hyeopjae + maiale nero</div>
+            <div class="itl-day-pill-chevron">▼</div>
+          </div>
+          <div class="itl-day-detail" id="detail-jeju-0">
+            <div class="itl-detail-head" style="background:#27ae60">
+              📅 Giorno 15 — Arrivo e costa ovest
+            </div>
+            <div class="itl-slots">
+              <div class="itl-slot">
+                <div class="itl-slot-time">17:00</div>
+                <div class="itl-slot-icon">🚗</div>
+                <div class="itl-slot-body">
+                  <strong>Ritiro auto e check-in</strong>
+                  <span>Costa ovest — area Hallim/Hyeopjae</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">18:30</div>
+                <div class="itl-slot-icon">🏖️</div>
+                <div class="itl-slot-body">
+                  <strong>Spiaggia Hyeopjae</strong>
+                  <span>Sabbia bianca, acqua turchese — bagno di benvenuto</span>
+                  <div class="itl-slot-tip">💡 La più bella spiaggia dell'isola</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">20:00</div>
+                <div class="itl-slot-icon">🐷</div>
+                <div class="itl-slot-body">
+                  <strong>Cena heukdwaeji</strong>
+                  <span>Maiale nero di Jeju — specialità obbligatoria</span>
+                  <div class="itl-slot-tip">💡 Stefano: il piatto simbolo di Jeju</div>
+                </div>
+              </div>
+            </div>
+            <div class="itl-detail-note">📌 Giorno d'arrivo breve — spiaggia e cena. Niente di più.</div>
+          </div>
+          <div class="itl-day-pill" id="pill-jeju-1" onclick="toggleDay('pill-jeju-1','detail-jeju-1')">
+            <div class="itl-day-pill-label">Giorno 16</div>
+            <div class="itl-day-pill-title">Alba a Seongsan e haenyeo</div>
+            <div class="itl-day-pill-hint">UNESCO + grotte di lava</div>
+            <div class="itl-day-pill-chevron">▼</div>
+          </div>
+          <div class="itl-day-detail" id="detail-jeju-1">
+            <div class="itl-detail-head" style="background:#27ae60">
+              📅 Giorno 16 — Alba a Seongsan e haenyeo
+            </div>
+            <div class="itl-slots">
+              <div class="itl-slot">
+                <div class="itl-slot-time">05:30</div>
+                <div class="itl-slot-icon">🌅</div>
+                <div class="itl-slot-body">
+                  <strong>Alba a Seongsan Ilchulbong</strong>
+                  <span>Salire al cratere UNESCO prima dell'alba</span>
+                  <div class="itl-slot-tip">💡 Svegliarsi presto è il segreto di Jeju</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">08:00</div>
+                <div class="itl-slot-icon">🤿</div>
+                <div class="itl-slot-body">
+                  <strong>Spettacolo haenyeo</strong>
+                  <span>Pescatrici in apnea — gratuito, emozionante</span>
+                  <div class="itl-slot-tip">💡 Michela: momento indimenticabile</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">09:30</div>
+                <div class="itl-slot-icon">☕</div>
+                <div class="itl-slot-body">
+                  <strong>Colazione con vista</strong>
+                  <span>Café panoramico sul cratere</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">11:00</div>
+                <div class="itl-slot-icon">🕳️</div>
+                <div class="itl-slot-body">
+                  <strong>Grotte Manjanggul</strong>
+                  <span>Tunnel di lava 7km — fresco d'estate</span>
+                  <div class="itl-slot-tip">💡 Alessandra: l'avventura più emozionante del viaggio</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">15:30</div>
+                <div class="itl-slot-icon">🌿</div>
+                <div class="itl-slot-body">
+                  <strong>Osulloc Tea Museum</strong>
+                  <span>Piantagioni verdi + gelato matcha</span>
+                  <div class="itl-slot-tip">💡 Michela: il paesaggio più bello dell'isola</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">18:00</div>
+                <div class="itl-slot-icon">🏨</div>
+                <div class="itl-slot-body">
+                  <strong>Rientro in hotel</strong>
+                  <span>Cena leggera</span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="itl-detail-note">📌 Giornata lunga — portare giacca per le grotte (18°C dentro).</div>
+          </div>
+          <div class="itl-day-pill" id="pill-jeju-2" onclick="toggleDay('pill-jeju-2','detail-jeju-2')">
+            <div class="itl-day-pill-label">Giorno 17</div>
+            <div class="itl-day-pill-title">Hallasan o spiagge libere</div>
+            <div class="itl-day-pill-hint">La famiglia si divide</div>
+            <div class="itl-day-pill-chevron">▼</div>
+          </div>
+          <div class="itl-day-detail" id="detail-jeju-2">
+            <div class="itl-detail-head" style="background:#27ae60">
+              📅 Giorno 17 — Hallasan o spiagge libere
+            </div>
+            <div class="itl-slots">
+              <div class="itl-slot">
+                <div class="itl-slot-time">07:00</div>
+                <div class="itl-slot-icon">🌋</div>
+                <div class="itl-slot-body">
+                  <strong>OPZIONE A — Hallasan</strong>
+                  <span>Trekking sentiero Eorimok 5.3km — Stefano</span>
+                  <div class="itl-slot-tip">💡 Prenotare permesso sul sito parco nazionale</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">07:00</div>
+                <div class="itl-slot-icon">🏖️</div>
+                <div class="itl-slot-body">
+                  <strong>OPZIONE B — Spiagge</strong>
+                  <span>Hamdeok o Jungmun — Michela e bambine</span>
+                  <div class="itl-slot-tip">💡 Snorkeling e relax</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">14:00</div>
+                <div class="itl-slot-icon">🎪</div>
+                <div class="itl-slot-body">
+                  <strong>Hello Kitty Island / Trick Art</strong>
+                  <span>Pomeriggio per Elisabetta e Alessandra</span>
+                  <div class="itl-slot-tip">💡 Paradiso per le bambine</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">18:00</div>
+                <div class="itl-slot-icon">🌊</div>
+                <div class="itl-slot-body">
+                  <strong>Tramonto a Seopjikoji</strong>
+                  <span>Scogliere di lava — tramonto spettacolare</span>
+                  <div class="itl-slot-tip">💡 15 min da Seongsan</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">20:00</div>
+                <div class="itl-slot-icon">🍷</div>
+                <div class="itl-slot-body">
+                  <strong>Cena a Seogwipo</strong>
+                  <span>Frutti di mare e atmosfera rilassata</span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="itl-detail-note">📌 La famiglia può dividersi mattina — ritrovo nel pomeriggio.</div>
+          </div>
+          <div class="itl-day-pill" id="pill-jeju-3" onclick="toggleDay('pill-jeju-3','detail-jeju-3')">
+            <div class="itl-day-pill-label">Giorno 18</div>
+            <div class="itl-day-pill-title">Costa sud e souvenir</div>
+            <div class="itl-day-pill-hint">Olle Trail + cascate</div>
+            <div class="itl-day-pill-chevron">▼</div>
+          </div>
+          <div class="itl-day-detail" id="detail-jeju-3">
+            <div class="itl-detail-head" style="background:#27ae60">
+              📅 Giorno 18 — Costa sud e souvenir
+            </div>
+            <div class="itl-slots">
+              <div class="itl-slot">
+                <div class="itl-slot-time">09:00</div>
+                <div class="itl-slot-icon">🚗</div>
+                <div class="itl-slot-body">
+                  <strong>Olle Trail Corso 8</strong>
+                  <span>Tratto costiero 4km — scogli e villaggio pescatori</span>
+                  <div class="itl-slot-tip">💡 Michela: natura e lentezza</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">11:30</div>
+                <div class="itl-slot-icon">🍊</div>
+                <div class="itl-slot-body">
+                  <strong>Piantagione mandarini</strong>
+                  <span>Visita e degustazione</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">13:00</div>
+                <div class="itl-slot-icon">🍜</div>
+                <div class="itl-slot-body">
+                  <strong>Pranzo a Seogwipo</strong>
+                  <span>Haemul ttukbaegi (zuppa frutti di mare)</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">15:00</div>
+                <div class="itl-slot-icon">🌊</div>
+                <div class="itl-slot-body">
+                  <strong>Cascate Cheonjiyeon</strong>
+                  <span>Nel centro di Seogwipo — 15 min a piedi</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">17:00</div>
+                <div class="itl-slot-icon">🛍️</div>
+                <div class="itl-slot-body">
+                  <strong>Shopping souvenir Jeju-si</strong>
+                  <span>Cosmesi vulcanica, tè, cioccolato mandarino</span>
+                  <div class="itl-slot-tip">💡 Alessandra: personaggi Jeju dol hareubang</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">19:30</div>
+                <div class="itl-slot-icon">🐷</div>
+                <div class="itl-slot-body">
+                  <strong>Ultima cena Jeju</strong>
+                  <span>BBQ maiale nero con vista sul mare</span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="itl-detail-note">📌 Giornata morbida — natura, cibo, guida panoramica.</div>
+          </div>
+          <div class="itl-day-pill" id="pill-jeju-4" onclick="toggleDay('pill-jeju-4','detail-jeju-4')">
+            <div class="itl-day-pill-label">Giorno 19</div>
+            <div class="itl-day-pill-title">Rientro a Busan poi Seul</div>
+            <div class="itl-day-pill-hint">✈️ Jeju→Busan + 🚄 KTX→Seul</div>
+            <div class="itl-day-pill-chevron">▼</div>
+          </div>
+          <div class="itl-day-detail" id="detail-jeju-4">
+            <div class="itl-detail-head" style="background:#27ae60">
+              📅 Giorno 19 — Rientro a Busan poi Seul
+            </div>
+            <div class="itl-slots">
+              <div class="itl-slot">
+                <div class="itl-slot-time">09:00</div>
+                <div class="itl-slot-icon">🌅</div>
+                <div class="itl-slot-body">
+                  <strong>Ultima mattina sull'isola</strong>
+                  <span>Caffè sul mare, passeggiata finale</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">11:00</div>
+                <div class="itl-slot-icon">🚗</div>
+                <div class="itl-slot-body">
+                  <strong>Restituzione auto + aeroporto</strong>
+                  <span>Arriva 1h30 prima del volo</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">13:00</div>
+                <div class="itl-slot-icon">✈️</div>
+                <div class="itl-slot-body">
+                  <strong>Volo Jeju → Busan</strong>
+                  <span>55 minuti · Air Busan · Solo zaino</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">14:30</div>
+                <div class="itl-slot-icon">🧳</div>
+                <div class="itl-slot-body">
+                  <strong>Recupero valigie a Busan</strong>
+                  <span>Hotel o coin locker Busan Station</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">16:00</div>
+                <div class="itl-slot-icon">🚄</div>
+                <div class="itl-slot-body">
+                  <strong>KTX Busan → Seul</strong>
+                  <span>2h 40min · Seoul Station — centro città</span>
+                  <div class="itl-slot-tip">💡 Nessun transfer aeroportuale!</div>
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">19:00</div>
+                <div class="itl-slot-icon">🏨</div>
+                <div class="itl-slot-body">
+                  <strong>Check-in a Seul</strong>
+                  <span>Zona Myeongdong — ultima notte</span>
+                  
+                </div>
+              </div>
+              <div class="itl-slot">
+                <div class="itl-slot-time">20:00</div>
+                <div class="itl-slot-icon">🍷</div>
+                <div class="itl-slot-body">
+                  <strong>Cena di commiato</strong>
+                  <span>Samgyeopsal + soju — l'ultima cena coreana</span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="itl-detail-note">📌 Il KTX Busan→Seul è porta a porta più veloce del volo (centro→centro).</div>
+          </div>
+    </div>
+    
+        <div style="padding:0 1.2rem 1rem">
+          <div class="itl-connector">
+            <div class="itl-connector-icon">✈️+🚄</div>
+            <div class="itl-connector-body">
+              <strong>Prossima tappa — Volo Jeju→Busan (zaino) + KTX Busan→Seul</strong>
+              <span>55min + 2h40 · ~16€+44€ p.p.</span>
+            </div>
+          </div>
+        </div>
+  </div>
+
+  </div>
+
   <!-- FAMIGLIA -->
   <div class="family-section">
     <div class="family-title">
@@ -1000,7 +2555,7 @@
 
   <!-- ① SEUL -->
   <div class="stop open" data-idx="0">
-    <div class="stop-header" onclick="toggleStop(this)">
+    <div class="stop-header" onclick="toggleStopCard(this)">
       <div class="stop-num">①</div>
       <div class="stop-meta">
         <div class="stop-days">Giorni 1 – 5 · 5 notti</div>
@@ -1429,7 +2984,7 @@
 
   <!-- ② JEONJU -->
   <div class="stop open" data-idx="1">
-    <div class="stop-header" onclick="toggleStop(this)">
+    <div class="stop-header" onclick="toggleStopCard(this)">
       <div class="stop-num">②</div>
       <div class="stop-meta">
         <div class="stop-days">Giorni 6 – 7 · 2 notti</div>
@@ -1721,7 +3276,7 @@
 
   <!-- ③ GYEONGJU -->
   <div class="stop open" data-idx="2">
-    <div class="stop-header" onclick="toggleStop(this)">
+    <div class="stop-header" onclick="toggleStopCard(this)">
       <div class="stop-num">③</div>
       <div class="stop-meta">
         <div class="stop-days">Giorni 8 – 10 · 3 notti</div>
@@ -2070,7 +3625,7 @@
 
   <!-- ④ BUSAN -->
   <div class="stop open" data-idx="3">
-    <div class="stop-header" onclick="toggleStop(this)">
+    <div class="stop-header" onclick="toggleStopCard(this)">
       <div class="stop-num">④</div>
       <div class="stop-meta">
         <div class="stop-days">Giorni 11 – 14 · 4 notti</div>
@@ -2458,7 +4013,7 @@
 
   <!-- ⑤ JEJU -->
   <div class="stop open" data-idx="4">
-    <div class="stop-header" onclick="toggleStop(this)">
+    <div class="stop-header" onclick="toggleStopCard(this)">
       <div class="stop-num">⑤</div>
       <div class="stop-meta">
         <div class="stop-days">Giorni 15 – 19 · 5 notti</div>
@@ -2912,7 +4467,7 @@
 
   <!-- ⑥ RIENTRO -->
   <div class="stop open" data-idx="5">
-    <div class="stop-header" onclick="toggleStop(this)">
+    <div class="stop-header" onclick="toggleStopCard(this)">
       <div class="stop-num">⑥</div>
       <div class="stop-meta">
         <div class="stop-days">Giorno 20 · Ultimo giorno</div>
@@ -3083,6 +4638,35 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
+
+// ── TIMELINE INTERACTIVE ──────────────────────────────────────────────
+function toggleStop(id) {
+  var panel = document.getElementById('panel-' + id);
+  var seg   = document.getElementById('seg-'   + id);
+  var isOpen = panel.classList.contains('open');
+  document.querySelectorAll('.itl-stop-panel').forEach(function(p){ p.classList.remove('open'); });
+  document.querySelectorAll('.itl-seg').forEach(function(s){ s.classList.remove('active'); });
+  if (!isOpen) {
+    panel.classList.add('open');
+    seg.classList.add('active');
+    setTimeout(function(){ panel.scrollIntoView({ behavior:'smooth', block:'nearest' }); }, 50);
+  }
+}
+
+function toggleDay(pillId, detailId) {
+  var pill   = document.getElementById(pillId);
+  var detail = document.getElementById(detailId);
+  var grid   = pill.parentElement;
+  var isOpen = detail.classList.contains('open');
+  grid.querySelectorAll('.itl-day-detail').forEach(function(d){ d.classList.remove('open'); });
+  grid.querySelectorAll('.itl-day-pill').forEach(function(p){ p.classList.remove('open'); });
+  if (!isOpen) {
+    detail.classList.add('open');
+    pill.classList.add('open');
+    setTimeout(function(){ detail.scrollIntoView({ behavior:'smooth', block:'nearest' }); }, 50);
+  }
+}
+
 // Lightbox
 function openLightbox(img) {
   document.getElementById('lightbox-img').src = img.src;
@@ -3096,8 +4680,8 @@ function closeLightbox() {
 }
 document.addEventListener('keydown', function(e) { if(e.key==='Escape') closeLightbox(); });
 
-// Navigation
-function toggleStop(header) {
+// Navigation (stop card toggle handled by toggleStopCard)
+function toggleStopCard(header) {
   header.parentElement.classList.toggle('open');
 }
 function showAll() {
