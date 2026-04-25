@@ -413,6 +413,156 @@
     font-style: italic;
   }
 
+
+  /* DAILY PLAN */
+  .daily-plan { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .day-block {
+    border: 1px solid var(--border);
+    border-radius: 0.6rem;
+    overflow: hidden;
+    background: white;
+  }
+
+  .day-block-head {
+    background: var(--blue);
+    color: white;
+    padding: 0.55rem 1rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .day-block-head .day-label {
+    background: rgba(255,255,255,0.18);
+    border-radius: 0.3rem;
+    padding: 0.1rem 0.45rem;
+    font-size: 0.7rem;
+  }
+
+  .day-slots { padding: 0.7rem 1rem; display: flex; flex-direction: column; gap: 0.45rem; }
+
+  .slot {
+    display: flex;
+    gap: 0.65rem;
+    align-items: flex-start;
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+
+  .slot-time {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--gold);
+    min-width: 48px;
+    padding-top: 0.05rem;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+
+  .slot-icon { font-size: 0.95rem; flex-shrink: 0; margin-top: 0.05rem; }
+
+  .slot-content { flex: 1; color: var(--ink); }
+  .slot-content strong { color: var(--blue); font-size: 0.81rem; display: block; }
+  .slot-content span { color: var(--muted); font-size: 0.76rem; }
+
+  .slot-tip {
+    background: #fffbf0;
+    border-left: 2px solid var(--gold);
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+    color: #7a6000;
+    border-radius: 0 0.3rem 0.3rem 0;
+    margin-top: 0.1rem;
+  }
+
+  .day-note {
+    background: var(--cream);
+    border-top: 1px solid var(--border);
+    padding: 0.45rem 1rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* HOTEL SECTION */
+  .hotel-section {
+    background: #f0f5ff;
+    border: 1px solid #c5d5f0;
+    border-radius: 0.75rem;
+    padding: 1.1rem 1.2rem;
+  }
+
+  .hotel-zone {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin-bottom: 0.7rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px dashed #c5d5f0;
+  }
+  .hotel-zone:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+  .hotel-zone-rank {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .hotel-zone-body strong { color: var(--blue); font-size: 0.85rem; display: block; margin-bottom: 0.2rem; }
+  .hotel-zone-body p { font-size: 0.8rem; color: var(--muted); line-height: 1.5; margin: 0; }
+  .hotel-zone-body .htag {
+    display: inline-block; font-size: 0.68rem; background: #dde8fa; color: #1a3a5c;
+    padding: 0.1rem 0.45rem; border-radius: 1rem; margin: 0.2rem 0.15rem 0 0;
+  }
+
+  /* TRANSPORT SECTION */
+  .transport-card {
+    background: #1a3a5c;
+    color: white;
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+
+  .transport-head {
+    padding: 0.8rem 1.2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .transport-head strong { font-size: 0.95rem; }
+  .transport-head span { font-size: 0.75rem; opacity: 0.65; }
+
+  .transport-rows { padding: 0.8rem 1.2rem; display: flex; flex-direction: column; gap: 0.55rem; }
+
+  .t-row {
+    display: flex; gap: 0.7rem; align-items: flex-start;
+    font-size: 0.8rem; line-height: 1.45;
+  }
+  .t-row-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.05rem; }
+  .t-row-body { flex: 1; }
+  .t-row-body strong { display: block; font-size: 0.8rem; color: #f0d080; margin-bottom: 0.1rem; }
+  .t-row-body span { color: rgba(255,255,255,0.72); font-size: 0.76rem; }
+
+  .transport-tip {
+    background: rgba(201,168,76,0.15);
+    border-top: 1px solid rgba(201,168,76,0.3);
+    padding: 0.6rem 1.2rem;
+    font-size: 0.76rem;
+    color: #f0d080;
+    font-style: italic;
+  }
+
   /* MISSED SECTION */
   .missed-section {
     margin-top: 3rem;
@@ -904,7 +1054,347 @@
       <div class="curiosity">Seul è stata quasi completamente distrutta durante la Guerra di Corea (1950–53) e ricostruita in pochi decenni. Oggi è una delle città con la connessione internet più veloce al mondo e il tasso di istruzione universitaria più alto del pianeta.</div>
 
 
-      <div class="gallery-wrap">
+      
+      <div>
+        <div class="section-title">📅 Pianificazione giornaliera</div>
+        <div class="daily-plan">
+
+        <div class="day-block">
+          <div class="day-block-head" style="background:#1a3a5c">
+            <span class="day-label">Giorno 1</span>
+            Arrivo e orientamento
+          </div>
+          <div class="day-slots">
+            <div class="slot">
+              <div class="slot-time">Mattina</div>
+              <div class="slot-icon">🛬</div>
+              <div class="slot-content">
+                <strong>Arrivo e check-in</strong>
+                <span>Deposita i bagagli, cammina senza meta nel quartiere</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">12:00</div>
+              <div class="slot-icon">🍜</div>
+              <div class="slot-content">
+                <strong>Primo pasto coreano</strong>
+                <span>Kimchi jjigae (zuppa di kimchi) in un locale vicino all'hotel</span>
+                <div class="slot-tip">💡 Ordina con foto — i menu hanno sempre immagini</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">14:00</div>
+              <div class="slot-icon">🏯</div>
+              <div class="slot-content">
+                <strong>Gyeongbokgung Palace</strong>
+                <span>Entra, cammina senza fretta, guarda il cambio della guardia</span>
+                <div class="slot-tip">💡 Il palazzo chiude il martedì — verifica il giorno</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">17:00</div>
+              <div class="slot-icon">🏘️</div>
+              <div class="slot-content">
+                <strong>Bukchon Hanok Village</strong>
+                <span>Passeggiata tra i vicoli dorati del tardo pomeriggio</span>
+                <div class="slot-tip">💡 La luce del pomeriggio è perfetta per le foto</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">19:30</div>
+              <div class="slot-icon">🍷</div>
+              <div class="slot-content">
+                <strong>Cena a Insadong</strong>
+                <span>Ristorante tradizionale con menù fisso — galbi o bulgogi</span>
+                
+              </div>
+            </div>
+          </div>
+          <div class="day-note">📌 Ritmo lento: il jet lag si fa sentire. Niente musei il primo giorno.</div>
+        </div>
+
+        <div class="day-block">
+          <div class="day-block-head" style="background:#1a3a5c">
+            <span class="day-label">Giorno 2</span>
+            Storia e cultura Joseon
+          </div>
+          <div class="day-slots">
+            <div class="slot">
+              <div class="slot-time">09:00</div>
+              <div class="slot-icon">🏯</div>
+              <div class="slot-content">
+                <strong>Changdeokgung + Giardino Segreto</strong>
+                <span>Visita guidata obbligatoria — prenota online prima di partire</span>
+                <div class="slot-tip">💡 Solo 50 persone per turno, esaurisce in fretta</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">12:30</div>
+              <div class="slot-icon">🛒</div>
+              <div class="slot-content">
+                <strong>Mercato di Gwangjang</strong>
+                <span>Pranzo tra i banchi: bindaetteok, mayak gimbap, eomuk</span>
+                <div class="slot-tip">💡 Stefano: questo è il suo momento</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">14:30</div>
+              <div class="slot-icon">🎨</div>
+              <div class="slot-content">
+                <strong>Insadong shopping</strong>
+                <span>Negozietti di artigianato, carte hanji, tè, souvenir</span>
+                <div class="slot-tip">💡 Michela: librerie manhwa qui</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">16:30</div>
+              <div class="slot-icon">🗼</div>
+              <div class="slot-content">
+                <strong>N Seoul Tower (Namsan)</strong>
+                <span>Cable car o scalinata — tramonto sulla città</span>
+                <div class="slot-tip">💡 Alessandra ed Elisabetta: lucchetti dell'amore</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">19:00</div>
+              <div class="slot-icon">🍺</div>
+              <div class="slot-content">
+                <strong>Cena a Samcheong-dong</strong>
+                <span>Quartiere chic, ristoranti con menu in inglese</span>
+                
+              </div>
+            </div>
+          </div>
+          <div class="day-note">📌 Giornata piena ma senza corse — tutti i siti sono a 15 minuti l'uno dall'altro.</div>
+        </div>
+
+        <div class="day-block">
+          <div class="day-block-head" style="background:#1a3a5c">
+            <span class="day-label">Giorno 3</span>
+            K-pop, design e vita moderna
+          </div>
+          <div class="day-slots">
+            <div class="slot">
+              <div class="slot-time">10:00</div>
+              <div class="slot-icon">🎵</div>
+              <div class="slot-content">
+                <strong>HYBE Insight Museum</strong>
+                <span>Museo BTS e artisti HYBE — prenotare settimane prima!</span>
+                <div class="slot-tip">💡 Elisabetta: tappa imperdibile. Durata: 2h</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">12:30</div>
+              <div class="slot-icon">🍜</div>
+              <div class="slot-content">
+                <strong>Pranzo a Yongsan</strong>
+                <span>Area moderna, street food e food court del centro commerciale</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">14:00</div>
+              <div class="slot-icon">🎨</div>
+              <div class="slot-content">
+                <strong>DDP Dongdaemun Design Plaza</strong>
+                <span>Architettura Zaha Hadid + mostra temporanea</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">16:00</div>
+              <div class="slot-icon">🛍️</div>
+              <div class="slot-content">
+                <strong>Myeongdong</strong>
+                <span>K-beauty, cosmetici, street food — shopping per Elisabetta e Alessandra</span>
+                <div class="slot-tip">💡 Kakao Friends Store è qui</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">19:30</div>
+              <div class="slot-icon">🌃</div>
+              <div class="slot-content">
+                <strong>Hongdae di sera</strong>
+                <span>Musica live in strada, street food, atmosfera giovanile</span>
+                
+              </div>
+            </div>
+          </div>
+          <div class="day-note">📌 Giornata per i ragazzi — ritmo più vivace ma con pause.</div>
+        </div>
+
+        <div class="day-block">
+          <div class="day-block-head" style="background:#1a3a5c">
+            <span class="day-label">Giorno 4</span>
+            Gita al DMZ (opzionale)
+          </div>
+          <div class="day-slots">
+            <div class="slot">
+              <div class="slot-time">08:00</div>
+              <div class="slot-icon">🚌</div>
+              <div class="slot-content">
+                <strong>Tour DMZ</strong>
+                <span>Partenza organizzata da Seul — includi JSA Panmunjom se possibile</span>
+                <div class="slot-tip">💡 Prenotare tour con guida in italiano o inglese</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">13:00</div>
+              <div class="slot-icon">🍱</div>
+              <div class="slot-content">
+                <strong>Pranzo sul percorso</strong>
+                <span>Incluso nel tour o nei pressi di Imjingak</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">15:30</div>
+              <div class="slot-icon">🏰</div>
+              <div class="slot-content">
+                <strong>Suwon Fortezza Hwaseong</strong>
+                <span>30 min da Seul — aggiungila al ritorno dal DMZ</span>
+                <div class="slot-tip">💡 UNESCO, cinta muraria percorribile a piedi</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">18:30</div>
+              <div class="slot-icon">🏨</div>
+              <div class="slot-content">
+                <strong>Rientro e cena libera</strong>
+                <span>Quartiere a scelta — riposo</span>
+                
+              </div>
+            </div>
+          </div>
+          <div class="day-note">📌 In alternativa: giornata libera per shopping o visite non fatte.</div>
+        </div>
+
+        <div class="day-block">
+          <div class="day-block-head" style="background:#1a3a5c">
+            <span class="day-label">Giorno 5</span>
+            Mattina libera + partenza per Jeonju
+          </div>
+          <div class="day-slots">
+            <div class="slot">
+              <div class="slot-time">09:00</div>
+              <div class="slot-icon">☕</div>
+              <div class="slot-content">
+                <strong>Colazione e check-out</strong>
+                <span>Lascia i bagagli in hotel, ultima passeggiata</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">10:30</div>
+              <div class="slot-icon">🛍️</div>
+              <div class="slot-content">
+                <strong>Ultimo giro Dongdaemun</strong>
+                <span>Souvenir last minute al mercato</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">12:30</div>
+              <div class="slot-icon">🚄</div>
+              <div class="slot-content">
+                <strong>KTX da Seoul Station</strong>
+                <span>Treno per Jeonju — 1h 40min, partenza consigliata 12:30-13:30</span>
+                <div class="slot-tip">💡 Prenota biglietti online su Korail.com</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">14:30</div>
+              <div class="slot-icon">🏨</div>
+              <div class="slot-content">
+                <strong>Arrivo a Jeonju</strong>
+                <span>Check-in e prima passeggiata nel Hanok Village</span>
+                
+              </div>
+            </div>
+          </div>
+          <div class="day-note">📌 Partenza nel primo pomeriggio: godersi la mattina senza stress.</div>
+        </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">🏨 Dove alloggiare</div>
+        <div class="hotel-section">
+
+        <div class="hotel-zone">
+          <div class="hotel-zone-rank">1°</div>
+          <div class="hotel-zone-body">
+            <strong>📍 Jongno-gu / Insadong</strong>
+            <p>Il quartiere più strategico: a 10 minuti a piedi da Gyeongbokgung, Changdeokgung, Bukchon Hanok Village e Insadong. Metro linea 3 (Anguk) porta ovunque in 20 minuti. Ottima scelta per famiglie — tranquillo la notte.</p>
+            <div><span class="htag">Metro Anguk</span><span class="htag">Vicino ai palazzi</span><span class="htag">Tranquillo</span><span class="htag">Ristoranti tipici</span></div>
+          </div>
+        </div>
+
+        <div class="hotel-zone">
+          <div class="hotel-zone-rank">2°</div>
+          <div class="hotel-zone-body">
+            <strong>📍 Myeongdong / Jung-gu</strong>
+            <p>Hub commerciale centrale: AREX Express per l'aeroporto, metro per tutte le linee. Vivace, ottimo per Elisabetta e Alessandra. Prezzi leggermente più alti.</p>
+            <div><span class="htag">Hub trasporti</span><span class="htag">Shopping</span><span class="htag">K-pop stores</span><span class="htag">Aeroporto facile</span></div>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">🚄 Trasporto per la tappa successiva</div>
+
+      <div class="transport-card">
+        <div class="transport-head">
+          <span style="font-size:1.2rem">🔀</span>
+          <div>
+            <strong>Seoul → Jeonju</strong>
+            <span> &nbsp;|&nbsp; 🚄 KTX (Korea Train Express)</span>
+          </div>
+        </div>
+        <div class="transport-rows">
+          <div class="t-row">
+            <div class="t-row-icon">🚄</div>
+            <div class="t-row-body">
+              <strong>KTX Seoul Station → Jeonju</strong>
+              <span>1h 40min · ~22.000 KRW (~16€) · Frequenza ogni 30-60 min</span>
+            </div>
+          </div>
+          <div class="t-row">
+            <div class="t-row-icon">⏰</div>
+            <div class="t-row-body">
+              <strong>Fascia oraria consigliata</strong>
+              <span>Partenza 12:30–14:00: arrivi nel pomeriggio e hai ancora tempo per visitare</span>
+            </div>
+          </div>
+          <div class="t-row">
+            <div class="t-row-icon">🎫</div>
+            <div class="t-row-body">
+              <strong>Prenotazione</strong>
+              <span>Korail.com o app Korail — prenota con almeno 1 settimana di anticipo in estate</span>
+            </div>
+          </div>
+          <div class="t-row">
+            <div class="t-row-icon">🏠</div>
+            <div class="t-row-body">
+              <strong>Da hotel a stazione</strong>
+              <span>Metro fino a Seoul Station (linea 1 o 4) — 15-25 min</span>
+            </div>
+          </div>
+          <div class="t-row">
+            <div class="t-row-icon">📍</div>
+            <div class="t-row-body">
+              <strong>Arrivo a Jeonju</strong>
+              <span>Stazione centrale — taxi o bus 79/119 per il Hanok Village (15 min)</span>
+            </div>
+          </div>
+        </div>
+        <div class="transport-tip">💡 Il KTX in estate è affollatissimo — prenota i posti a sedere numerati, non viaggiare in piedi.</div>
+      </div>
+      </div>
+
+<div class="gallery-wrap">
         <div class="section-title">📷 Galleria fotografica — Seul</div>
         <div class="gallery-strip">
         <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZOCRkndVoebLlrcTzojB8U_YmKQYStFUG6Fv_tjLtlfQ5cjIU0ybHP-NG3sXqg5i0_0VsvmUMohF-89A5zf1IGJHZCzPtKEdq5nRiobEXyeoCxJhhlE3-1A-7M4SdE2m3AOFzZJM6LOtr2BCJE=s1200-w1200-h800" alt="Gyeongbokgung Palace — Palazzo reale del 1395" title="Gyeongbokgung Palace — Palazzo reale del 1395" onclick="openLightbox(this)" loading="lazy">
@@ -985,7 +1475,218 @@
       <div class="curiosity">A Jeonju viene prodotta la hanji, la carta tradizionale coreana ricavata dalla corteccia del gelso. È così resistente che viene usata per restaurare antichi manoscritti in tutto il mondo. Nelle case hanok, la hanji ricopre pavimenti, pareti e soffitti come isolante naturale.</div>
 
 
-      <div class="gallery-wrap">
+      
+      <div>
+        <div class="section-title">📅 Pianificazione giornaliera</div>
+        <div class="daily-plan">
+
+        <div class="day-block">
+          <div class="day-block-head" style="background:#b8870a">
+            <span class="day-label">Giorno 6</span>
+            Immersione nel Hanok Village
+          </div>
+          <div class="day-slots">
+            <div class="slot">
+              <div class="slot-time">09:00</div>
+              <div class="slot-icon">🏘️</div>
+              <div class="slot-content">
+                <strong>Hanok Village mattina</strong>
+                <span>La luce del mattino è perfetta — meno turisti, vicoli quieti</span>
+                <div class="slot-tip">💡 Partire dalla mappa all'ingresso principale</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">10:30</div>
+              <div class="slot-icon">👘</div>
+              <div class="slot-content">
+                <strong>Noleggio Hanbok</strong>
+                <span>Scegliere gli abiti, sessione foto nel villaggio</span>
+                <div class="slot-tip">💡 Elisabetta e Alessandra adoreranno questo momento</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">12:30</div>
+              <div class="slot-icon">🍚</div>
+              <div class="slot-content">
+                <strong>Bibimbap autentico</strong>
+                <span>Ristorante tradizionale nel villaggio — ordina il set completo</span>
+                <div class="slot-tip">💡 Stefano: chiedi la versione con dolsot (pietra calda)</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">14:30</div>
+              <div class="slot-icon">🎭</div>
+              <div class="slot-content">
+                <strong>Museo delle Arti / laboratorio hanji</strong>
+                <span>Alessandra fa il laboratorio, gli altri visitano il museo</span>
+                <div class="slot-tip">💡 Circa 1h — economico e molto interattivo</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">16:30</div>
+              <div class="slot-icon">⛪</div>
+              <div class="slot-content">
+                <strong>Cattedrale Jeondong</strong>
+                <span>Breve visita all'esterno — bella per le foto</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">18:30</div>
+              <div class="slot-icon">🍺</div>
+              <div class="slot-content">
+                <strong>Makgeolli tour</strong>
+                <span>Bar nel villaggio — servito con 12+ banchan gratuiti</span>
+                <div class="slot-tip">💡 Solo per adulti; i bambini prendono sikhye — bibita di riso dolce</div>
+              </div>
+            </div>
+          </div>
+          <div class="day-note">📌 Prima giornata rilassata — il villaggio si gira tutto a piedi in pochi minuti.</div>
+        </div>
+
+        <div class="day-block">
+          <div class="day-block-head" style="background:#b8870a">
+            <span class="day-label">Giorno 7</span>
+            Mercati, cibo e partenza per Gyeongju
+          </div>
+          <div class="day-slots">
+            <div class="slot">
+              <div class="slot-time">08:30</div>
+              <div class="slot-icon">🌅</div>
+              <div class="slot-content">
+                <strong>Colazione in hanok</strong>
+                <span>Se dormi in un hanok guesthouse, la colazione tradizionale è inclusa</span>
+                <div class="slot-tip">💡 Tofu fatto in casa, kimchi, riso, zuppa di miso</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">10:00</div>
+              <div class="slot-icon">🛒</div>
+              <div class="slot-content">
+                <strong>Mercato Nambu (Nambu Sijang)</strong>
+                <span>Il mercato coperto più autentico — cibo locale, non turistico</span>
+                <div class="slot-tip">💡 Stefano: questo è il suo mercato preferito del viaggio</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">11:30</div>
+              <div class="slot-icon">🌿</div>
+              <div class="slot-content">
+                <strong>Maisan Park (opzionale)</strong>
+                <span>Gita in taxi — 40 min. Pinnacoli rocciosi e tempio in pietra a mano libera</span>
+                <div class="slot-tip">💡 Solo se la famiglia ha energia — altrimenti salta</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">13:30</div>
+              <div class="slot-icon">🍜</div>
+              <div class="slot-content">
+                <strong>Pranzo street food</strong>
+                <span>Hotteok, tteokbokki, bungeoppang prima di partire</span>
+                <div class="slot-tip">💡 Alessandra: la sua tappa preferita di Jeonju</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">15:00</div>
+              <div class="slot-icon">🚄</div>
+              <div class="slot-content">
+                <strong>KTX per Gyeongju</strong>
+                <span>Via Dongdaegu — cambia treno o prendi bus diretto</span>
+                <div class="slot-tip">💡 Vedere sezione trasporti sotto</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">17:30</div>
+              <div class="slot-icon">🏨</div>
+              <div class="slot-content">
+                <strong>Arrivo a Gyeongju</strong>
+                <span>Check-in e cena leggera vicino all'hotel</span>
+                
+              </div>
+            </div>
+          </div>
+          <div class="day-note">📌 Giornata divisa tra visita e spostamento — non sovraccaricare la mattina.</div>
+        </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">🏨 Dove alloggiare</div>
+        <div class="hotel-section">
+
+        <div class="hotel-zone">
+          <div class="hotel-zone-rank">1°</div>
+          <div class="hotel-zone-body">
+            <strong>📍 Hanok Village area / Wansan-gu</strong>
+            <p>Dormire DENTRO il Hanok Village è l'esperienza più autentica: guesthouse hanok con ondol (pavimento riscaldato), colazione tradizionale inclusa. Prenotare con mesi di anticipo in estate. Prezzi medi 60-100€/notte per famiglia.</p>
+            <div><span class="htag">Esperienza unica</span><span class="htag">Colazione inclusa</span><span class="htag">A piedi da tutto</span><span class="htag">Prenota presto</span></div>
+          </div>
+        </div>
+
+        <div class="hotel-zone">
+          <div class="hotel-zone-rank">2°</div>
+          <div class="hotel-zone-body">
+            <strong>📍 Palgunsan-ro / centro città</strong>
+            <p>Hotel moderni a 10 minuti a piedi dal villaggio. Più confortevoli per famiglie con bambini, prezzi più accessibili. Bus frequenti per il villaggio.</p>
+            <div><span class="htag">Comfort moderno</span><span class="htag">Prezzi medi</span><span class="htag">Bus per villaggio</span><span class="htag">Più opzioni</span></div>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">🚄 Trasporto per la tappa successiva</div>
+
+      <div class="transport-card">
+        <div class="transport-head">
+          <span style="font-size:1.2rem">🔀</span>
+          <div>
+            <strong>Jeonju → Gyeongju</strong>
+            <span> &nbsp;|&nbsp; 🚌 Bus Interurbano + 🚄 KTX (con cambio)</span>
+          </div>
+        </div>
+        <div class="transport-rows">
+          <div class="t-row">
+            <div class="t-row-icon">🚌</div>
+            <div class="t-row-body">
+              <strong>Opzione 1 — Bus diretto Jeonju → Gyeongju</strong>
+              <span>3h 30min · ~17.000 KRW (~12€) · Partenze mattina e pomeriggio</span>
+            </div>
+          </div>
+          <div class="t-row">
+            <div class="t-row-icon">🚄</div>
+            <div class="t-row-body">
+              <strong>Opzione 2 — KTX via Dongdaegu</strong>
+              <span>Jeonju→Dongdaegu (1h20) + Dongdaegu→Gyeongju (30min bus/treno regionale</span>
+            </div>
+          </div>
+          <div class="t-row">
+            <div class="t-row-icon">⏰</div>
+            <div class="t-row-body">
+              <strong>Fascia oraria consigliata</strong>
+              <span>Partenza 14:00–15:30: mattina piena a Jeonju, arrivo a Gyeongju in serata</span>
+            </div>
+          </div>
+          <div class="t-row">
+            <div class="t-row-icon">📍</div>
+            <div class="t-row-body">
+              <strong>Bus terminal Jeonju</strong>
+              <span>Jeonju Express Bus Terminal — taxi dall'hotel (~5min, 5.000 KRW)</span>
+            </div>
+          </div>
+          <div class="t-row">
+            <div class="t-row-icon">📍</div>
+            <div class="t-row-body">
+              <strong>Arrivo a Gyeongju</strong>
+              <span>Bus terminal centrale — taxi per hotel (~10min)</span>
+            </div>
+          </div>
+        </div>
+        <div class="transport-tip">💡 Con 4 persone e bagagli il bus è più comodo del treno con cambio — meno scale, meno stress.</div>
+      </div>
+      </div>
+
+<div class="gallery-wrap">
         <div class="section-title">📷 Galleria fotografica — Jeonju</div>
         <div class="gallery-strip">
         <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZNKJfdV_YxVZe87HCuZcivBW144a2V5H4wq0YXEpw4hq31VmPxd5t0gRIzOltOOeI5J7lrpZCyTQXBUh8sCpIx9K9Qlr5b-MjC-Hd09b7XitzrEzLoyQtyXiFOFx2iwYyyivCl-yX6xX21zdwqhzq9NYw=s1200-w1200-h800" alt="Jeonju Hanok Village dall'alto" title="Jeonju Hanok Village dall'alto" onclick="openLightbox(this)" loading="lazy">
@@ -1068,7 +1769,273 @@
       <div class="curiosity">In una tomba Silla di Gyeongju è stato trovato un vetro romano risalente al V secolo. Conferma che il regno Silla era connesso alla Via della Seta e commerciava con il Mediterraneo. Alcune corone d'oro Silla somigliano stranamente agli ornamenti degli Sciti del Mar Nero.</div>
 
 
-      <div class="gallery-wrap">
+      
+      <div>
+        <div class="section-title">📅 Pianificazione giornaliera</div>
+        <div class="daily-plan">
+
+        <div class="day-block">
+          <div class="day-block-head" style="background:#8e44ad">
+            <span class="day-label">Giorno 8</span>
+            Tempio Bulguksa e Seokguram
+          </div>
+          <div class="day-slots">
+            <div class="slot">
+              <div class="slot-time">09:00</div>
+              <div class="slot-icon">⛪</div>
+              <div class="slot-content">
+                <strong>Tempio Bulguksa</strong>
+                <span>Arrivo all'apertura — meno folla, luce morbida tra gli alberi</span>
+                <div class="slot-tip">💡 30 min di bus dalla città — partire presto</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">11:00</div>
+              <div class="slot-icon">🪨</div>
+              <div class="slot-content">
+                <strong>Grotta Seokguram</strong>
+                <span>20 min a piedi o bus dal Bulguksa — vista sul mare</span>
+                <div class="slot-tip">💡 Il Buddha di granito è nella grotta — no flash</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">13:00</div>
+              <div class="slot-icon">🍱</div>
+              <div class="slot-content">
+                <strong>Pranzo tipico nei pressi</strong>
+                <span>Ssambap (riso con foglie) o bibimbap montagna vicino al tempio</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">15:00</div>
+              <div class="slot-icon">🏛️</div>
+              <div class="slot-content">
+                <strong>Museo Nazionale di Gyeongju</strong>
+                <span>Corona d'oro Silla, cintura persiana, vetro romano</span>
+                <div class="slot-tip">💡 Stefano: dedicare almeno 2 ore</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">17:30</div>
+              <div class="slot-icon">🚲</div>
+              <div class="slot-content">
+                <strong>Bici ai Tumuli reali</strong>
+                <span>Noleggio bici vicino all'hotel — giro dei tumuli al tramonto</span>
+                <div class="slot-tip">💡 Alessandra: prato verde ideale per correre</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">19:30</div>
+              <div class="slot-icon">🌙</div>
+              <div class="slot-content">
+                <strong>Lago Anapji di notte</strong>
+                <span>Il palazzo si riflette sull'acqua — spettacolo imperdibile</span>
+                <div class="slot-tip">💡 10 min a piedi dai tumuli</div>
+              </div>
+            </div>
+          </div>
+          <div class="day-note">📌 Giornata ricca ma con ritmi lenti — i siti distano poco l'uno dall'altro.</div>
+        </div>
+
+        <div class="day-block">
+          <div class="day-block-head" style="background:#8e44ad">
+            <span class="day-label">Giorno 9</span>
+            Villaggi, arte marziale e sito UNESCO
+          </div>
+          <div class="day-slots">
+            <div class="slot">
+              <div class="slot-time">09:30</div>
+              <div class="slot-icon">🏘️</div>
+              <div class="slot-content">
+                <strong>Yangdong Folk Village</strong>
+                <span>Bus o taxi — 30 min. Villaggio vivo del clan Moon, risaie intorno</span>
+                <div class="slot-tip">💡 Michela: il villaggio più autentico del viaggio</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">12:00</div>
+              <div class="slot-icon">🍜</div>
+              <div class="slot-content">
+                <strong>Pranzo nel villaggio</strong>
+                <span>Cucina casalinga al ristorante locale — menu fisso</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">14:00</div>
+              <div class="slot-icon">⛩️</div>
+              <div class="slot-content">
+                <strong>Tempio Golgulsa</strong>
+                <span>20 min di taxi. Tempio nella roccia + sunmudo (arte marziale buddista)</span>
+                <div class="slot-tip">💡 Partecipare alla sessione pomeridiana se disponibile</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">16:30</div>
+              <div class="slot-icon">🔭</div>
+              <div class="slot-content">
+                <strong>Cheomseongdae</strong>
+                <span>Osservatorio astronomico del 634 d.C. — 15 min a piedi dai tumuli</span>
+                <div class="slot-tip">💡 Breve visita — 30 minuti bastano</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">17:30</div>
+              <div class="slot-icon">🛍️</div>
+              <div class="slot-content">
+                <strong>Passeggiata Hwangni-gil</strong>
+                <span>Strada dei ristoranti e negozi locali, souvenir storici</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">20:00</div>
+              <div class="slot-icon">🍷</div>
+              <div class="slot-content">
+                <strong>Cena a Gyeongju</strong>
+                <span>Galbi di montagna o dakgalbi (pollo piccante) con banchan</span>
+                
+              </div>
+            </div>
+          </div>
+          <div class="day-note">📌 Giornata con più spostamenti in taxi — budget ~30.000 KRW per i trasferimenti.</div>
+        </div>
+
+        <div class="day-block">
+          <div class="day-block-head" style="background:#8e44ad">
+            <span class="day-label">Giorno 10</span>
+            Mattina libera + partenza per Busan
+          </div>
+          <div class="day-slots">
+            <div class="slot">
+              <div class="slot-time">09:00</div>
+              <div class="slot-icon">☕</div>
+              <div class="slot-content">
+                <strong>Colazione lenta</strong>
+                <span>Caffè locale con bingsu (granita di latte) — tipico d'estate</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">10:00</div>
+              <div class="slot-icon">🏯</div>
+              <div class="slot-content">
+                <strong>Revisit preferito</strong>
+                <span>Tornare al sito preferito — tumuli in bici o Bulguksa all'alba</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">12:00</div>
+              <div class="slot-icon">🍱</div>
+              <div class="slot-content">
+                <strong>Pranzo e check-out</strong>
+                <span>Lascia i bagagli in hotel</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">13:30</div>
+              <div class="slot-icon">🚄</div>
+              <div class="slot-content">
+                <strong>KTX per Busan</strong>
+                <span>40 minuti — la tratta più breve del viaggio</span>
+                <div class="slot-tip">💡 Partenza ogni 30 min da Singyeongju Station</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">14:30</div>
+              <div class="slot-icon">🏨</div>
+              <div class="slot-content">
+                <strong>Arrivo a Busan</strong>
+                <span>Check-in e prima passeggiata sulla spiaggia di Gwangalli</span>
+                
+              </div>
+            </div>
+          </div>
+          <div class="day-note">📌 Mattina deliberatamente vuota — Gyeongju merita un ritmo lentissimo.</div>
+        </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">🏨 Dove alloggiare</div>
+        <div class="hotel-section">
+
+        <div class="hotel-zone">
+          <div class="hotel-zone-rank">1°</div>
+          <div class="hotel-zone-body">
+            <strong>📍 Centro storico / Hwangnam-dong</strong>
+            <p>A 5 minuti a piedi dai tumuli reali, dal lago Anapji e dal Cheomseongdae. Zona tranquilla, molte guesthouse caratteristiche. Bici a noleggio dietro l'angolo.</p>
+            <div><span class="htag">Tutto a piedi</span><span class="htag">Bici noleggio</span><span class="htag">Storico</span><span class="htag">Tranquillo</span></div>
+          </div>
+        </div>
+
+        <div class="hotel-zone">
+          <div class="hotel-zone-rank">2°</div>
+          <div class="hotel-zone-body">
+            <strong>📍 Bomun Tourist Complex</strong>
+            <p>Zona resort sul lago Bomun — hotel più grandi e confortevoli, piscina. 10 minuti di bus dal centro storico. Ideale se la famiglia vuole comfort.</p>
+            <div><span class="htag">Hotel grandi</span><span class="htag">Piscina</span><span class="htag">Lago Bomun</span><span class="htag">Bus per centro</span></div>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">🚄 Trasporto per la tappa successiva</div>
+
+      <div class="transport-card">
+        <div class="transport-head">
+          <span style="font-size:1.2rem">🔀</span>
+          <div>
+            <strong>Gyeongju → Busan</strong>
+            <span> &nbsp;|&nbsp; 🚄 KTX da Singyeongju Station</span>
+          </div>
+        </div>
+        <div class="transport-rows">
+          <div class="t-row">
+            <div class="t-row-icon">🚄</div>
+            <div class="t-row-body">
+              <strong>KTX Singyeongju → Busan Bujeon</strong>
+              <span>38 minuti · ~14.000 KRW (~10€) · Frequenza ogni 30 min</span>
+            </div>
+          </div>
+          <div class="t-row">
+            <div class="t-row-icon">🚌</div>
+            <div class="t-row-body">
+              <strong>In alternativa — Bus diretto</strong>
+              <span>1h 10min · ~7.500 KRW · Più economico ma meno comodo con bagagli</span>
+            </div>
+          </div>
+          <div class="t-row">
+            <div class="t-row-icon">⏰</div>
+            <div class="t-row-body">
+              <strong>Fascia oraria consigliata</strong>
+              <span>Partenza 13:00–14:30: mattina a Gyeongju, pomeriggio a Busan</span>
+            </div>
+          </div>
+          <div class="t-row">
+            <div class="t-row-icon">📍</div>
+            <div class="t-row-body">
+              <strong>Da hotel a stazione</strong>
+              <span>Bus o taxi per Singyeongju Station (~15 min, 12.000 KRW taxi)</span>
+            </div>
+          </div>
+          <div class="t-row">
+            <div class="t-row-icon">📍</div>
+            <div class="t-row-body">
+              <strong>Arrivo a Busan</strong>
+              <span>Busan Station o Bujeon — metro linea 1 per tutto il centro</span>
+            </div>
+          </div>
+        </div>
+        <div class="transport-tip">💡 Gyeongju → Busan è la tratta più facile dell'intero viaggio: 40 minuti e sei già sul mare.</div>
+      </div>
+      </div>
+
+<div class="gallery-wrap">
         <div class="section-title">📷 Galleria fotografica — Gyeongju</div>
         <div class="gallery-strip">
         <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZOWGjRlhXv0pIOdHsobRWFreMyKEU4wuWTaLdv_UzNP2xoJygEVok0giQQfBmJc4guXaA9OZ7nAJ32piM96n7hMUBGTCyR4vKSSV2hWCWybWVCqqcmLVbDmHOEQo4o6H0tBiD4iXdRT1Qax4ZY=s1200-w1200-h800" alt="Gyeongju — paesaggio storico" title="Gyeongju — paesaggio storico" onclick="openLightbox(this)" loading="lazy">
@@ -1153,7 +2120,310 @@
       <div class="curiosity">Durante la Guerra di Corea, Busan fu l'unica città mai conquistata dai nordcoreani — rimase l'ultimo bastione del Sud. Migliaia di rifugiati vi arrivarono da tutto il paese, creando quartieri improvvisati sulle colline come Gamcheon, oggi tra le mete più visitate.</div>
 
 
-      <div class="gallery-wrap">
+      
+      <div>
+        <div class="section-title">📅 Pianificazione giornaliera</div>
+        <div class="daily-plan">
+
+        <div class="day-block">
+          <div class="day-block-head" style="background:#c0392b">
+            <span class="day-label">Giorno 11</span>
+            Arrivo, mare e tempio sul mare
+          </div>
+          <div class="day-slots">
+            <div class="slot">
+              <div class="slot-time">14:30</div>
+              <div class="slot-icon">🏨</div>
+              <div class="slot-content">
+                <strong>Check-in</strong>
+                <span>Deposita i bagagli e vai subito al mare</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">15:30</div>
+              <div class="slot-icon">🏖️</div>
+              <div class="slot-content">
+                <strong>Spiaggia Gwangalli</strong>
+                <span>Prima immersione — spiaggia più tranquilla di Haeundae</span>
+                <div class="slot-tip">💡 Vista notturna del Gwangan Bridge illuminato</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">17:30</div>
+              <div class="slot-icon">⛩️</div>
+              <div class="slot-content">
+                <strong>Haedong Yonggungsa</strong>
+                <span>Tempio sul mare — 20 min di bus, visita al tramonto</span>
+                <div class="slot-tip">💡 Uno dei luoghi più fotogenici della Corea</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">19:30</div>
+              <div class="slot-icon">🐟</div>
+              <div class="slot-content">
+                <strong>Cena al Mercato Jagalchi</strong>
+                <span>Scegli il pesce fresco dalle vasche, lo cucinano al piano di sopra</span>
+                <div class="slot-tip">💡 Stefano: tappa gastronomica cult</div>
+              </div>
+            </div>
+          </div>
+          <div class="day-note">📌 Primo giorno breve — arrivare, respirare il mare, cenare bene.</div>
+        </div>
+
+        <div class="day-block">
+          <div class="day-block-head" style="background:#c0392b">
+            <span class="day-label">Giorno 12</span>
+            Gamcheon e cultura urbana
+          </div>
+          <div class="day-slots">
+            <div class="slot">
+              <div class="slot-time">09:30</div>
+              <div class="slot-icon">🎨</div>
+              <div class="slot-content">
+                <strong>Gamcheon Culture Village</strong>
+                <span>Arrivo presto — evita la folla del pomeriggio</span>
+                <div class="slot-tip">💡 Michela: murales e librerie indie</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">11:30</div>
+              <div class="slot-icon">☕</div>
+              <div class="slot-content">
+                <strong>Caffè panoramico a Gamcheon</strong>
+                <span>Vista sulla città e il porto dall'alto</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">13:00</div>
+              <div class="slot-icon">🛒</div>
+              <div class="slot-content">
+                <strong>Mercato Gukje (International Market)</strong>
+                <span>Pranzo di street food — milmyeon, hotteok, souvenir</span>
+                <div class="slot-tip">💡 Alessandra: gadget e souvenir a prezzi bassi</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">15:00</div>
+              <div class="slot-icon">🎬</div>
+              <div class="slot-content">
+                <strong>BIFF Square / Nampo-dong</strong>
+                <span>Impronte delle star, negozi K-pop, street food</span>
+                <div class="slot-tip">💡 Elisabetta: merchandise K-pop più economico che a Seul</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">17:30</div>
+              <div class="slot-icon">🌉</div>
+              <div class="slot-content">
+                <strong>Passerella Oryukdo Skywalk</strong>
+                <span>Vetro sul mare, vista sulle isolette</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">19:30</div>
+              <div class="slot-icon">🍺</div>
+              <div class="slot-content">
+                <strong>Birra artigianale sul lungomare</strong>
+                <span>Bar con vista Gwangan Bridge di notte</span>
+                
+              </div>
+            </div>
+          </div>
+          <div class="day-note">📌 Giornata per la cultura di quartiere — tutto raggiungibile in metro o bus.</div>
+        </div>
+
+        <div class="day-block">
+          <div class="day-block-head" style="background:#c0392b">
+            <span class="day-label">Giorno 13</span>
+            Spiaggia e montagna
+          </div>
+          <div class="day-slots">
+            <div class="slot">
+              <div class="slot-time">09:00</div>
+              <div class="slot-icon">🏖️</div>
+              <div class="slot-content">
+                <strong>Haeundae Beach</strong>
+                <span>Mattina presto — meno affollata, bagno e relax</span>
+                <div class="slot-tip">💡 La spiaggia più grande della Corea</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">12:00</div>
+              <div class="slot-icon">🍜</div>
+              <div class="slot-content">
+                <strong>Pranzo a Haeundae</strong>
+                <span>Ristoranti sul lungomare — haemul pajeon (crêpe pesce)</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">14:00</div>
+              <div class="slot-icon">🏔️</div>
+              <div class="slot-content">
+                <strong>Geumjeongsan Fortress (opzionale)</strong>
+                <span>Cable car o trekking — fortezza di montagna</span>
+                <div class="slot-tip">💡 Solo se la famiglia ha energie — altrimenti spiaggia libera</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">17:00</div>
+              <div class="slot-icon">🕌</div>
+              <div class="slot-content">
+                <strong>Tempio Beomeosa</strong>
+                <span>Tempio buddista sul monte — sereno, pochi turisti</span>
+                <div class="slot-tip">💡 20 min di metro + camminata</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">20:00</div>
+              <div class="slot-icon">🍷</div>
+              <div class="slot-content">
+                <strong>Cena a Seomyeon</strong>
+                <span>Il quartiere più vivo di Busan di sera — galbi e samgyeopsal</span>
+                
+              </div>
+            </div>
+          </div>
+          <div class="day-note">📌 Giornata divisa mare-montagna — scegliere in base all'energia e al meteo.</div>
+        </div>
+
+        <div class="day-block">
+          <div class="day-block-head" style="background:#c0392b">
+            <span class="day-label">Giorno 14</span>
+            Mattina libera + partenza per Jeju
+          </div>
+          <div class="day-slots">
+            <div class="slot">
+              <div class="slot-time">09:00</div>
+              <div class="slot-icon">🌊</div>
+              <div class="slot-content">
+                <strong>Ultima passeggiata sul mare</strong>
+                <span>Gwangalli o Haeundae — caffè sul lungomare</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">11:00</div>
+              <div class="slot-icon">🛍️</div>
+              <div class="slot-content">
+                <strong>Shopping last minute</strong>
+                <span>Souvenir al Gukje Market o Nampo-dong</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">13:00</div>
+              <div class="slot-icon">🏨</div>
+              <div class="slot-content">
+                <strong>Check-out e taxi per aeroporto</strong>
+                <span>Gimhae Airport (PUS) — 40 min di taxi o metro</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">15:30</div>
+              <div class="slot-icon">✈️</div>
+              <div class="slot-content">
+                <strong>Volo Busan → Jeju</strong>
+                <span>1 ora · ~40.000–80.000 KRW a persona · Voli ogni ora</span>
+                <div class="slot-tip">💡 Il volo interno più comodo — niente scalo a Seul</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">16:45</div>
+              <div class="slot-icon">🏨</div>
+              <div class="slot-content">
+                <strong>Arrivo a Jeju, noleggio auto</strong>
+                <span>Ritira l'auto a nolo direttamente in aeroporto</span>
+                <div class="slot-tip">💡 Prenotare online prima di partire dall'Italia</div>
+              </div>
+            </div>
+          </div>
+          <div class="day-note">📌 L'unico volo interno del viaggio — inevitabile per Jeju, ma breve e frequente.</div>
+        </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">🏨 Dove alloggiare</div>
+        <div class="hotel-section">
+
+        <div class="hotel-zone">
+          <div class="hotel-zone-rank">1°</div>
+          <div class="hotel-zone-body">
+            <strong>📍 Haeundae-gu / Gwangalli area</strong>
+            <p>A piedi dalla spiaggia, metro linea 2 che collega tutta la città. Zona vivace ma non caotica, molti ristoranti di pesce. Ideale per famiglie — sicura, comoda, vista mare.</p>
+            <div><span class="htag">Vista mare</span><span class="htag">Metro linea 2</span><span class="htag">Spiaggia a piedi</span><span class="htag">Ristoranti pesce</span></div>
+          </div>
+        </div>
+
+        <div class="hotel-zone">
+          <div class="hotel-zone-rank">2°</div>
+          <div class="hotel-zone-body">
+            <strong>📍 Nampo-dong / Jung-gu (centro storico)</strong>
+            <p>Vicino a Jagalchi, BIFF Square, Gamcheon. Più tradizionale, prezzi medi più bassi. 20 minuti di metro da Haeundae. Ottimo se si preferisce il centro culturale al mare.</p>
+            <div><span class="htag">Centro culturale</span><span class="htag">Mercato Jagalchi</span><span class="htag">Prezzi medi</span><span class="htag">Metro comodo</span></div>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">🚄 Trasporto per la tappa successiva</div>
+
+      <div class="transport-card">
+        <div class="transport-head">
+          <span style="font-size:1.2rem">🔀</span>
+          <div>
+            <strong>Busan → Jeju</strong>
+            <span> &nbsp;|&nbsp; ✈️ Volo domestico da Gimhae (PUS) — inevitabile e conveniente</span>
+          </div>
+        </div>
+        <div class="transport-rows">
+          <div class="t-row">
+            <div class="t-row-icon">✈️</div>
+            <div class="t-row-body">
+              <strong>Volo Busan (PUS) → Jeju (CJU)</strong>
+              <span>55 minuti · ~40.000-80.000 KRW a persona · Compagnie: Air Busan, Jeju Air, T'way</span>
+            </div>
+          </div>
+          <div class="t-row">
+            <div class="t-row-icon">⏰</div>
+            <div class="t-row-body">
+              <strong>Fascia oraria consigliata</strong>
+              <span>Voli 15:00-17:00: mattina intera a Busan, arrivo a Jeju in tempo per la cena</span>
+            </div>
+          </div>
+          <div class="t-row">
+            <div class="t-row-icon">🎫</div>
+            <div class="t-row-body">
+              <strong>Prenotazione</strong>
+              <span>Naver Flight, Skyscanner o direttamente Jeju Air — prenota 4-6 settimane prima</span>
+            </div>
+          </div>
+          <div class="t-row">
+            <div class="t-row-icon">🚌</div>
+            <div class="t-row-body">
+              <strong>Da hotel a Gimhae Airport</strong>
+              <span>Limousine bus dalle spiagge (~6.000 KRW) o taxi (~35.000 KRW)</span>
+            </div>
+          </div>
+          <div class="t-row">
+            <div class="t-row-icon">🚗</div>
+            <div class="t-row-body">
+              <strong>Arrivo a Jeju</strong>
+              <span>Ritira auto a nolo in aeroporto — prenotare da Italia con Klook o Rentalcars</span>
+            </div>
+          </div>
+        </div>
+        <div class="transport-tip">💡 Questo è l'unico volo interno del viaggio. Con 4 persone costa circa 160-320€ totali — accettabile per non fare il giro via Seul che richiederebbe un giorno intero.</div>
+      </div>
+      </div>
+
+<div class="gallery-wrap">
         <div class="section-title">📷 Galleria fotografica — Busan</div>
         <div class="gallery-strip">
         <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZOCrcOZ4yFGhGrJTgeeH3YQ_Kwhy0Pk8VRIGF7iSWibjK4QfkPKqowdFPvjGfiODBvkn-MPw2M6p0BjXcVYDzbpDFVTvsZbkJX9WLAy84uyh0WaUGJ-9fjW7lh2pF7Cy1E10rT1-2p8QcQ2uJU=s1200-w1200-h800" alt="Seoraksan — montagne di granito" title="Seoraksan — montagne di granito" onclick="openLightbox(this)" loading="lazy">
@@ -1238,7 +2508,376 @@
       <div class="curiosity">Le haenyeo — le pescatrici in apnea di Jeju — sono patrimonio UNESCO dal 2016. Immerse senza bombole fino a 20 metri per raccogliere abaloni, polpi e ricci di mare, possono trattenere il respiro per 2–3 minuti. Tradizionalmente erano le donne a mantenere la famiglia: a Jeju si è sviluppata per secoli una società a guida femminile unica in Asia.</div>
 
 
-      <div class="gallery-wrap">
+      
+      <div>
+        <div class="section-title">📅 Pianificazione giornaliera</div>
+        <div class="daily-plan">
+
+        <div class="day-block">
+          <div class="day-block-head" style="background:#27ae60">
+            <span class="day-label">Giorno 15</span>
+            Arrivo e costa ovest
+          </div>
+          <div class="day-slots">
+            <div class="slot">
+              <div class="slot-time">17:00</div>
+              <div class="slot-icon">🚗</div>
+              <div class="slot-content">
+                <strong>Ritiro auto e check-in</strong>
+                <span>Dirigiti verso la zona di alloggio sulla costa ovest</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">18:30</div>
+              <div class="slot-icon">🍊</div>
+              <div class="slot-content">
+                <strong>Spiaggia Hyeopjae</strong>
+                <span>Sabbia bianca e acqua turchese — bagno di benvenuto</span>
+                <div class="slot-tip">💡 La più bella spiaggia dell'isola</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">20:00</div>
+              <div class="slot-icon">🐷</div>
+              <div class="slot-content">
+                <strong>Prima cena Jeju</strong>
+                <span>Maiale nero heukdwaeji — specialità locale obbligatoria</span>
+                <div class="slot-tip">💡 Stefano: il piatto di Jeju per eccellenza</div>
+              </div>
+            </div>
+          </div>
+          <div class="day-note">📌 Giorno di arrivo breve — solo spiaggia e cena. Non sovraccaricare.</div>
+        </div>
+
+        <div class="day-block">
+          <div class="day-block-head" style="background:#27ae60">
+            <span class="day-label">Giorno 16</span>
+            Seongsan e haenyeo — costa est
+          </div>
+          <div class="day-slots">
+            <div class="slot">
+              <div class="slot-time">05:30</div>
+              <div class="slot-icon">🌅</div>
+              <div class="slot-content">
+                <strong>Alba a Seongsan Ilchulbong</strong>
+                <span>Salire al cratere UNESCO prima dell'alba — vista epica</span>
+                <div class="slot-tip">💡 Svegliarsi presto è il segreto</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">08:00</div>
+              <div class="slot-icon">🤿</div>
+              <div class="slot-content">
+                <strong>Spettacolo haenyeo a Seongsan</strong>
+                <span>Le pescatrici in apnea emergono con il pescato — spettacolo gratuito</span>
+                <div class="slot-tip">💡 Michela: momento indimenticabile</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">09:30</div>
+              <div class="slot-icon">☕</div>
+              <div class="slot-content">
+                <strong>Colazione nel villaggio</strong>
+                <span>Café con vista sul cratere e sul mare</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">11:00</div>
+              <div class="slot-icon">🕳️</div>
+              <div class="slot-content">
+                <strong>Grotte di lava Manjanggul</strong>
+                <span>45 min di guida. Tunnel di 7km — fresco anche d'estate</span>
+                <div class="slot-tip">💡 Alessandra: l'avventura più emozionante del viaggio</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">13:30</div>
+              <div class="slot-icon">🍜</div>
+              <div class="slot-content">
+                <strong>Pranzo a Jeju-si</strong>
+                <span>Centro città — ristorante di galchi jorim (pesce sciabola piccante)</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">15:30</div>
+              <div class="slot-icon">🌿</div>
+              <div class="slot-content">
+                <strong>Osulloc Tea Museum</strong>
+                <span>Piantagioni di tè verde — tè e gelato matcha</span>
+                <div class="slot-tip">💡 Michela: i campi di tè più belli dell'isola</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">18:00</div>
+              <div class="slot-icon">🏨</div>
+              <div class="slot-content">
+                <strong>Rientro in hotel</strong>
+                <span>Cena leggera o BBQ in giardino</span>
+                
+              </div>
+            </div>
+          </div>
+          <div class="day-note">📌 Giornata lunga ma molto varia — alba, natura, grotte, tè. Portare giacca per le grotte.</div>
+        </div>
+
+        <div class="day-block">
+          <div class="day-block-head" style="background:#27ae60">
+            <span class="day-label">Giorno 17</span>
+            Hallasan o spiagge — scelta famiglia
+          </div>
+          <div class="day-slots">
+            <div class="slot">
+              <div class="slot-time">07:00</div>
+              <div class="slot-icon">🌋</div>
+              <div class="slot-content">
+                <strong>OPZIONE A — Trekking Hallasan</strong>
+                <span>Sentiero Eorimok (5.3km) — 4-5 ore andata/ritorno. Per Stefano</span>
+                <div class="slot-tip">💡 Prenotare il permesso sul sito del parco nazionale</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">07:00</div>
+              <div class="slot-icon">🏖️</div>
+              <div class="slot-content">
+                <strong>OPZIONE B — Spiagge e relax</strong>
+                <span>Hamdeok Beach (nord) o Jungmun (sud) per Michela e le bambine</span>
+                <div class="slot-tip">💡 Giornata mare con snorkeling</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">14:00</div>
+              <div class="slot-icon">🎪</div>
+              <div class="slot-content">
+                <strong>Hello Kitty Island / Jeju Trick Art</strong>
+                <span>Pomeriggio per Elisabetta e Alessandra</span>
+                <div class="slot-tip">💡 Alessandra: il paradiso delle bambine</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">18:00</div>
+              <div class="slot-icon">🌊</div>
+              <div class="slot-content">
+                <strong>Tramonto a Seopjikoji</strong>
+                <span>Scogliere di lava sul mare — uno dei tramonti più belli dell'isola</span>
+                <div class="slot-tip">💡 15 minuti da Seongsan</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">20:00</div>
+              <div class="slot-icon">🍷</div>
+              <div class="slot-content">
+                <strong>Cena a Seogwipo</strong>
+                <span>Città del sud — frutti di mare, atmosfera rilassata</span>
+                
+              </div>
+            </div>
+          </div>
+          <div class="day-note">📌 La famiglia può dividersi — Stefano in montagna, le altre in spiaggia, ritrovo nel pomeriggio.</div>
+        </div>
+
+        <div class="day-block">
+          <div class="day-block-head" style="background:#27ae60">
+            <span class="day-label">Giorno 18</span>
+            Giri in auto — costa sud e ovest
+          </div>
+          <div class="day-slots">
+            <div class="slot">
+              <div class="slot-time">09:00</div>
+              <div class="slot-icon">🚗</div>
+              <div class="slot-content">
+                <strong>Jeju Olle Trail Corso 8</strong>
+                <span>Tratto costiero a piedi (4km) — scogli, mare, villaggio di pescatori</span>
+                <div class="slot-tip">💡 Michela: natura e lentezza</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">11:30</div>
+              <div class="slot-icon">🍊</div>
+              <div class="slot-content">
+                <strong>Piantagione mandarini</strong>
+                <span>Visita e degustazione — alcuni consentono la raccolta d'estate</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">13:00</div>
+              <div class="slot-icon">🍜</div>
+              <div class="slot-content">
+                <strong>Pranzo a Seogwipo</strong>
+                <span>Haemul ttukbaegi (zuppa frutti di mare in pentola di pietra)</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">15:00</div>
+              <div class="slot-icon">🌊</div>
+              <div class="slot-content">
+                <strong>Cascate Cheonjiyeon</strong>
+                <span>Cascata nel centro di Seogwipo — 15 minuti a piedi dall'hotel</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">17:00</div>
+              <div class="slot-icon">🛍️</div>
+              <div class="slot-content">
+                <strong>Shopping souvenir Jeju</strong>
+                <span>Centro di Jeju-si — prodotti locali: cosmesi vulcanica, tè, cioccolato al mandarino</span>
+                <div class="slot-tip">💡 Alessandra: souvenir con personaggi Jeju</div>
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">19:30</div>
+              <div class="slot-icon">🐷</div>
+              <div class="slot-content">
+                <strong>Ultima cena Jeju style</strong>
+                <span>BBQ di maiale nero con vista sul mare</span>
+                
+              </div>
+            </div>
+          </div>
+          <div class="day-note">📌 Giornata morbida — niente musei, solo natura, cibo e guida panoramica.</div>
+        </div>
+
+        <div class="day-block">
+          <div class="day-block-head" style="background:#27ae60">
+            <span class="day-label">Giorno 19</span>
+            Mattina libera + volo per Seul
+          </div>
+          <div class="day-slots">
+            <div class="slot">
+              <div class="slot-time">09:00</div>
+              <div class="slot-icon">🌅</div>
+              <div class="slot-content">
+                <strong>Ultima mattina sull'isola</strong>
+                <span>Caffè sul mare, ultima passeggiata</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">11:00</div>
+              <div class="slot-icon">🚗</div>
+              <div class="slot-content">
+                <strong>Restituzione auto e aeroporto</strong>
+                <span>Lascia l'auto in aeroporto — arriva 2h prima del volo</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">13:00</div>
+              <div class="slot-icon">✈️</div>
+              <div class="slot-content">
+                <strong>Volo Jeju → Seoul Gimpo (GMP)</strong>
+                <span>1h · ~40.000-70.000 KRW a persona · Atterri a Gimpo, più centrale di Incheon</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">14:30</div>
+              <div class="slot-icon">🏨</div>
+              <div class="slot-content">
+                <strong>Rientro a Seul, check-in</strong>
+                <span>Zona Myeongdong o Mapo-gu — comoda per il giorno finale</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">16:00</div>
+              <div class="slot-icon">🛍️</div>
+              <div class="slot-content">
+                <strong>Shopping finale Myeongdong</strong>
+                <span>Ultimi souvenir, K-beauty, regali</span>
+                
+              </div>
+            </div>
+            <div class="slot">
+              <div class="slot-time">19:00</div>
+              <div class="slot-icon">🍷</div>
+              <div class="slot-content">
+                <strong>Cena di commiato</strong>
+                <span>Samgyeopsal + soju — l'ultima cena coreana del viaggio</span>
+                
+              </div>
+            </div>
+          </div>
+          <div class="day-note">📌 Atterrare a Gimpo (non Incheon) è molto più comodo per l'ultimo giorno a Seul.</div>
+        </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">🏨 Dove alloggiare</div>
+        <div class="hotel-section">
+
+        <div class="hotel-zone">
+          <div class="hotel-zone-rank">1°</div>
+          <div class="hotel-zone-body">
+            <strong>📍 Seogwipo / Costa sud</strong>
+            <p>La scelta migliore per Jeju: posizione centrale tra est e ovest, vicina alle cascate Cheonjiyeon e a Jungmun. Molti hotel con piscina — ottimo per le bambine. 30 min da Seongsan, 40 min dall'aeroporto.</p>
+            <div><span class="htag">Posizione centrale</span><span class="htag">Piscina</span><span class="htag">Vicino cascate</span><span class="htag">30min Seongsan</span></div>
+          </div>
+        </div>
+
+        <div class="hotel-zone">
+          <div class="hotel-zone-rank">2°</div>
+          <div class="hotel-zone-body">
+            <strong>📍 Jeju-si / Costa nord</strong>
+            <p>Vicino all'aeroporto — comodo per arrivo e partenza. Più economico, ottimo per ristoranti e shopping. 45 min da Seogwipo. Spiaggia Hamdeok a 20 minuti.</p>
+            <div><span class="htag">Vicino aeroporto</span><span class="htag">Più economico</span><span class="htag">Ristoranti</span><span class="htag">Hamdeok Beach</span></div>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">🚄 Trasporto per la tappa successiva</div>
+
+      <div class="transport-card">
+        <div class="transport-head">
+          <span style="font-size:1.2rem">🔀</span>
+          <div>
+            <strong>Jeju → Seoul (rientro finale)</strong>
+            <span> &nbsp;|&nbsp; ✈️ Volo Jeju (CJU) → Seoul Gimpo (GMP)</span>
+          </div>
+        </div>
+        <div class="transport-rows">
+          <div class="t-row">
+            <div class="t-row-icon">✈️</div>
+            <div class="t-row-body">
+              <strong>Volo Jeju CJU → Seoul Gimpo GMP</strong>
+              <span>1h · ~40.000-70.000 KRW a persona · Frequenza ogni 20-30 min</span>
+            </div>
+          </div>
+          <div class="t-row">
+            <div class="t-row-icon">⏰</div>
+            <div class="t-row-body">
+              <strong>Fascia oraria consigliata</strong>
+              <span>Volo 12:30-14:00: mattina sull'isola, pomeriggio ancora a Seul</span>
+            </div>
+          </div>
+          <div class="t-row">
+            <div class="t-row-icon">🚇</div>
+            <div class="t-row-body">
+              <strong>Da Gimpo Airport a Seul centro</strong>
+              <span>Metro linea 9 (diretta, 30 min) o AREX Express</span>
+            </div>
+          </div>
+          <div class="t-row">
+            <div class="t-row-icon">🚌</div>
+            <div class="t-row-body">
+              <strong>Da Incheon (ICN) per partenza finale</strong>
+              <span>AREX Express da Seoul Station — 43 min · 9.500 KRW · Parte ogni 30 min</span>
+            </div>
+          </div>
+        </div>
+        <div class="transport-tip">💡 L'ultimo giorno: volo Jeju→Gimpo mattina, pomeriggio e sera a Seul, poi AREX per Incheon la mattina del giorno 21 (volo per l'Italia).</div>
+      </div>
+      </div>
+
+<div class="gallery-wrap">
         <div class="section-title">📷 Galleria fotografica — Jeju</div>
         <div class="gallery-strip">
         <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZNQbSvBeVVuQLwqVKD-mHUl3mCCLi5c7D_mBxB7PWErlngPQXHzzl7J2iHlBsFs53w15Kn4KkgXarze-cU4LNQ2xkDesAAoV6o6yZtqrChLUzYshoEU61AAjhcffu3-RQqrD5sbAyqUR5n59w=s1200-w1200-h800" alt="Jeju — paesaggio vulcanico" title="Jeju — paesaggio vulcanico" onclick="openLightbox(this)" loading="lazy">
