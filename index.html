@@ -922,184 +922,6 @@
 @media(max-width:600px){ #nav-panel{ width:268px; } }
 
 
-/* ═══════════════════════════════════════════════
-   ATTRACTION DETAIL MODAL
-═══════════════════════════════════════════════ */
-#attr-modal-overlay {
-  display: none; position: fixed; inset: 0;
-  background: rgba(0,0,0,0.75); z-index: 20000;
-  align-items: flex-end; justify-content: center;
-  -webkit-overflow-scrolling: touch;
-}
-#attr-modal-overlay.open { display: flex; }
-
-#attr-modal {
-  background: white; width: 100%; max-width: 680px;
-  max-height: 92vh; border-radius: 1.2rem 1.2rem 0 0;
-  display: flex; flex-direction: column;
-  box-shadow: 0 -8px 40px rgba(0,0,0,0.4);
-  animation: slideUpModal 0.3s cubic-bezier(0.4,0,0.2,1);
-  overflow: hidden;
-}
-
-@keyframes slideUpModal {
-  from { transform: translateY(40px); opacity: 0; }
-  to   { transform: translateY(0); opacity: 1; }
-}
-
-/* On desktop center it */
-@media (min-width: 700px) {
-  #attr-modal-overlay { align-items: center; }
-  #attr-modal {
-    max-height: 88vh; border-radius: 1rem;
-    margin: 1rem;
-  }
-}
-
-.am-handle {
-  width: 36px; height: 4px; border-radius: 2px;
-  background: rgba(255,255,255,0.4); margin: 0.55rem auto 0;
-  flex-shrink: 0;
-}
-
-.am-header {
-  padding: 0.7rem 1.25rem 0.9rem; color: white; flex-shrink: 0;
-  position: relative;
-}
-.am-header-top {
-  display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.3rem;
-}
-.am-emoji { font-size: 1.8rem; flex-shrink: 0; margin-top: 0.1rem; }
-.am-title-block { flex: 1; }
-.am-name { font-family:'Noto Serif KR',serif; font-size: 1.3rem; font-weight:700; line-height:1.2; }
-.am-kr { font-family:'Noto Sans KR',sans-serif; font-size:0.78rem; opacity:0.7; margin-top:0.15rem; }
-.am-type { font-size:0.7rem; opacity:0.65; margin-top:0.2rem; letter-spacing:0.04em; }
-.am-close {
-  position:absolute; top:0.6rem; right:0.9rem;
-  background:rgba(255,255,255,0.15); border:none; color:white;
-  width:32px; height:32px; border-radius:50%; font-size:1rem;
-  cursor:pointer; display:flex; align-items:center; justify-content:center;
-  touch-action:manipulation;
-}
-.am-close:hover { background:rgba(255,255,255,0.3); }
-
-.am-meta-strip {
-  display:flex; gap:0.5rem; flex-wrap:wrap; padding:0.6rem 1.25rem;
-  background:#f8f9fa; border-bottom:1px solid #eee; flex-shrink:0;
-}
-.am-meta-pill {
-  display:flex; align-items:center; gap:0.3rem;
-  font-size:0.7rem; color:#555;
-  background:white; border:1px solid #ddd;
-  padding:0.22rem 0.6rem; border-radius:1rem;
-}
-
-.am-body {
-  flex:1; overflow-y:auto; padding:0;
-  scrollbar-width:thin; scrollbar-color:#ddd transparent;
-}
-
-/* Photo strip */
-.am-photos {
-  display:flex; gap:0.4rem; overflow-x:auto; padding:0.75rem 1.25rem;
-  scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
-  background:#f0f0f0;
-}
-.am-photos img {
-  height:160px; min-width:220px; max-width:280px;
-  object-fit:cover; border-radius:0.5rem; flex-shrink:0;
-  scroll-snap-align:start; cursor:pointer;
-  transition:transform 0.2s;
-}
-.am-photos img:hover { transform:scale(1.02); }
-.am-no-photo {
-  width:100%; padding:1rem 1.25rem;
-  background:#f5f5f5; text-align:center;
-  font-size:0.8rem; color:#aaa; font-style:italic;
-}
-
-/* Sections */
-.am-section { padding:0.9rem 1.25rem; border-bottom:1px solid #f0f0f0; }
-.am-section:last-child { border-bottom:none; }
-.am-section-label {
-  font-size:0.6rem; text-transform:uppercase; letter-spacing:0.18em;
-  font-weight:700; color:#aaa; margin-bottom:0.45rem;
-}
-.am-section p { font-size:0.88rem; line-height:1.65; color:#333; }
-.am-section address { font-size:0.8rem; color:#666; font-style:normal; }
-
-/* Rating stars */
-.am-rating { display:flex; align-items:center; gap:0.4rem; margin-bottom:0.3rem; }
-.am-stars { color:#f59e0b; font-size:0.85rem; letter-spacing:-0.05em; }
-.am-rating-num { font-size:0.85rem; font-weight:700; color:#333; }
-.am-rating-count { font-size:0.72rem; color:#999; }
-
-/* Family tips */
-.am-family-grid { display:flex; flex-direction:column; gap:0.5rem; }
-.am-family-item {
-  display:flex; gap:0.6rem; align-items:flex-start;
-  background:#f7f4ff; border-radius:0.5rem; padding:0.55rem 0.7rem;
-}
-.am-family-dot {
-  width:24px; height:24px; border-radius:50%; flex-shrink:0;
-  display:flex; align-items:center; justify-content:center;
-  font-size:0.65rem; font-weight:700; color:white;
-}
-.am-family-text { font-size:0.8rem; line-height:1.5; color:#333; }
-.am-family-text strong { color:#1a3a5c; font-size:0.78rem; }
-
-/* CTA */
-.am-cta {
-  display:flex; gap:0.6rem; padding:0.9rem 1.25rem 1.4rem; flex-shrink:0;
-  border-top:1px solid #eee; background:white;
-}
-.am-btn {
-  flex:1; padding:0.65rem 0; border-radius:0.5rem; border:none;
-  font-size:0.82rem; font-weight:600; cursor:pointer;
-  display:flex; align-items:center; justify-content:center; gap:0.4rem;
-  touch-action:manipulation;
-}
-.am-btn-maps { background:#1a3a5c; color:white; }
-.am-btn-maps:hover { background:#2d5986; }
-.am-btn-close { background:#f0f0f0; color:#555; }
-.am-btn-close:hover { background:#e0e0e0; }
-
-@media(max-width:600px) {
-  .am-name { font-size:1.1rem; }
-  .am-section p { font-size:0.84rem; }
-  .am-photos img { height:130px; min-width:180px; }
-}
-
-
-
-
-
-
-  /* ── ATTR INFO BUTTON ── */
-  .attr-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: var(--gold);
-    color: white;
-    border: none;
-    font-size: 10px;
-    font-weight: 700;
-    cursor: pointer;
-    margin-left: 4px;
-    vertical-align: middle;
-    line-height: 1;
-    padding: 0;
-    flex-shrink: 0;
-    transition: background 0.15s, transform 0.1s;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .attr-btn:hover { background: var(--red); transform: scale(1.2); }
-  .attr-btn:active { transform: scale(0.95); }
 
   /* MISSED SECTION */
   .missed-section {
@@ -1640,6 +1462,60 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
   .itl-seg { min-width: 60px; }
 }
 
+
+/* ── DETAIL MODAL ── */
+#dm-overlay {
+  display: none;
+  position: fixed; inset: 0; z-index: 9000;
+  background: rgba(0,0,0,0.7);
+  justify-content: center; align-items: flex-end;
+}
+#dm-overlay.on { display: flex; }
+#dm-box {
+  background: #fff; width: 100%; max-width: 640px;
+  max-height: 88vh; border-radius: 1.1rem 1.1rem 0 0;
+  display: flex; flex-direction: column;
+  box-shadow: 0 -4px 32px rgba(0,0,0,0.3);
+  overflow: hidden;
+  animation: dmUp 0.25s ease;
+}
+@keyframes dmUp { from { transform: translateY(30px); opacity:0; } to { transform: none; opacity:1; } }
+@media(min-width:660px){ #dm-overlay{ align-items:center; } #dm-box{ border-radius:1rem; margin:1rem; } }
+.dm-handle { width:36px; height:4px; border-radius:2px; background:rgba(255,255,255,0.35); margin:0.6rem auto 0; flex-shrink:0; }
+.dm-head { padding:0.75rem 1.1rem 0.85rem; color:#fff; flex-shrink:0; position:relative; }
+.dm-head h2 { font-family:'Noto Serif KR',serif; font-size:1.25rem; font-weight:700; margin-bottom:0.1rem; }
+.dm-head .dm-sub { font-size:0.75rem; opacity:0.7; }
+.dm-close-btn {
+  position:absolute; top:0.65rem; right:0.9rem;
+  background:rgba(255,255,255,0.18); border:none; color:#fff;
+  width:30px; height:30px; border-radius:50%; font-size:1rem;
+  cursor:pointer; line-height:1; touch-action:manipulation;
+  display:flex; align-items:center; justify-content:center;
+}
+.dm-scroll { flex:1; overflow-y:auto; padding:0.8rem 1.1rem 1.2rem; }
+.dm-hl { margin-bottom:1rem; }
+.dm-hl-title { font-size:0.58rem; text-transform:uppercase; letter-spacing:0.18em; font-weight:700; color:#aaa; margin-bottom:0.5rem; }
+.dm-item { display:flex; gap:0.6rem; align-items:flex-start; margin-bottom:0.6rem; padding:0.55rem 0.7rem; background:#f8f8f8; border-radius:0.5rem; border:1px solid #eee; }
+.dm-item:last-child { margin-bottom:0; }
+.dm-item-icon { font-size:1.1rem; flex-shrink:0; }
+.dm-item-body strong { display:block; font-size:0.84rem; color:#1a3a5c; margin-bottom:0.15rem; }
+.dm-item-body p { font-size:0.79rem; color:#555; line-height:1.5; margin:0; }
+.dm-info { background:#f0f5ff; border-radius:0.5rem; padding:0.7rem 0.9rem; margin-bottom:0.7rem; font-size:0.8rem; line-height:1.55; color:#333; }
+.dm-info strong { display:block; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.15em; color:#888; margin-bottom:0.25rem; }
+.dm-tip { background:#fffbf0; border-left:3px solid #c9a84c; padding:0.6rem 0.85rem; border-radius:0 0.4rem 0.4rem 0; font-size:0.8rem; color:#7a6000; line-height:1.55; }
+
+/* ── GUIDE BUTTON ── */
+.dm-open-btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+  color: white; font-size: 0.72rem; font-weight: 600;
+  padding: 0.3rem 0.75rem; border-radius: 1rem; cursor: pointer;
+  margin-top: 0.4rem; touch-action: manipulation;
+  transition: background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.dm-open-btn:hover { background: rgba(255,255,255,0.28); }
+
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 
@@ -1769,7 +1645,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">17:00</div>
                 <div class="itl-slot-icon">🏘️</div>
                 <div class="itl-slot-body">
-                  <strong>Bukchon Hanok Village</strong><button class="attr-btn" data-k="bukchon" title="Scheda dettaglio: Bukchon Hanok Village"><span aria-hidden="true">ℹ</span></button>
+                  <strong>Bukchon Hanok Village</strong>
                   <span>Passeggiata tra i vicoli al tramonto</span>
                   <div class="itl-slot-tip">💡 Luce del pomeriggio perfetta per le foto</div>
                 </div>
@@ -1810,7 +1686,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">12:30</div>
                 <div class="itl-slot-icon">🛒</div>
                 <div class="itl-slot-body">
-                  <strong>Mercato Gwangjang</strong><button class="attr-btn" data-k="gwangjang" title="Scheda dettaglio: Mercato Gwangjang"><span aria-hidden="true">ℹ</span></button>
+                  <strong>Mercato Gwangjang</strong>
                   <span>Pranzo tra i banchi: bindaetteok, gimbap, eomuk</span>
                   <div class="itl-slot-tip">💡 Stefano: il suo posto preferito di Seul</div>
                 </div>
@@ -1828,7 +1704,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">16:30</div>
                 <div class="itl-slot-icon">🗼</div>
                 <div class="itl-slot-body">
-                  <strong>N Seoul Tower</strong><button class="attr-btn" data-k="nseoul" title="Scheda dettaglio: N Seoul Tower"><span aria-hidden="true">ℹ</span></button>
+                  <strong>N Seoul Tower</strong>
                   <span>Cable car o scalinata — tramonto sulla città</span>
                   <div class="itl-slot-tip">💡 Elisabetta e Alessandra: lucchetti dell'amore</div>
                 </div>
@@ -1860,7 +1736,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">10:00</div>
                 <div class="itl-slot-icon">🎵</div>
                 <div class="itl-slot-body">
-                  <strong>HYBE Insight Museum</strong><button class="attr-btn" data-k="hybe" title="Scheda dettaglio: HYBE Insight Museum"><span aria-hidden="true">ℹ</span></button>
+                  <strong>HYBE Insight Museum</strong>
                   <span>Museo BTS e HYBE — prenotare settimane prima!</span>
                   <div class="itl-slot-tip">💡 Elisabetta: tappa imperdibile. Durata 2h</div>
                 </div>
@@ -1878,7 +1754,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">14:00</div>
                 <div class="itl-slot-icon">🎨</div>
                 <div class="itl-slot-body">
-                  <strong>DDP Dongdaemun Design Plaza</strong><button class="attr-btn" data-k="ddp" title="Scheda dettaglio: DDP Dongdaemun Design Plaza"><span aria-hidden="true">ℹ</span></button>
+                  <strong>DDP Dongdaemun Design Plaza</strong>
                   <span>Zaha Hadid + mostra temporanea</span>
                   
                 </div>
@@ -2233,7 +2109,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">15:00</div>
                 <div class="itl-slot-icon">🏛️</div>
                 <div class="itl-slot-body">
-                  <strong>Museo Nazionale</strong><button class="attr-btn" data-k="gyeongju-museum" title="Scheda dettaglio: Museo Nazionale"><span aria-hidden="true">ℹ</span></button>
+                  <strong>Museo Nazionale</strong>
                   <span>Corona d'oro Silla + reperti Via della Seta</span>
                   <div class="itl-slot-tip">💡 Stefano: almeno 2 ore qui</div>
                 </div>
@@ -2301,7 +2177,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">16:30</div>
                 <div class="itl-slot-icon">🔭</div>
                 <div class="itl-slot-body">
-                  <strong>Cheomseongdae</strong><button class="attr-btn" data-k="cheomseongdae" title="Scheda dettaglio: Cheomseongdae"><span aria-hidden="true">ℹ</span></button>
+                  <strong>Cheomseongdae</strong>
                   <span>Osservatorio astronomico 634 d.C.</span>
                   <div class="itl-slot-tip">💡 30 minuti bastano</div>
                 </div>
@@ -2431,7 +2307,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">17:30</div>
                 <div class="itl-slot-icon">⛩️</div>
                 <div class="itl-slot-body">
-                  <strong>Haedong Yonggungsa</strong><button class="attr-btn" data-k="haedong" title="Scheda dettaglio: Haedong Yonggungsa"><span aria-hidden="true">ℹ</span></button>
+                  <strong>Haedong Yonggungsa</strong>
                   <span>Tempio sul mare al tramonto</span>
                   <div class="itl-slot-tip">💡 Uno dei luoghi più fotogenici della Corea</div>
                 </div>
@@ -2463,7 +2339,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">09:30</div>
                 <div class="itl-slot-icon">🎨</div>
                 <div class="itl-slot-body">
-                  <strong>Gamcheon Culture Village</strong><button class="attr-btn" data-k="gamcheon" title="Scheda dettaglio: Gamcheon Culture Village"><span aria-hidden="true">ℹ</span></button>
+                  <strong>Gamcheon Culture Village</strong>
                   <span>Arrivo presto — meno folla</span>
                   <div class="itl-slot-tip">💡 Michela: murales e librerie indie</div>
                 </div>
@@ -2531,7 +2407,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">09:00</div>
                 <div class="itl-slot-icon">🏖️</div>
                 <div class="itl-slot-body">
-                  <strong>Haeundae Beach</strong><button class="attr-btn" data-k="haeundae" title="Scheda dettaglio: Haeundae Beach"><span aria-hidden="true">ℹ</span></button>
+                  <strong>Haeundae Beach</strong>
                   <span>Mattina presto — bagno e relax</span>
                   <div class="itl-slot-tip">💡 La spiaggia più grande della Corea</div>
                 </div>
@@ -2756,7 +2632,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">15:30</div>
                 <div class="itl-slot-icon">🌿</div>
                 <div class="itl-slot-body">
-                  <strong>Osulloc Tea Museum</strong><button class="attr-btn" data-k="osulloc" title="Scheda dettaglio: Osulloc Tea Museum"><span aria-hidden="true">ℹ</span></button>
+                  <strong>Osulloc Tea Museum</strong>
                   <span>Piantagioni verdi + gelato matcha</span>
                   <div class="itl-slot-tip">💡 Michela: il paesaggio più bello dell'isola</div>
                 </div>
@@ -2874,7 +2750,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">15:00</div>
                 <div class="itl-slot-icon">🌊</div>
                 <div class="itl-slot-body">
-                  <strong>Cascate Cheonjiyeon</strong><button class="attr-btn" data-k="cheonjiyeon" title="Scheda dettaglio: Cascate Cheonjiyeon"><span aria-hidden="true">ℹ</span></button>
+                  <strong>Cascate Cheonjiyeon</strong>
                   <span>Nel centro di Seogwipo — 15 min a piedi</span>
                   
                 </div>
@@ -3084,7 +2960,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
       <div class="stop-meta">
         <div class="stop-days">Giorni 1 – 5 · 5 notti</div>
         <div class="stop-name">Seoul</div>
-        <div class="stop-kr">서울 · La capitale</div>
+        <div class="stop-kr">서울 · La capitale</div><button class="dm-open-btn" onclick="dmOpen('seul');event.stopPropagation()">📋 Guida tappa</button>
       </div>
       <div class="stop-toggle">▼</div>
     </div>
@@ -3098,14 +2974,14 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
       <div>
         <div class="section-title">Imperdibili</div>
         <div class="items-grid">
-          <div class="item"><div class="item-icon">🏯</div><div class="item-text"><strong>Gyeongbokgung</strong><button class="attr-btn" data-k="gyeongbokgung" title="Scheda dettaglio: Gyeongbokgung"><span aria-hidden="true">ℹ</span></button><span>Palazzo reale del 1395, cambio della guardia ogni ora</span></div></div>
+          <div class="item"><div class="item-icon">🏯</div><div class="item-text"><strong>Gyeongbokgung</strong><span>Palazzo reale del 1395, cambio della guardia ogni ora</span></div></div>
           <div class="item"><div class="item-icon">🏯</div><div class="item-text"><strong>Changdeokgung + Giardino Segreto</strong><span>UNESCO, solo con visita guidata — prenotare!</span></div></div>
-          <div class="item"><div class="item-icon">🏘️</div><div class="item-text"><strong>Bukchon Hanok Village</strong><button class="attr-btn" data-k="bukchon" title="Scheda dettaglio: Bukchon Hanok Village"><span aria-hidden="true">ℹ</span></button><span>600 case tradizionali nel cuore della città</span></div></div>
+          <div class="item"><div class="item-icon">🏘️</div><div class="item-text"><strong>Bukchon Hanok Village</strong><span>600 case tradizionali nel cuore della città</span></div></div>
           <div class="item"><div class="item-icon">🛍️</div><div class="item-text"><strong>Insadong & Samcheong-dong</strong><span>Gallerie, tè tradizionale, negozietti artigianali</span></div></div>
           <div class="item"><div class="item-icon">🌃</div><div class="item-text"><strong>Hongdae</strong><span>Quartiere universitario, musica live, street art, nightlife</span></div></div>
           <div class="item"><div class="item-icon">🌃</div><div class="item-text"><strong>Itaewon & Hanam-dong</strong><span>Cucina internazionale, bar, atmosfera cosmopolita</span></div></div>
           <div class="item"><div class="item-icon">🗼</div><div class="item-text"><strong>N Seoul Tower (Namsan)</strong><span>Vista panoramica sulla città, lucchetti dell'amore</span></div></div>
-          <div class="item"><div class="item-icon">🛒</div><div class="item-text"><strong>Mercato di Gwangjang</strong><button class="attr-btn" data-k="gwangjang" title="Scheda dettaglio: Mercato di Gwangjang"><span aria-hidden="true">ℹ</span></button><span>Il mercato coperto più antico di Corea, bibimbap e pajeon</span></div></div>
+          <div class="item"><div class="item-icon">🛒</div><div class="item-text"><strong>Mercato di Gwangjang</strong><span>Il mercato coperto più antico di Corea, bibimbap e pajeon</span></div></div>
           <div class="item"><div class="item-icon">🌊</div><div class="item-text"><strong>Cheonggyecheon Stream</strong><span>Ruscello urbano recuperato — passeggiata rinfrescante</span></div></div>
           <div class="item"><div class="item-icon">🎨</div><div class="item-text"><strong>DDP (Dongdaemun Design Plaza)</strong><span>Architettura Zaha Hadid, mostre temporanee, mercato notturno</span></div></div>
         </div>
@@ -3175,7 +3051,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
               <div class="slot-time">17:00</div>
               <div class="slot-icon">🏘️</div>
               <div class="slot-content">
-                <strong>Bukchon Hanok Village</strong><button class="attr-btn" data-k="bukchon" title="Scheda dettaglio: Bukchon Hanok Village"><span aria-hidden="true">ℹ</span></button>
+                <strong>Bukchon Hanok Village</strong>
                 <span>Passeggiata tra i vicoli dorati del tardo pomeriggio</span>
                 <div class="slot-tip">💡 La luce del pomeriggio è perfetta per le foto</div>
               </div>
@@ -3212,7 +3088,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
               <div class="slot-time">12:30</div>
               <div class="slot-icon">🛒</div>
               <div class="slot-content">
-                <strong>Mercato di Gwangjang</strong><button class="attr-btn" data-k="gwangjang" title="Scheda dettaglio: Mercato di Gwangjang"><span aria-hidden="true">ℹ</span></button>
+                <strong>Mercato di Gwangjang</strong>
                 <span>Pranzo tra i banchi: bindaetteok, mayak gimbap, eomuk</span>
                 <div class="slot-tip">💡 Stefano: questo è il suo momento</div>
               </div>
@@ -3258,7 +3134,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
               <div class="slot-time">10:00</div>
               <div class="slot-icon">🎵</div>
               <div class="slot-content">
-                <strong>HYBE Insight Museum</strong><button class="attr-btn" data-k="hybe" title="Scheda dettaglio: HYBE Insight Museum"><span aria-hidden="true">ℹ</span></button>
+                <strong>HYBE Insight Museum</strong>
                 <span>Museo BTS e artisti HYBE — prenotare settimane prima!</span>
                 <div class="slot-tip">💡 Elisabetta: tappa imperdibile. Durata: 2h</div>
               </div>
@@ -3276,7 +3152,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
               <div class="slot-time">14:00</div>
               <div class="slot-icon">🎨</div>
               <div class="slot-content">
-                <strong>DDP Dongdaemun Design Plaza</strong><button class="attr-btn" data-k="ddp" title="Scheda dettaglio: DDP Dongdaemun Design Plaza"><span aria-hidden="true">ℹ</span></button>
+                <strong>DDP Dongdaemun Design Plaza</strong>
                 <span>Architettura Zaha Hadid + mostra temporanea</span>
                 
               </div>
@@ -3513,7 +3389,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
       <div class="stop-meta">
         <div class="stop-days">Giorni 6 – 7 · 2 notti</div>
         <div class="stop-name">Jeonju</div>
-        <div class="stop-kr">전주 · La capitale del cibo e della cultura</div>
+        <div class="stop-kr">전주 · La capitale del cibo e della cultura</div><button class="dm-open-btn" onclick="dmOpen('jeonju');event.stopPropagation()">📋 Guida tappa</button>
       </div>
       <div class="stop-toggle">▼</div>
     </div>
@@ -3527,7 +3403,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
       <div>
         <div class="section-title">Imperdibili</div>
         <div class="items-grid">
-          <div class="item"><div class="item-icon">🏘️</div><div class="item-text"><strong>Jeonju Hanok Village</strong><button class="attr-btn" data-k="jeonju-hanok" title="Scheda dettaglio: Jeonju Hanok Village"><span aria-hidden="true">ℹ</span></button><span>700+ case tradizionali, negozietti, caffè nei cortili</span></div></div>
+          <div class="item"><div class="item-icon">🏘️</div><div class="item-text"><strong>Jeonju Hanok Village</strong><span>700+ case tradizionali, negozietti, caffè nei cortili</span></div></div>
           <div class="item"><div class="item-icon">🍚</div><div class="item-text"><strong>Bibimbap autentico</strong><span>Il piatto più famoso della Corea, qui è un'esperienza diversa</span></div></div>
           <div class="item"><div class="item-icon">👘</div><div class="item-text"><strong>Noleggio Hanbok</strong><span>Vestirsi in abiti tradizionali e passeggiare nel villaggio</span></div></div>
           <div class="item"><div class="item-icon">⛩️</div><div class="item-text"><strong>Tempio Jeondong Cattedrale Cattolica</strong><span>Bella chiesa gotica costruita nel 1914, simbolo della città</span></div></div>
@@ -3805,7 +3681,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
       <div class="stop-meta">
         <div class="stop-days">Giorni 8 – 10 · 3 notti</div>
         <div class="stop-name">Gyeongju</div>
-        <div class="stop-kr">경주 · La Roma d'Oriente</div>
+        <div class="stop-kr">경주 · La Roma d'Oriente</div><button class="dm-open-btn" onclick="dmOpen('gyeongju');event.stopPropagation()">📋 Guida tappa</button>
       </div>
       <div class="stop-toggle">▼</div>
     </div>
@@ -3823,8 +3699,8 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
           <div class="item"><div class="item-icon">🪨</div><div class="item-text"><strong>Grotta Seokguram</strong><span>UNESCO · Buddha di granito del VIII sec., vista sul mare</span></div></div>
           <div class="item"><div class="item-icon">⛰️</div><div class="item-text"><strong>Daereungwon Tumuli Park</strong><span>23 tumuli reali Silla nel centro città, bici tra i tumuli</span></div></div>
           <div class="item"><div class="item-icon">🌙</div><div class="item-text"><strong>Lago Anapji (Donggung)</strong><span>Di notte è magico — riflessi del palazzo sull'acqua</span></div></div>
-          <div class="item"><div class="item-icon">🔭</div><div class="item-text"><strong>Cheomseongdae</strong><button class="attr-btn" data-k="cheomseongdae" title="Scheda dettaglio: Cheomseongdae"><span aria-hidden="true">ℹ</span></button><span>L'osservatorio astronomico più antico dell'Asia, 634 d.C.</span></div></div>
-          <div class="item"><div class="item-icon">🏛️</div><div class="item-text"><strong>Museo Nazionale di Gyeongju</strong><button class="attr-btn" data-k="gyeongju-museum" title="Scheda dettaglio: Museo Nazionale di Gyeongju"><span aria-hidden="true">ℹ</span></button><span>Corona d'oro Silla e migliaia di reperti unici</span></div></div>
+          <div class="item"><div class="item-icon">🔭</div><div class="item-text"><strong>Cheomseongdae</strong><span>L'osservatorio astronomico più antico dell'Asia, 634 d.C.</span></div></div>
+          <div class="item"><div class="item-icon">🏛️</div><div class="item-text"><strong>Museo Nazionale di Gyeongju</strong><span>Corona d'oro Silla e migliaia di reperti unici</span></div></div>
         </div>
       </div>
 
@@ -3890,7 +3766,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
               <div class="slot-time">15:00</div>
               <div class="slot-icon">🏛️</div>
               <div class="slot-content">
-                <strong>Museo Nazionale di Gyeongju</strong><button class="attr-btn" data-k="gyeongju-museum" title="Scheda dettaglio: Museo Nazionale di Gyeongju"><span aria-hidden="true">ℹ</span></button>
+                <strong>Museo Nazionale di Gyeongju</strong>
                 <span>Corona d'oro Silla, cintura persiana, vetro romano</span>
                 <div class="slot-tip">💡 Stefano: dedicare almeno 2 ore</div>
               </div>
@@ -3954,7 +3830,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
               <div class="slot-time">16:30</div>
               <div class="slot-icon">🔭</div>
               <div class="slot-content">
-                <strong>Cheomseongdae</strong><button class="attr-btn" data-k="cheomseongdae" title="Scheda dettaglio: Cheomseongdae"><span aria-hidden="true">ℹ</span></button>
+                <strong>Cheomseongdae</strong>
                 <span>Osservatorio astronomico del 634 d.C. — 15 min a piedi dai tumuli</span>
                 <div class="slot-tip">💡 Breve visita — 30 minuti bastano</div>
               </div>
@@ -4154,7 +4030,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
       <div class="stop-meta">
         <div class="stop-days">Giorni 11 – 14 · 4 notti</div>
         <div class="stop-name">Busan</div>
-        <div class="stop-kr">부산 · La città sul mare</div>
+        <div class="stop-kr">부산 · La città sul mare</div><button class="dm-open-btn" onclick="dmOpen('busan');event.stopPropagation()">📋 Guida tappa</button>
       </div>
       <div class="stop-toggle">▼</div>
     </div>
@@ -4168,11 +4044,11 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
       <div>
         <div class="section-title">Imperdibili</div>
         <div class="items-grid">
-          <div class="item"><div class="item-icon">🎨</div><div class="item-text"><strong>Gamcheon Culture Village</strong><button class="attr-btn" data-k="gamcheon" title="Scheda dettaglio: Gamcheon Culture Village"><span aria-hidden="true">ℹ</span></button><span>Il "Santorini coreano" — casette colorate su una collina</span></div></div>
+          <div class="item"><div class="item-icon">🎨</div><div class="item-text"><strong>Gamcheon Culture Village</strong><span>Il "Santorini coreano" — casette colorate su una collina</span></div></div>
           <div class="item"><div class="item-icon">🐟</div><div class="item-text"><strong>Mercato del pesce Jagalchi</strong><span>Il più grande mercato del pesce della Corea — vivace e colorato</span></div></div>
-          <div class="item"><div class="item-icon">🏖️</div><div class="item-text"><strong>Spiaggia di Haeundae</strong><button class="attr-btn" data-k="haeundae" title="Scheda dettaglio: Spiaggia di Haeundae"><span aria-hidden="true">ℹ</span></button><span>La spiaggia più famosa della Corea, vivace d'estate</span></div></div>
+          <div class="item"><div class="item-icon">🏖️</div><div class="item-text"><strong>Spiaggia di Haeundae</strong><span>La spiaggia più famosa della Corea, vivace d'estate</span></div></div>
           <div class="item"><div class="item-icon">🏖️</div><div class="item-text"><strong>Spiaggia di Gwangalli</strong><span>Più tranquilla, vista sul Gwangan Bridge illuminato di notte</span></div></div>
-          <div class="item"><div class="item-icon">⛩️</div><div class="item-text"><strong>Haedong Yonggungsa</strong><button class="attr-btn" data-k="haedong" title="Scheda dettaglio: Haedong Yonggungsa"><span aria-hidden="true">ℹ</span></button><span>Tempio buddhista sul mare — uno dei più fotografati della Corea</span></div></div>
+          <div class="item"><div class="item-icon">⛩️</div><div class="item-text"><strong>Haedong Yonggungsa</strong><span>Tempio buddhista sul mare — uno dei più fotografati della Corea</span></div></div>
           <div class="item"><div class="item-icon">🎬</div><div class="item-text"><strong>BIFF Square</strong><span>Piazza del Festival del Cinema con impronte delle star</span></div></div>
           <div class="item"><div class="item-icon">🌉</div><div class="item-text"><strong>Oryukdo Skywalk</strong><span>Passerella di vetro sul mare con vista sulle isolette</span></div></div>
           <div class="item"><div class="item-icon">🏔️</div><div class="item-text"><strong>Geumjeongsan Fortress</strong><span>La fortezza di montagna più grande della Corea, trekking panoramico</span></div></div>
@@ -4232,7 +4108,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
               <div class="slot-time">17:30</div>
               <div class="slot-icon">⛩️</div>
               <div class="slot-content">
-                <strong>Haedong Yonggungsa</strong><button class="attr-btn" data-k="haedong" title="Scheda dettaglio: Haedong Yonggungsa"><span aria-hidden="true">ℹ</span></button>
+                <strong>Haedong Yonggungsa</strong>
                 <span>Tempio sul mare — 20 min di bus, visita al tramonto</span>
                 <div class="slot-tip">💡 Uno dei luoghi più fotogenici della Corea</div>
               </div>
@@ -4260,7 +4136,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
               <div class="slot-time">09:30</div>
               <div class="slot-icon">🎨</div>
               <div class="slot-content">
-                <strong>Gamcheon Culture Village</strong><button class="attr-btn" data-k="gamcheon" title="Scheda dettaglio: Gamcheon Culture Village"><span aria-hidden="true">ℹ</span></button>
+                <strong>Gamcheon Culture Village</strong>
                 <span>Arrivo presto — evita la folla del pomeriggio</span>
                 <div class="slot-tip">💡 Michela: murales e librerie indie</div>
               </div>
@@ -4324,7 +4200,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
               <div class="slot-time">09:00</div>
               <div class="slot-icon">🏖️</div>
               <div class="slot-content">
-                <strong>Haeundae Beach</strong><button class="attr-btn" data-k="haeundae" title="Scheda dettaglio: Haeundae Beach"><span aria-hidden="true">ℹ</span></button>
+                <strong>Haeundae Beach</strong>
                 <span>Mattina presto — meno affollata, bagno e relax</span>
                 <div class="slot-tip">💡 La spiaggia più grande della Corea</div>
               </div>
@@ -4542,7 +4418,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
       <div class="stop-meta">
         <div class="stop-days">Giorni 15 – 19 · 5 notti</div>
         <div class="stop-name">Isola di Jeju</div>
-        <div class="stop-kr">제주도 · La perla naturale</div>
+        <div class="stop-kr">제주도 · La perla naturale</div><button class="dm-open-btn" onclick="dmOpen('jeju');event.stopPropagation()">📋 Guida tappa</button>
       </div>
       <div class="stop-toggle">▼</div>
     </div>
@@ -4557,13 +4433,13 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
         <div class="section-title">Imperdibili</div>
         <div class="items-grid">
           <div class="item"><div class="item-icon">🌋</div><div class="item-text"><strong>Hallasan (1.950m)</strong><span>UNESCO · Il vulcano più alto della Corea, trekking 6–9 ore</span></div></div>
-          <div class="item"><div class="item-icon">🌅</div><div class="item-text"><strong>Seongsan Ilchulbong</strong><button class="attr-btn" data-k="seongsan" title="Scheda dettaglio: Seongsan Ilchulbong"><span aria-hidden="true">ℹ</span></button><span>UNESCO · Cratere vulcanico sul mare, alba spettacolare</span></div></div>
+          <div class="item"><div class="item-icon">🌅</div><div class="item-text"><strong>Seongsan Ilchulbong</strong><span>UNESCO · Cratere vulcanico sul mare, alba spettacolare</span></div></div>
           <div class="item"><div class="item-icon">🕳️</div><div class="item-text"><strong>Grotte di lava di Manjanggul</strong><span>UNESCO · 7km di tunnel di lava, uno dei più lunghi al mondo</span></div></div>
-          <div class="item"><div class="item-icon">🏖️</div><div class="item-text"><strong>Spiaggia di Hyeopjae</strong><button class="attr-btn" data-k="hyeopjae" title="Scheda dettaglio: Spiaggia di Hyeopjae"><span aria-hidden="true">ℹ</span></button><span>Sabbia bianca e acqua turchese — la più bella dell'isola</span></div></div>
+          <div class="item"><div class="item-icon">🏖️</div><div class="item-text"><strong>Spiaggia di Hyeopjae</strong><span>Sabbia bianca e acqua turchese — la più bella dell'isola</span></div></div>
           <div class="item"><div class="item-icon">🤿</div><div class="item-text"><strong>Haenyeo in azione</strong><span>Le leggendarie pescatrici in apnea — spettacolo live a Seongsan</span></div></div>
           <div class="item"><div class="item-icon">🛣️</div><div class="item-text"><strong>Jeju Olle Trail</strong><span>26 percorsi costieri a piedi che girano tutta l'isola</span></div></div>
           <div class="item"><div class="item-icon">🍊</div><div class="item-text"><strong>Piantagioni di mandarini</strong><span>Jeju è famosa per i mandarini — visita e raccolta in stagione</span></div></div>
-          <div class="item"><div class="item-icon">☕</div><div class="item-text"><strong>Osulloc Tea Museum</strong><button class="attr-btn" data-k="osulloc" title="Scheda dettaglio: Osulloc Tea Museum"><span aria-hidden="true">ℹ</span></button><span>Museo del tè verde immerso tra piantagioni meravigliose</span></div></div>
+          <div class="item"><div class="item-icon">☕</div><div class="item-text"><strong>Osulloc Tea Museum</strong><span>Museo del tè verde immerso tra piantagioni meravigliose</span></div></div>
         </div>
       </div>
 
@@ -4684,7 +4560,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
               <div class="slot-time">15:30</div>
               <div class="slot-icon">🌿</div>
               <div class="slot-content">
-                <strong>Osulloc Tea Museum</strong><button class="attr-btn" data-k="osulloc" title="Scheda dettaglio: Osulloc Tea Museum"><span aria-hidden="true">ℹ</span></button>
+                <strong>Osulloc Tea Museum</strong>
                 <span>Piantagioni di tè verde — tè e gelato matcha</span>
                 <div class="slot-tip">💡 Michela: i campi di tè più belli dell'isola</div>
               </div>
@@ -4794,7 +4670,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
               <div class="slot-time">15:00</div>
               <div class="slot-icon">🌊</div>
               <div class="slot-content">
-                <strong>Cascate Cheonjiyeon</strong><button class="attr-btn" data-k="cheonjiyeon" title="Scheda dettaglio: Cascate Cheonjiyeon"><span aria-hidden="true">ℹ</span></button>
+                <strong>Cascate Cheonjiyeon</strong>
                 <span>Cascata nel centro di Seogwipo — 15 minuti a piedi dall'hotel</span>
                 
               </div>
@@ -5506,146 +5382,60 @@ document.addEventListener('DOMContentLoaded', function() {
 })();
 
 
-<!-- ATTRACTION DETAIL MODAL -->
-<div id="attr-modal-overlay">
-  <div id="attr-modal"></div>
 </div>
 
-<script>
 
-// ── ATTRACTION MODAL ──────────────────────────────────────────────────
-var ATTR_DATA = {
-"gyeongbokgung": {"name": "Gyeongbokgung Palace","kr": "\uacbd\ubcf5\uad81","color": "#1a3a5c","emoji": "\ud83c\udfef","city": "Seoul","type": "Palazzo storico \u00b7 Joseon Dynasty","address": "161 Sajik-ro, Jongno-gu, Seoul","hours": "Mar\u2013Dom 9:00\u201317:00 \u00b7 Chiuso luned\u00ec","price": "Adulti 3.000 KRW \u00b7 Gratis in hanbok","duration": "2\u20133 ore","desc": "Il pi\u00f9 grande e importante palazzo della dinastia Joseon, fondato nel 1395 dal re Taejo come residenza reale principale. Distrutto durante l'invasione giapponese del 1592 e ricostruito nel XIX secolo, oggi ospita oltre 500 edifici storici su una superficie di quasi mezzo chilometro quadrato. Al suo interno si trovano il Museo Nazionale del Palazzo Coreano e il Museo del Folclore Nazionale, entrambi gratuiti. Il cambio della guardia si svolge due volte al giorno (10:00 e 14:00) ed \u00e8 uno spettacolo imperdibile.","tip": "Entra in hanbok e l'ingresso \u00e8 gratuito. I negozi di noleggio sono a meno di 5 minuti a piedi. Arrivare alle 9:00 per evitare la folla del pomeriggio.","maps": "https://maps.google.com/?q=Gyeongbokgung+Palace+Seoul","photos_html": "<div class=\"am-photos\"><img src=\"https://lh3.googleusercontent.com/place-photos/AJRVUZOCRkndVoebLlrcTzojB8U_YmKQYStFUG6Fv_tjLtlfQ5cjIU0ybHP-NG3sXqg5i0_0VsvmUMohF-89A5zf1IGJHZCzPtKEdq5nRiobEXyeoCxJhhlE3-1A-7M4SdE2m3AOFzZJM6LOtr2BCJE=s800-w800-h600\" alt=\"Gyeongbokgung Palace\" onclick=\"openLightbox(this)\" loading=\"lazy\"><img src=\"https://lh3.googleusercontent.com/place-photos/AJRVUZPpj_KB1Q9Mkwddq7aTCRKC1vqB2i6TYBdg3ktzCjZ325txcHk8ttKpBuM3LfXcn0b4BzpDAmJ7ny7eT7kqk-0N-7cKMkEFVeZBRolFkIbeUUj8DeIh2JMQKlAKoKJ6HFlFMVbsgBiAPbhOEQ=s800-w800-h600\" alt=\"Gyeongbokgung Palace\" onclick=\"openLightbox(this)\" loading=\"lazy\"></div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u00bd</span><span class=\"am-rating-num\">4.6</span><span class=\"am-rating-count\">(46,147 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#1a3a5c\">S</div><div class=\"am-family-text\"><strong>Stefano</strong> \u2014 Dedicare almeno 2 ore al palazzo e al Museo del Folclore \u2014 ricco di contesti storici sulla vita quotidiana Joseon.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#8e44ad\">E</div><div class=\"am-family-text\"><strong>Elisabetta</strong> \u2014 Assistere al cambio della guardia in hanbok \u2014 foto indimenticabili.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#c0392b\">A</div><div class=\"am-family-text\"><strong>Alessandra</strong> \u2014 I guardiani in armatura colorata sono affascinanti \u2014 cercare il guerriero con la bandiera rossa.</div></div></div></div>"},
-"changdeokgung": {"name": "Changdeokgung + Giardino Segreto","kr": "\ucc3d\ub355\uad81\u00b7\ud6c4\uc6d0","color": "#1a3a5c","emoji": "\ud83c\udf3f","city": "Seoul","type": "Palazzo UNESCO \u00b7 Giardino reale","address": "99 Yulgok-ro, Jongno-gu, Seoul","hours": "Mar\u2013Dom 9:00\u201317:30 \u00b7 Chiuso luned\u00ec","price": "Palazzo 3.000 KRW \u00b7 Giardino Segreto 5.000 KRW aggiuntivi","duration": "2\u20133 ore con il giardino","desc": "Patrimonio UNESCO dal 1997, Changdeokgung \u00e8 il palazzo meglio conservato della dinastia Joseon. Il Giardino Segreto (Huwon) era il rifugio privato dei re coreani: 78 acri di foresta primaria con laghetti, padiglioni e sentieri nascosti che rispecchiano la filosofia confuciana del rispetto per la natura. La visita al giardino \u00e8 obbligatoriamente guidata, con tour in coreano, inglese e cinese. I tour in inglese partono alle 11:30 e 14:30 \u2014 prenotare online con anticipo.","tip": "Prenotare i biglietti su e-ticket.visitkorea.or.kr almeno 2 settimane prima in estate \u2014 i tour esauriscono rapidamente. Il giardino \u00e8 visitabile solo con guida.","maps": "https://maps.google.com/?q=Changdeokgung+Seoul","photos_html": "<div class=\"am-photos\"><img src=\"https://lh3.googleusercontent.com/place-photos/AJRVUZMnb-H02XyTSVAUtmOM9ez0EtsPn7lFd6ZV3PysHm4Egulv4IzTMToMg_DDRe7wqpP0aqrxG8Am8gfrfaY4lTxoc-vTQmzAx0g9sgPv1qgRCtkWBIV7Rfd2FMIkPG_tuOIH_aTMESwekF7CCg=s800-w800-h600\" alt=\"Changdeokgung + Giardino Segreto\" onclick=\"openLightbox(this)\" loading=\"lazy\"><img src=\"https://lh3.googleusercontent.com/place-photos/AJRVUZNwxxHFVmUUREAQsSQPwgpV6h83-ao37G9JbiPerTVEMF9Yow2JsB7DQUUPeUCiOa3k0Aml0Pm34gtDOK2rvBm4-7LIgMzR3TxNdmbhf_413Ei7W4MXr569N8msVPsBWHQIvrs8QLzj5AuACA=s800-w800-h600\" alt=\"Changdeokgung + Giardino Segreto\" onclick=\"openLightbox(this)\" loading=\"lazy\"></div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u00bd</span><span class=\"am-rating-num\">4.7</span><span class=\"am-rating-count\">(1,954 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#7b4f2e\">M</div><div class=\"am-family-text\"><strong>Michela</strong> \u2014 Il giardino segreto \u00e8 uno dei luoghi pi\u00f9 quieti e spirituali di Seul \u2014 fotografie straordinarie.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#1a3a5c\">S</div><div class=\"am-family-text\"><strong>Stefano</strong> \u2014 La visita guidata spiega la filosofia confuciana e il rapporto tra il re e la natura \u2014 contestualizza tutto il viaggio.</div></div></div></div>"},
-"bukchon": {"name": "Bukchon Hanok Village","kr": "\ubd81\ucd0c\ud55c\uc625\ub9c8\uc744","color": "#1a3a5c","emoji": "\ud83c\udfd8\ufe0f","city": "Seoul","type": "Quartiere storico \u00b7 Case tradizionali","address": "Gyedong-gil, Jongno-gu, Seoul","hours": "10:00\u201317:00 (zona residenziale \u2014 silenzio richiesto)","price": "Gratuito","duration": "1\u20132 ore","desc": "Situato tra i palazzi Gyeongbokgung e Changdeokgung, Bukchon ospita oltre 900 case hanok tradizionali costruite durante la dinastia Joseon. A differenza dei villaggi museo, qui la gente ci vive davvero \u2014 le famiglie hanno abitato queste case per generazioni. Il nome significa 'villaggio del nord': dal punto pi\u00f9 alto, Bukchon-ro, si gode una delle viste pi\u00f9 belle di Seoul con i palazzi sullo sfondo e il Monte Bugaksan.","tip": "Visitare prima delle 10:00 o dopo le 16:00 per evitare la folla e rispettare i residenti. I vicoli pi\u00f9 caratteristici sono il n.11 e n.31 di Bukchon-ro.","maps": "https://maps.google.com/?q=Bukchon+Hanok+Village+Seoul","photos_html": "<div class=\"am-photos\"><img src=\"https://lh3.googleusercontent.com/place-photos/AJRVUZOjhKWDgG2oLNB0XpLB7lCOgh5XEM9cH3mt3pum5MAtN6vifKJWP2iECsGGeF0a-w-KCf18nPItaRvs15UOcFi5wrWsV3RmYX8yiZP-eoUMPuvNKrEczvLMXzmhUM--AyCMMVYxj9WMWbpHVw=s800-w800-h600\" alt=\"Bukchon Hanok Village\" onclick=\"openLightbox(this)\" loading=\"lazy\"></div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u00bd</span><span class=\"am-rating-num\">4.4</span><span class=\"am-rating-count\">(23,884 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#8e44ad\">E</div><div class=\"am-family-text\"><strong>Elisabetta</strong> \u2014 Portare l'hanbok noleggiato e girare i vicoli \u2014 ogni angolo \u00e8 una foto perfetta.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#7b4f2e\">M</div><div class=\"am-family-text\"><strong>Michela</strong> \u2014 Alcune case sono aperte come gallerie artigianali \u2014 cercare quelle con il portone verde.</div></div></div></div>"},
-"gwangjang": {"name": "Mercato di Gwangjang","kr": "\uad11\uc7a5\uc2dc\uc7a5","color": "#1a3a5c","emoji": "\ud83d\uded2","city": "Seoul","type": "Mercato storico \u00b7 Street food","address": "88 Cheonggyecheon-ro, Jongno-gu, Seoul","hours": "Lun\u2013Dom 9:00\u201322:30","price": "Gratuito l'ingresso \u00b7 Cibo 3.000\u201315.000 KRW","duration": "1\u20132 ore","desc": "Fondato nel 1905, \u00e8 il mercato coperto pi\u00f9 antico di Corea e una delle esperienze gastronomiche pi\u00f9 autentiche di Seoul. Il corridoio centrale \u00e8 fiancheggiato da decine di bancarelle gestite da signore anziane (ajeossi e haenyeo) che preparano i piatti al momento. I must are: bindaetteok (frittella croccante di fagioli mung), mayak gimbap (minuscoli rotolini di riso), mungbean jeon, tteokbokki e soju locale. Reso famoso anche da Netflix per la sua presenza in diversi documentari culinari.","tip": "Sedersi al bancone davanti alla cuoca \u2014 \u00e8 il modo corretto. Indicare il cibo con il dito se non si conosce il nome. Il soju locale si abbina perfettamente ai fritti.","maps": "https://maps.google.com/?q=Gwangjang+Market+Seoul","photos_html": "<div class=\"am-photos\"><img src=\"https://lh3.googleusercontent.com/place-photos/AJRVUZPttlwkB2ZGaD_WHS33J0SvrgUd2dhId_xmzEH2zGjb76eP--qJYQfOMvqV8QqHWchCIFr_c8Z3WV9MJr0JGYU9i1z81zN2syHr_eAZWg3ciZ4FFVcOB7og2N_WC7uqXUwDnTWxBVg-wX5d1A5j-kxz=s800-w800-h600\" alt=\"Mercato di Gwangjang\" onclick=\"openLightbox(this)\" loading=\"lazy\"></div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u2606</span><span class=\"am-rating-num\">4.2</span><span class=\"am-rating-count\">(43,823 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#1a3a5c\">S</div><div class=\"am-family-text\"><strong>Stefano</strong> \u2014 Il suo posto preferito di Seoul. Ordinare il set completo: bindaetteok + mayak gimbap + soju locale. Interagire con le cuoche \u2014 comunicano benissimo senza parole.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#c0392b\">A</div><div class=\"am-family-text\"><strong>Alessandra</strong> \u2014 I bungeoppang (pesci ripieni di crema) sono dolci e visivamente perfetti per lei.</div></div></div></div>"},
-"nseoul": {"name": "N Seoul Tower","kr": "N\uc11c\uc6b8\ud0c0\uc6cc","color": "#1a3a5c","emoji": "\ud83d\uddfc","city": "Seoul","type": "Torre panoramica \u00b7 Punto di riferimento","address": "105 Namsangongwon-gil, Yongsan-gu, Seoul","hours": "Lun\u2013Gio 10:30\u201322:30 \u00b7 Ven 10:30\u201323:00 \u00b7 Sab\u2013Dom 10:00\u201323:00","price": "Cable car 11.000 KRW \u00b7 Osservatorio 16.000 KRW adulti / 11.000 bambini","duration": "1\u20132 ore","desc": "Situata sul Monte Namsan a 479 metri sul mare, la N Seoul Tower \u00e8 il simbolo pi\u00f9 iconico della capitale coreana. L'osservatorio a 236 metri offre una vista a 360\u00b0 sull'intera citt\u00e0. La struttura \u00e8 stata costruita nel 1969 come torre di trasmissione e aperta al pubblico nel 1980. Intorno alla terrazza esterna migliaia di 'lucchetti dell'amore' vengono appesi da coppie di tutto il mondo \u2014 la tradizione \u00e8 nata nei primi anni 2000 e oggi i lucchetti si contano a milioni. Di notte la torre si illumina di colori diversi.","tip": "La cable car \u00e8 la salita pi\u00f9 scenografica, ma la scalinata di 1.000 gradini \u00e8 un'escursione piacevole. Il tramonto \u00e8 il momento migliore. Acquistare i biglietti online per evitare la coda.","maps": "https://maps.google.com/?q=N+Seoul+Tower","photos_html": "<div class=\"am-photos\"><img src=\"https://lh3.googleusercontent.com/place-photos/AJRVUZMf6KMQwr8PxxPUwluD0EPcM3kwmwMiKsSHPXJJWAzSQxIZfhPBwjLuTUsTU43k-ta1pldtTmU5ZnyLtzHE4FhlG0ff_Yce6BVD6d6RlsB-x6ZVTQyP7yLk_j6-EJruksWWamsItsygLp81suo=s800-w800-h600\" alt=\"N Seoul Tower\" onclick=\"openLightbox(this)\" loading=\"lazy\"></div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u00bd</span><span class=\"am-rating-num\">4.5</span><span class=\"am-rating-count\">(66,556 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#8e44ad\">E</div><div class=\"am-family-text\"><strong>Elisabetta</strong> \u2014 Appendere il lucchetto dell'amore con tutta la famiglia \u2014 scrivere un desiderio sulla superfice.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#c0392b\">A</div><div class=\"am-family-text\"><strong>Alessandra</strong> \u2014 La view notturna illuminata \u00e8 magica \u2014 portarla dopo cena.</div></div></div></div>"},
-"hybe": {"name": "HYBE Insight Museum","kr": "\ud558\uc774\ube0c \uc778\uc0ac\uc774\ud2b8","color": "#1a3a5c","emoji": "\ud83c\udfb5","city": "Seoul","type": "Museo interattivo \u00b7 K-pop \u00b7 BTS","address": "Yongsan-gu, Seoul (sede principale HYBE)","hours": "Mar\u2013Dom 10:00\u201318:00 \u00b7 Chiuso luned\u00ec","price": "35.000 KRW adulti / bambini","duration": "2 ore","desc": "Il museo ufficiale di HYBE Entertainment \u2014 la casa discografica di BTS, TXT, SEVENTEEN e altri artisti di punta del K-pop mondiale. Le esposizioni immersive raccontano la storia e il processo creativo degli artisti attraverso installazioni multimediali, costumi di scena originali, strumenti musicali, videowall e stazioni di ascolto interattive. La mostra cambia periodicamente con esibizioni temporanee dedicate a singoli artisti o album. Il negozio ufficiale ha merchandise esclusivo non reperibile altrove.","tip": "PRENOTARE OBBLIGATORIAMENTE online su hybe-insight.com con almeno 2\u20133 settimane di anticipo in estate. I biglietti vanno esauriti molto prima della data.","maps": "https://maps.google.com/?q=HYBE+Insight+Seoul","photos_html": "<div class=\"am-no-photo\">\ud83d\udcf7 Foto in caricamento</div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u2606</span><span class=\"am-rating-num\">4.0</span><span class=\"am-rating-count\">(45 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#8e44ad\">E</div><div class=\"am-family-text\"><strong>Elisabetta</strong> \u2014 La sua tappa pi\u00f9 attesa del viaggio. Arrivare almeno 30 minuti prima per la foto all'ingresso.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#c0392b\">A</div><div class=\"am-family-text\"><strong>Alessandra</strong> \u2014 I videowall con i MV e i costumi giganti sono spettacolari anche per chi non conosce BTS.</div></div></div></div>"},
-"ddp": {"name": "Dongdaemun Design Plaza (DDP)","kr": "\ub3d9\ub300\ubb38 \ub514\uc790\uc778\ud50c\ub77c\uc790","color": "#1a3a5c","emoji": "\ud83c\udfa8","city": "Seoul","type": "Centro design \u00b7 Architettura \u00b7 Mostre","address": "281 Eulji-ro, Jung-gu, Seoul","hours": "10:00\u201320:00 tutti i giorni (mostre variano)","price": "Struttura gratuita \u00b7 Mostre 5.000\u201315.000 KRW","duration": "1\u20132 ore","desc": "Progettato dalla star dell'architettura Zaha Hadid e inaugurato nel 2014, il DDP \u00e8 una delle strutture pi\u00f9 riconoscibili di Seoul: una forma fluida di metallo bianco che sembra una navicella spaziale atterrata nel cuore della citt\u00e0. La struttura ospita gallerie d'arte, spazi espositivi di design, un mercato notturno (aprile\u2013ottobre), negozi di design e il museo delle tendenze. Il sito sorge sull'area dell'antico stadio di baseball Dongdaemun e ha preservato i resti delle mura della Joseon.","tip": "Visitare sia di giorno (per vedere l'architettura) che di notte (illuminazione spettacolare). Il Design Store al piano inferiore vende souvenir di qualit\u00e0 unica a Seoul.","maps": "https://maps.google.com/?q=Dongdaemun+Design+Plaza+Seoul","photos_html": "<div class=\"am-photos\"><img src=\"https://lh3.googleusercontent.com/place-photos/AJRVUZPDUGov8ymKgxxGZwaCD6SZaRQZtZwpYMePPAnELGP7Oy4EdZOEQFeNetXm1P3A23jRTWHhzy0gqmrjS_tuLRrRyRF0BwSM3lrao0q1CKIU6YjNsj62DPYOp0aVfCvA9JWnakscNBURMkV6fQ=s800-w800-h600\" alt=\"Dongdaemun Design Plaza (DDP)\" onclick=\"openLightbox(this)\" loading=\"lazy\"></div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u00bd</span><span class=\"am-rating-num\">4.4</span><span class=\"am-rating-count\">(31,446 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#7b4f2e\">M</div><div class=\"am-family-text\"><strong>Michela</strong> \u2014 Le mostre temporanee spesso includono arte pop e fumetti contemporanei.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#c0392b\">A</div><div class=\"am-family-text\"><strong>Alessandra</strong> \u2014 Il mercato notturno ha giocattoli e gadget coloratissimi a prezzi ragionevoli.</div></div></div></div>"},
-"dmz": {"name": "DMZ \u2014 Zona Demilitarizzata","kr": "\ube44\ubb34\uc7a5\uc9c0\ub300","color": "#1a3a5c","emoji": "\ud83d\udea7","city": "Seoul (gita)","type": "Sito storico \u00b7 Confine Nord/Sud Corea","address": "Imjingak, Paju, Gyeonggi-do (1h da Seoul)","hours": "Tour organizzati \u00b7 Partenza ore 8:00\u20139:00 da Seoul","price": "Tour organizzato 50.000\u201380.000 KRW p.p.","duration": "Intera giornata (8h)","desc": "La Zona Demilitarizzata \u00e8 la striscia di terra larga 4 km e lunga 250 km che divide le due Coree dal 1953. \u00c8 la frontiera pi\u00f9 militarizzata del mondo e al tempo stesso uno dei luoghi pi\u00f9 drammaticamente carichi di storia del XX secolo. Il tour include: il Ponte della Libert\u00e0 (Imjingak), il Tunnel n.3 scavato dai nordcoreani negli anni '70 (si entra con casco), il Punto di Osservazione Dora da cui si vede la Corea del Nord, e per i tour JSA/Panmunjom \u2014 il villaggio dove le due Coree si fronteggiano a pochi metri.","tip": "Il JSA (Joint Security Area) richiede prenotazione separata e almeno 3 settimane di anticipo. Portare il passaporto \u2014 obbligatorio per accedere. Abbigliamento sobrio richiesto.","maps": "https://maps.google.com/?q=DMZ+Korea+Imjingak","photos_html": "<div class=\"am-no-photo\">\ud83d\udcf7 Foto in caricamento</div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u2606</span><span class=\"am-rating-num\">4.2</span><span class=\"am-rating-count\">(252 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#1a3a5c\">S</div><div class=\"am-family-text\"><strong>Stefano</strong> \u2014 Esperienza storica unica al mondo \u2014 la visita al Tunnel n.3 \u00e8 particolarmente intensa.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#7b4f2e\">M</div><div class=\"am-family-text\"><strong>Michela</strong> \u2014 Il Ponte della Libert\u00e0 con i nastri dei desideri \u00e8 uno dei luoghi pi\u00f9 commoventi della Corea.</div></div></div></div>"},
-"suwon": {"name": "Fortezza Hwaseong di Suwon","kr": "\uc218\uc6d0\ud654\uc131","color": "#1a3a5c","emoji": "\ud83c\udff0","city": "Seoul (gita)","type": "Fortezza UNESCO \u00b7 1796","address": "Jangan-gu, Suwon, Gyeonggi-do","hours": "24h \u00b7 Torri principali 9:00\u201318:00","price": "1.000 KRW adulti \u00b7 Bambini gratuito","duration": "2\u20133 ore per il giro completo","desc": "Patrimonio UNESCO dal 1997, la fortezza fu costruita nel 1796 dal re Jeongjo della dinastia Joseon in onore di suo padre. Il perimetro murario di 5,74 km \u00e8 percorribile quasi interamente a piedi, con 48 strutture militari originali incluse torri di vedetta, porte monumentali e bastioni. La fortezza \u00e8 considerata un capolavoro di architettura militare pre-moderna che ha integrato tecniche cinesi, europee e coreane. Il centro storico di Suwon, all'interno delle mura, \u00e8 un quartiere vivace con caff\u00e8 e ristoranti.","tip": "Da Seoul in KTX \u00e8 solo 30 minuti. Partire da Paldalmun e girare in senso orario per finire al mercato di Paldalmun \u2014 ottimo per pranzo.","maps": "https://maps.google.com/?q=Suwon+Hwaseong+Fortress","photos_html": "<div class=\"am-photos\"><img src=\"https://lh3.googleusercontent.com/place-photos/AJRVUZMKZNVRlgthNrrQs-v3Bi8ehZ-JfsnrJTlFZTgzSpdojdmqRzBqzJmHxkXwsP97QZ9QfmdKFlt4vu6ErFL8FGNHFm6vtow2EvD_iZs74nv3-fsLKnkuqqllw63v3sL36k61Dkc478Ba77uXAg=s800-w800-h600\" alt=\"Fortezza Hwaseong di Suwon\" onclick=\"openLightbox(this)\" loading=\"lazy\"></div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u00bd</span><span class=\"am-rating-num\">4.6</span><span class=\"am-rating-count\">(9,024 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#1a3a5c\">S</div><div class=\"am-family-text\"><strong>Stefano</strong> \u2014 Il percorso murario offre una visione completa dell'architettura militare Joseon \u2014 molto contestuale dopo aver visitato i palazzi di Seoul.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#c0392b\">A</div><div class=\"am-family-text\"><strong>Alessandra</strong> \u2014 Le torrette hanno feritoie e camminamenti \u2014 sembra una fortezza da favola.</div></div></div></div>"},
-"jeonju-hanok": {"name": "Jeonju Hanok Village","kr": "\uc804\uc8fc\ud55c\uc625\ub9c8\uc744","color": "#b8870a","emoji": "\ud83c\udfd8\ufe0f","city": "Jeonju","type": "Villaggio storico \u00b7 Case tradizionali \u00b7 Patrimonio culturale","address": "99 Girin-daero, Wansan-gu, Jeonju","hours": "Aperto 24h \u00b7 Negozi e locali 10:00\u201321:00","price": "Gratuito l'ingresso \u00b7 Hanbok noleggio 10.000\u201320.000 KRW/2h","duration": "Mezza giornata \u2013 giornata intera","desc": "Il pi\u00f9 grande villaggio hanok della Corea con oltre 700 case tradizionali perfettamente conservate nel centro storico di Jeonju. A differenza di Bukchon a Seoul, qui le case non sono abitate solo da residenti storici ma anche da artigiani, caff\u00e8 e ristoranti tradizionali, creando un'atmosfera unica tra il vivace e l'autentico. Jeonju \u00e8 la citt\u00e0 natale della famiglia Yi \u2014 la dinastia che govern\u00f2 la Corea per 500 anni \u2014 e la capitale indiscussa del cibo coreano tradizionale. Il quartiere \u00e8 stato set di numerosi drama storici tra cui Tastefully Yours (Netflix 2024).","tip": "Noleggiare l'hanbok qui \u00e8 pi\u00f9 economico e con pi\u00f9 scelta rispetto a Seoul. Girare i vicoli secondari evitando la strada principale \u2014 le gemme nascoste sono l\u00ec.","maps": "https://maps.google.com/?q=Jeonju+Hanok+Village","photos_html": "<div class=\"am-photos\"><img src=\"https://lh3.googleusercontent.com/place-photos/AJRVUZNKJfdV_YxVZe87HCuZcivBW144a2V5H4wq0YXEpw4hq31VmPxd5t0gRIzOltOOeI5J7lrpZCyTQXBUh8sCpIx9K9Qlr5b-MjC-Hd09b7XitzrEzLoyQtyXiFOFx2iwYyyivCl-yX6xX21zdwqhzq9NYw=s800-w800-h600\" alt=\"Jeonju Hanok Village\" onclick=\"openLightbox(this)\" loading=\"lazy\"></div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u2606</span><span class=\"am-rating-num\">4.1</span><span class=\"am-rating-count\">(29,075 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#1a3a5c\">S</div><div class=\"am-family-text\"><strong>Stefano</strong> \u2014 Colazione tradizionale in un hanok guesthouse \u2014 tofu fatto in casa, kimchi stagionato, zuppa di miso.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#8e44ad\">E</div><div class=\"am-family-text\"><strong>Elisabetta</strong> \u2014 Scelta e noleggio dell'hanbok \u2014 pi\u00f9 modelli e pi\u00f9 economici che a Seoul.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#c0392b\">A</div><div class=\"am-family-text\"><strong>Alessandra</strong> \u2014 I laboratori hanji per bambini sono qui \u2014 creare un souvenir fatto a mano.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#7b4f2e\">M</div><div class=\"am-family-text\"><strong>Michela</strong> \u2014 Le librerie di artigianato e i negozi di carta hanji sono concentrati nella via principale.</div></div></div></div>"},
-"maisan": {"name": "Maisan Provincial Park","kr": "\ub9c8\uc774\uc0b0\ub3c4\ub9bd\uacf5\uc6d0","color": "#b8870a","emoji": "\ud83d\uddfb","city": "Jeonju (gita)","type": "Parco naturale \u00b7 Rocce vulcaniche \u00b7 Tempio","address": "Maryeong-myeon, Jinan-gun, Jeonbuk","hours": "Aperto 24h","price": "Gratuito","duration": "2\u20133 ore","desc": "Due pinnacoli di roccia lavica che emergono dalla pianura come orecchie di cavallo (mai = cavallo, san = montagna in coreano) \u2014 un paesaggio geologico quasi surreale. Tra i due pinnacoli si nasconde il Tempio Tapsa, costruito a mano da un monaco nel tardo 1800 impilando pietre senza cemento. Le torri di pietre bilanciate \u2014 alcune alte 9 metri \u2014 sfidano ogni legge di fisica e sono rimaste in piedi per oltre 100 anni. In estate il sentiero \u00e8 verdissimo e l'aria \u00e8 fresca.","tip": "40 minuti di taxi da Jeonju (~30.000 KRW). Visitabile in mezza giornata. Le torri di pietre sono pi\u00f9 impressionanti viste da vicino \u2014 avvicinarsi quanto possibile.","maps": "https://maps.google.com/?q=Maisan+Provincial+Park+Jinan","photos_html": "<div class=\"am-no-photo\">\ud83d\udcf7 Foto in caricamento</div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u00bd</span><span class=\"am-rating-num\">4.4</span><span class=\"am-rating-count\">(280 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#7b4f2e\">M</div><div class=\"am-family-text\"><strong>Michela</strong> \u2014 Le torri di pietre bilanciate sono tra i soggetti fotografici pi\u00f9 insoliti della Corea.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#c0392b\">A</div><div class=\"am-family-text\"><strong>Alessandra</strong> \u2014 Spiegare che le pietre sono bilanciate solo dalla gravit\u00e0 \u2014 nessuna colla \u2014 la lascer\u00e0 a bocca aperta.</div></div></div></div>"},
-"bulguksa": {"name": "Tempio Bulguksa","kr": "\ubd88\uad6d\uc0ac","color": "#8e44ad","emoji": "\u26ea","city": "Gyeongju","type": "Tempio buddhista UNESCO \u00b7 751 d.C.","address": "385 Bulguk-ro, Gyeongju","hours": "9:00\u201318:00 tutti i giorni","price": "6.000 KRW adulti \u00b7 4.000 KRW bambini","duration": "1,5\u20132 ore","desc": "Considerato il capolavoro dell'architettura buddhista della Corea, Bulguksa fu costruito nel 751 d.C. durante il regno di Silla per rappresentare il paese di Buddha. Il complesso include strutture originali dell'VIII secolo che sono sopravvissute all'invasione giapponese \u2014 i ponti di pietra Cheongungyo e Baegungyo sono tra le strutture in pietra pi\u00f9 antiche della Corea. Le pagode Dabotap e Seokgatap al centro del complesso sono considerate capolavori assoluti dell'arte Silla. Patrimonio UNESCO dal 1995.","tip": "Partire da Gyeongju alle 8:30 per arrivare all'apertura. La pace del mattino presto \u00e8 un'esperienza completamente diversa dal pomeriggio affollato. Il bus 10 o 11 porta direttamente al tempio.","maps": "https://maps.google.com/?q=Bulguksa+Temple+Gyeongju","photos_html": "<div class=\"am-photos\"><img src=\"https://lh3.googleusercontent.com/place-photos/AJRVUZPxB76XpcX3bmubKoqeQE2MxWlo-QvN4TkSLwUifrcTQPoDQ_enotqJeInqfwv6j2OCOl_07F-6tLHWB14k9aUa3T-z9MK_-wwans0zR4mjO4Nfy9BFXddDINqHY6e3oxIJP2ooGSKXVTss1g=s800-w800-h600\" alt=\"Tempio Bulguksa\" onclick=\"openLightbox(this)\" loading=\"lazy\"></div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u00bd</span><span class=\"am-rating-num\">4.6</span><span class=\"am-rating-count\">(17,667 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#1a3a5c\">S</div><div class=\"am-family-text\"><strong>Stefano</strong> \u2014 I ponti di pietra originali dell'VIII secolo \u2014 toccarli con mano \u00e8 toccare 1.300 anni di storia.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#8e44ad\">E</div><div class=\"am-family-text\"><strong>Elisabetta</strong> \u2014 Le due pagode Dabotap e Seokgatap appaiono in tutti i drama storici ambientati nel regno Silla.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#c0392b\">A</div><div class=\"am-family-text\"><strong>Alessandra</strong> \u2014 Caccia ai draghi: i tetti dei templi buddisti sono decorati con animali mitologici \u2014 trovarli tutti.</div></div></div></div>"},
-"seokguram": {"name": "Grotta Seokguram","kr": "\uc11d\uad74\uc554","color": "#8e44ad","emoji": "\ud83e\udea8","city": "Gyeongju","type": "Grotta artificiale UNESCO \u00b7 774 d.C.","address": "238 Seokgul-ro, Gyeongju","hours": "9:00\u201317:00 tutti i giorni","price": "6.000 KRW adulti","duration": "45 minuti","desc": "Una delle pi\u00f9 grandi realizzazioni artistiche dell'Asia orientale: una grotta artificiale costruita in granito nel 774 d.C. sul versante del monte Toham, orientata verso il mare per accogliere i raggi del sole all'alba. Al centro, un Buddha seduto di granito bianco alto 3,5 metri, circondato da bassorilievi di bodhisattva e discepoli scolpiti con una precisione e una delicatezza che gli ingegneri moderni faticano a spiegare. Patrimonio UNESCO dal 1995. La fotografia all'interno \u00e8 proibita.","tip": "Raggiungibile con il bus 12 da Bulguksa (10 minuti di percorso panoramico su strada di montagna) o con 1 ora di trekking a piedi. La vista sul mare dalla terrazza di ingresso \u00e8 straordinaria.","maps": "https://maps.google.com/?q=Seokguram+Grotto+Gyeongju","photos_html": "<div class=\"am-no-photo\">\ud83d\udcf7 Foto in caricamento</div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u00bd</span><span class=\"am-rating-num\">4.4</span><span class=\"am-rating-count\">(7,758 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#1a3a5c\">S</div><div class=\"am-family-text\"><strong>Stefano</strong> \u2014 La grotta \u00e8 uno dei luoghi pi\u00f9 spiritualmente intensi della Corea \u2014 silenzio e contemplazione.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#7b4f2e\">M</div><div class=\"am-family-text\"><strong>Michela</strong> \u2014 I bassorilievi in granito che circondano il Buddha principale sono considerati tra i pi\u00f9 belli dell'arte asiatica.</div></div></div></div>"},
-"gyeongju-museum": {"name": "Museo Nazionale di Gyeongju","kr": "\uad6d\ub9bd\uacbd\uc8fc\ubc15\ubb3c\uad00","color": "#8e44ad","emoji": "\ud83c\udfdb\ufe0f","city": "Gyeongju","type": "Museo nazionale \u00b7 Reperti Silla","address": "186 Iljeong-ro, Gyeongju","hours": "Mar\u2013Ven 10:00\u201318:00 \u00b7 Sab 10:00\u201321:00 \u00b7 Dom 10:00\u201318:00 \u00b7 Luned\u00ec chiuso","price": "Gratuito (mostre speciali a pagamento)","duration": "2\u20133 ore","desc": "Il museo custodisce la pi\u00f9 grande collezione al mondo di reperti del regno Silla (57 a.C.\u2013935 d.C.): oltre 30.000 oggetti tra cui la celebre Corona d'Oro di Cheonmachong, cinture d'oro con pendenti di giada e vetro, ceramiche celadon, oggetti in bronzo e i famosi reperti che dimostrano i contatti commerciali con l'Impero Romano e la Persia attraverso la Via della Seta. Il Grande Campanone del Re Seongdeok, il pi\u00f9 grande e musicalmente perfetto della Corea, \u00e8 esposto nel giardino esterno.","tip": "Il museo \u00e8 gratuito \u2014 uno dei migliori rapporti qualit\u00e0/prezzo del viaggio. Concentrarsi sulla Silla History Hall e sull'Emille Bell all'esterno. La mostra speciale (se presente) richiede prenotazione.","maps": "https://maps.google.com/?q=Gyeongju+National+Museum","photos_html": "<div class=\"am-no-photo\">\ud83d\udcf7 Foto in caricamento</div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u00bd</span><span class=\"am-rating-num\">4.6</span><span class=\"am-rating-count\">(13,079 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#1a3a5c\">S</div><div class=\"am-family-text\"><strong>Stefano</strong> \u2014 La corona d'oro Silla e i reperti romani nella stessa teca \u2014 il collegamento diretto con la Via della Seta.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#8e44ad\">E</div><div class=\"am-family-text\"><strong>Elisabetta</strong> \u2014 Le corone d'oro con pendenti di giada sembrano uscite da un drama storico fantasy \u2014 identiche.</div></div></div></div>"},
-"anapji": {"name": "Donggung Palace & Lago Anapji","kr": "\ub3d9\uad81\uacfc \uc6d4\uc9c0","color": "#8e44ad","emoji": "\ud83c\udf19","city": "Gyeongju","type": "Palazzo reale Silla \u00b7 Lago artificiale \u00b7 Notturno","address": "102 Wonhwa-ro, Gyeongju","hours": "9:00\u201322:00 tutti i giorni","price": "3.000 KRW adulti \u00b7 Bambini 1.000 KRW","duration": "1\u20131,5 ore (meglio di notte)","desc": "Costruito nel 674 d.C. durante il regno di Silla come palazzo reale secondario per i banchetti e le cerimonie, Donggung era circondato da un lago artificiale (Wolji, 'stagno che riflette la luna') che creava riflessi spettacolari dei padiglioni. Abbandonato per secoli, il lago fu riscoperto negli anni '70 quando il governo dren\u00f2 l'acqua per i lavori e trov\u00f2 migliaia di reperti di straordinaria qualit\u00e0 \u2014 tra cui bacchette in argento, giochi da tavolo, imbarcazioni in miniatura e statue buddhiste. Di notte, quando l'illuminazione accende i tre padiglioni restaurati, \u00e8 uno degli scorci pi\u00f9 belli dell'intera Corea.","tip": "VISITARE DI NOTTE \u00e8 obbligatorio \u2014 il sito \u00e8 aperto fino alle 22:00. La differenza tra il giorno e la notte \u00e8 abissale. Portare una macchina fotografica con treppiede.","maps": "https://maps.google.com/?q=Donggung+Palace+Wolji+Pond+Gyeongju","photos_html": "<div class=\"am-no-photo\">\ud83d\udcf7 Foto in caricamento</div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u00bd</span><span class=\"am-rating-num\">4.5</span><span class=\"am-rating-count\">(20,365 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#7b4f2e\">M</div><div class=\"am-family-text\"><strong>Michela</strong> \u2014 La visita notturna con i riflessi sul lago \u00e8 una delle esperienze visivamente pi\u00f9 belle del viaggio.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#1a3a5c\">S</div><div class=\"am-family-text\"><strong>Stefano</strong> \u2014 Il museo interno espone i reperti ritrovati nel lago \u2014 una finestra straordinaria sulla vita quotidiana Silla del VII secolo.</div></div></div></div>"},
-"tumuli": {"name": "Daereungwon Tumuli Park","kr": "\ub300\ub989\uc6d0","color": "#8e44ad","emoji": "\u26f0\ufe0f","city": "Gyeongju","type": "Parco archeologico \u00b7 Tumuli reali Silla","address": "31-1 Hwangnam-dong, Gyeongju","hours": "9:00\u201322:00 tutti i giorni","price": "3.000 KRW adulti","duration": "1\u20132 ore","desc": "Ventitr\u00e9 grandi tumuli erbosi di re e nobili del regno Silla si trovano nel centro della citt\u00e0 moderna di Gyeongju \u2014 un paesaggio completamente unico al mondo dove si passeggia tra tombe millenarie come in un parco verde. Il tumulo pi\u00f9 grande (Hwangnamdaechong) misura 23 metri di altezza e 80 di diametro. L'interno di uno dei tumuli (Cheonmachong) \u00e8 visitabile: si pu\u00f2 vedere la struttura interna di legno e le riproduzioni dei reperti trovati. Di notte i tumuli sono illuminati e creano un'atmosfera sospesa nel tempo.","tip": "Noleggiare una bici (disponibile a 200 metri dall'ingresso) per girare il parco e i tumuli circostanti \u2014 l'esperienza pi\u00f9 rilassante di Gyeongju.","maps": "https://maps.google.com/?q=Daereungwon+Tumuli+Park+Gyeongju","photos_html": "<div class=\"am-no-photo\">\ud83d\udcf7 Foto in caricamento</div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u00bd</span><span class=\"am-rating-num\">4.5</span><span class=\"am-rating-count\">(3,651 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#c0392b\">A</div><div class=\"am-family-text\"><strong>Alessandra</strong> \u2014 Il prato verde sopra i tumuli \u00e8 un campo da gioco naturale \u2014 correre sulle colline erbose \u00e8 il suo momento preferito.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#1a3a5c\">S</div><div class=\"am-family-text\"><strong>Stefano</strong> \u2014 L'interno visitabile del Cheonmachong mostra la struttura funeraria originale con la 'sella del cavallo volante' \u2014 reperto che ha dato il nome al sito.</div></div></div></div>"},
-"cheomseongdae": {"name": "Cheomseongdae Observatory","kr": "\ucca8\uc131\ub300","color": "#8e44ad","emoji": "\ud83d\udd2d","city": "Gyeongju","type": "Osservatorio astronomico \u00b7 634 d.C. \u00b7 Il pi\u00f9 antico dell'Asia","address": "839-1 Inwang-dong, Gyeongju","hours": "9:00\u201322:00 tutti i giorni","price": "Gratuito (compreso con biglietto area storica)","duration": "30\u201345 minuti","desc": "Il pi\u00f9 antico osservatorio astronomico ancora in piedi in Asia orientale, costruito nel 634 d.C. durante il regno della Regina Seondeok di Silla. La struttura cilindrica di granito \u00e8 alta 9,4 metri ed \u00e8 composta da 362 blocchi di pietra \u2014 un numero che corrisponde ai giorni dell'anno lunare. La finestra quadrata al centro segna i solstizi e gli equinozi. Curiosamente, la struttura non \u00e8 mai documentata in alcun testo storico dell'epoca \u2014 sappiamo che \u00e8 stata usata per osservare le stelle solo da deduzioni indirette. Di notte viene illuminato e il campo fiorito intorno crea uno scenario da sogno.","tip": "Visitare sia di giorno che di notte (rimane aperto fino alle 22) \u2014 il campo fiorito illuminato \u00e8 particolarmente bello in estate. Si trova a 5 minuti a piedi dai tumuli.","maps": "https://maps.google.com/?q=Cheomseongdae+Gyeongju","photos_html": "<div class=\"am-no-photo\">\ud83d\udcf7 Foto in caricamento</div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u00bd</span><span class=\"am-rating-num\">4.5</span><span class=\"am-rating-count\">(20,313 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#1a3a5c\">S</div><div class=\"am-family-text\"><strong>Stefano</strong> \u2014 La storia della Regina Seondeok \u2014 prima donna a governare la Corea \u2014 \u00e8 affascinante da raccontare sul posto.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#8e44ad\">E</div><div class=\"am-family-text\"><strong>Elisabetta</strong> \u2014 Il drama Hwarang (Netflix) cita spesso Cheomseongdae \u2014 riconoscerlo \u00e8 emozionante.</div></div></div></div>"},
-"gamcheon": {"name": "Gamcheon Culture Village","kr": "\uac10\ucc9c\ubb38\ud654\ub9c8\uc744","color": "#c0392b","emoji": "\ud83c\udfa8","city": "Busan","type": "Villaggio artistico \u00b7 Murales \u00b7 Panorama","address": "203 Gamnae 2-ro, Saha-gu, Busan","hours": "9:00\u201318:00 tutti i giorni","price": "Mappa 2.000 KRW (con voucher negozio)","duration": "2\u20133 ore","desc": "Soprannominato il 'Santorini della Corea', Gamcheon \u00e8 un quartiere arroccato sulle colline di Busan dove le case colorate si sovrappongono come scatole che scendono verso il porto. Il quartiere nasce negli anni '50 come accampamento di rifugiati della Guerra di Corea \u2014 famiglie di tutto il paese che costruirono case improvvisate sulle colline. Negli anni 2000 un progetto artistico ha trasformato i vicoli in un museo all'aperto: murales, installazioni, sculture, caff\u00e8 nascosti e gallerie occupano ogni angolo. Il murale del Piccolo Principe in cima alla scalinata \u00e8 il simbolo del quartiere.","tip": "Arrivare entro le 10:00 o dopo le 16:00 per evitare la folla del pomeriggio. Comprare la mappa all'ingresso \u2014 porta a scoprire luoghi nascosti. Scarpe comode obbligatorie.","maps": "https://maps.google.com/?q=Gamcheon+Culture+Village+Busan","photos_html": "<div class=\"am-photos\"><img src=\"https://lh3.googleusercontent.com/place-photos/AJRVUZPDUGov8ymKgxxGZwaCD6SZaRQZtZwpYMePPAnELGP7Oy4EdZOEQFeNetXm1P3A23jRTWHhzy0gqmrjS_tuLRrRyRF0BwSM3lrao0q1CKIU6YjNsj62DPYOp0aVfCvA9JWnakscNBURMkV6fQ=s800-w800-h600\" alt=\"Gamcheon Culture Village\" onclick=\"openLightbox(this)\" loading=\"lazy\"></div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u00bd</span><span class=\"am-rating-num\">4.4</span><span class=\"am-rating-count\">(32,060 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#7b4f2e\">M</div><div class=\"am-family-text\"><strong>Michela</strong> \u2014 Ogni vicolo \u00e8 una sorpresa visiva \u2014 dedicare almeno 2 ore girando a caso senza meta fissa.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#c0392b\">A</div><div class=\"am-family-text\"><strong>Alessandra</strong> \u2014 Il murale del Piccolo Principe \u00e8 il souvenir fotografico pi\u00f9 popolare di Busan.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#8e44ad\">E</div><div class=\"am-family-text\"><strong>Elisabetta</strong> \u2014 Alcuni caff\u00e8 hanno aesthetics perfette per i social \u2014 trovare quelli con vista sul porto.</div></div></div></div>"},
-"jagalchi": {"name": "Mercato del Pesce Jagalchi","kr": "\uc790\uac08\uce58\uc2dc\uc7a5","color": "#c0392b","emoji": "\ud83d\udc1f","city": "Busan","type": "Mercato del pesce \u00b7 Il pi\u00f9 grande della Corea","address": "52 Jagalchihaean-ro, Jung-gu, Busan","hours": "Lun\u2013Dom 9:00\u201321:00","price": "Pesce: 30.000\u201380.000 KRW per piatto condiviso","duration": "1,5\u20132 ore","desc": "Il pi\u00f9 grande e famoso mercato del pesce della Corea, affacciato sul porto di Busan. Il piano terra ospita decine di venditori che espongono il pescato del giorno in vasche d'acqua di mare: granchi reali, gamberetti, polpi vivi, ricci di mare, abaloni, seppie e pesce sciabola. Il meccanismo \u00e8 unico: si sceglie il pesce dalla vasca, si paga, e si sale al piano superiore dove i ristoranti del mercato lo cucinano per voi con una selezione di banchan (contorni). La vista dal 7\u00b0 piano si sul porto e sulla baia di Busan.","tip": "Il prezzo si negozia solo sulle quantit\u00e0, non sulla qualit\u00e0 \u2014 essere decisi. Chiedere sempre il prezzo prima di comprare. Il granchio di neve (dungeness crab) \u00e8 il migliore rapporto qualit\u00e0/prezzo.","maps": "https://maps.google.com/?q=Jagalchi+Market+Busan","photos_html": "<div class=\"am-photos\"><img src=\"https://lh3.googleusercontent.com/place-photos/AJRVUZNKJfdV_YxVZe87HCuZcivBW144a2V5H4wq0YXEpw4hq31VmPxd5t0gRIzOltOOeI5J7lrpZCyTQXBUh8sCpIx9K9Qlr5b-MjC-Hd09b7XitzrEzLoyQtyXiFOFx2iwYyyivCl-yX6xX21zdwqhzq9NYw=s800-w800-h600\" alt=\"Mercato del Pesce Jagalchi\" onclick=\"openLightbox(this)\" loading=\"lazy\"></div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u2606</span><span class=\"am-rating-num\">4.0</span><span class=\"am-rating-count\">(26,781 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#1a3a5c\">S</div><div class=\"am-family-text\"><strong>Stefano</strong> \u2014 Scegliere il granchio dalla vasca \u2014 uno dei momenti gastronomici pi\u00f9 memorabili del viaggio. Prendere posto al bancone e osservare la preparazione.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#c0392b\">A</div><div class=\"am-family-text\"><strong>Alessandra</strong> \u2014 I polpi che si muovono nelle vasche sono affascinanti \u2014 tenerla lontana dalle vasche di granchi vivi se \u00e8 sensibile.</div></div></div></div>"},
-"haeundae": {"name": "Spiaggia di Haeundae","kr": "\ud574\uc6b4\ub300\ud574\uc218\uc695\uc7a5","color": "#c0392b","emoji": "\ud83c\udfd6\ufe0f","city": "Busan","type": "Spiaggia \u00b7 1,5 km di sabbia \u00b7 Mare","address": "Haeundae Beach, Haeundae-gu, Busan","hours": "Aperta 24h \u00b7 Servizi balneari giugno\u2013agosto","price": "Gratuito \u00b7 Sdraio ~10.000 KRW","duration": "Mezza giornata o pi\u00f9","desc": "La spiaggia pi\u00f9 famosa della Corea e la pi\u00f9 frequentata d'estate: 1,5 km di sabbia fine dorata con le montagne alle spalle e i grattacieli di Haeundae come sfondo. In luglio e agosto accoglie fino a 1,5 milioni di visitatori nel weekend \u2014 l'atmosfera \u00e8 festosa, rumorosa e vivacissima. Durante la stagione balneare ci sono gonfiabili in mare, stand di cibo di strada, concerti e festival. Il lungomare \u00e8 fiancheggiato da hotel di lusso, ristoranti di pesce e caff\u00e8 con vista.","tip": "Arrivare prima delle 9:00 in estate per trovare posto sulla sabbia. Il tratto pi\u00f9 tranquillo \u00e8 verso la parte nord-est. La spiaggia di Gwangalli (20 min di metro) \u00e8 molto meno affollata.","maps": "https://maps.google.com/?q=Haeundae+Beach+Busan","photos_html": "<div class=\"am-no-photo\">\ud83d\udcf7 Foto in caricamento</div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u00bd</span><span class=\"am-rating-num\">4.6</span><span class=\"am-rating-count\">(2,682 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#7b4f2e\">M</div><div class=\"am-family-text\"><strong>Michela</strong> \u2014 Il lungomare la sera con le luci del Gwangan Bridge riflesse sul mare \u00e8 scenografico.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#c0392b\">A</div><div class=\"am-family-text\"><strong>Alessandra</strong> \u2014 I gonfiabili a pagamento in mare e i giochi di sabbia la terranno impegnata per ore.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#8e44ad\">E</div><div class=\"am-family-text\"><strong>Elisabetta</strong> \u2014 Diversi K-pop MV sono stati girati qui \u2014 Instagram landscape perfetto.</div></div></div></div>"},
-"haedong": {"name": "Haedong Yonggungsa Temple","kr": "\ud574\ub3d9\uc6a9\uad81\uc0ac","color": "#c0392b","emoji": "\u26e9\ufe0f","city": "Busan","type": "Tempio buddhista \u00b7 Sul mare \u00b7 Scogliera","address": "86 Yonggung-gil, Gijang, Busan","hours": "4:00\u201320:00 tutti i giorni","price": "Gratuito","duration": "1\u20131,5 ore","desc": "Uno dei rarissimi templi buddhisti della Corea costruito direttamente sul mare \u2014 quasi tutti i templi coreani sono sulle montagne. Fondato nel 1376, il tempio fu distrutto durante la guerra e ricostruito negli anni '90 nella sua forma attuale. Il percorso di accesso scende lungo una scogliera rocciosa fiancheggiata da statue del Buddha, lanterne di pietra e piccole cappelle, con il suono delle onde che accompagna tutto il cammino. L'alba qui \u00e8 considerata tra le pi\u00f9 belle della Corea \u2014 molti pellegrini vengono specificatamente per le preghiere dell'alba.","tip": "Apre alle 4:00 per le preghiere dell'alba \u2014 un'esperienza spirituale unica se si \u00e8 mattinieri. Il percorso \u00e8 in senso unico \u2014 entrare dal cancello principale e uscire dal lato opposto.","maps": "https://maps.google.com/?q=Haedong+Yonggungsa+Temple+Busan","photos_html": "<div class=\"am-no-photo\">\ud83d\udcf7 Foto in caricamento</div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u00bd</span><span class=\"am-rating-num\">4.5</span><span class=\"am-rating-count\">(26,648 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#7b4f2e\">M</div><div class=\"am-family-text\"><strong>Michela</strong> \u2014 La scenografia del tempio sul mare \u00e8 tra le pi\u00f9 belle della Corea \u2014 non perdere l'area delle statue sul promontorio.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#8e44ad\">E</div><div class=\"am-family-text\"><strong>Elisabetta</strong> \u2014 Numerosi drama storici e romantici coreani hanno usato questo tempio come location.</div></div></div></div>"},
-"seongsan": {"name": "Seongsan Ilchulbong","kr": "\uc131\uc0b0\uc77c\ucd9c\ubd09","color": "#27ae60","emoji": "\ud83c\udf05","city": "Jeju","type": "Cratere vulcanico UNESCO \u00b7 Alba \u00b7 Haenyeo","address": "78 Seongsan-ri, Seongsan-eup, Seogwipo, Jeju","hours": "5:00\u201318:00 tutti i giorni","price": "5.000 KRW adulti \u00b7 Bambini 2.500 KRW","duration": "1,5\u20132 ore (salita + discesa)","desc": "Un cono vulcanico di 182 metri emerso dal mare circa 100.000 anni fa, con un cratere verde da 600 metri di diametro che sembra un anfiteatro naturale. Patrimonio UNESCO dal 2007, Seongsan Ilchulbong significa letteralmente 'picco dell'alba nascente' \u2014 \u00e8 il posto dove vedere il sole sorgere sull'Oceano Pacifico \u00e8 un rito quasi sacro per i coreani. La salita richiede 20\u201330 minuti lungo scale di pietra ben attrezzate. Al mattino presto, prima dell'alba, si trovano le haenyeo (pescatrici in apnea) sulla spiaggia ai piedi del cratere.","tip": "SVEGLIARSI ALL'ALBA \u2014 arrivare alle 5:00 per vedere il sole sorgere dal cratere. Lo spettacolo \u00e8 impareggiabile. Il parcheggio riempie in fretta \u2014 meglio andarci a piedi dal villaggio.","maps": "https://maps.google.com/?q=Seongsan+Ilchulbong+Jeju","photos_html": "<div class=\"am-no-photo\">\ud83d\udcf7 Foto in caricamento</div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u00bd</span><span class=\"am-rating-num\">4.6</span><span class=\"am-rating-count\">(4,810 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#7b4f2e\">M</div><div class=\"am-family-text\"><strong>Michela</strong> \u2014 Le haenyeo emergono dall'acqua con il pescato ogni mattina \u2014 assistere all'operazione \u00e8 uno spettacolo gratuito e commovente.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#1a3a5c\">S</div><div class=\"am-family-text\"><strong>Stefano</strong> \u2014 La salita al cratere con la luce dell'alba rosa \u00e8 uno dei momenti pi\u00f9 belli del viaggio.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#8e44ad\">E</div><div class=\"am-family-text\"><strong>Elisabetta</strong> \u2014 Vista sul Pacifico che non ha equivalenti \u2014 portare la fotocamera.</div></div></div></div>"},
-"manjanggul": {"name": "Grotte di Lava Manjanggul","kr": "\ub9cc\uc7a5\uad74","color": "#27ae60","emoji": "\ud83d\udd73\ufe0f","city": "Jeju","type": "Grotta lavica UNESCO \u00b7 7,4 km","address": "182 Manjanggul-gil, Gujwa-eup, Jeju","hours": "9:00\u201318:00 \u00b7 Chiuso marted\u00ec","price": "4.000 KRW adulti \u00b7 2.000 KRW bambini","duration": "1\u20131,5 ore","desc": "Una delle pi\u00f9 grandi e meglio conservate grotte laviche del mondo, formatasi circa 300.000 anni fa dal raffreddamento della lava durante un'eruzione del vulcano Hallasan. Il tunnel si estende per 7,4 km, di cui solo 1 km \u00e8 aperto al pubblico. All'interno la temperatura \u00e8 costante a 11\u201318\u00b0C anche d'estate \u2014 portare una giacca. La colonna di lava alla fine del percorso visitabile \u00e8 alta 7,6 metri ed \u00e8 una delle pi\u00f9 grandi al mondo. Il cammino \u00e8 ben illuminato ma il terreno \u00e8 irregolare.","tip": "\u00c8 fresco (11\u00b0C) anche in piena estate \u2014 portare uno strato in pi\u00f9. Le scarpe con suola antiscivolo sono consigliate. Portare una torcia per vedere i dettagli delle pareti laviche.","maps": "https://maps.google.com/?q=Manjanggul+Lava+Tube+Jeju","photos_html": "<div class=\"am-no-photo\">\ud83d\udcf7 Foto in caricamento</div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u00bd</span><span class=\"am-rating-num\">4.4</span><span class=\"am-rating-count\">(3,200 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#c0392b\">A</div><div class=\"am-family-text\"><strong>Alessandra</strong> \u2014 L'avventura sotterranea pi\u00f9 emozionante del viaggio \u2014 il tunnel sembra uscito da un videogioco.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#7b4f2e\">M</div><div class=\"am-family-text\"><strong>Michela</strong> \u2014 La geologia delle pareti laviche \u2014 ondulate, stratificate, multicolori \u2014 \u00e8 spettacolare.</div></div></div></div>"},
-"hyeopjae": {"name": "Spiaggia di Hyeopjae","kr": "\ud611\uc7ac\ud574\uc218\uc695\uc7a5","color": "#27ae60","emoji": "\ud83c\udfd6\ufe0f","city": "Jeju","type": "Spiaggia \u00b7 Sabbia bianca \u00b7 Acqua turchese","address": "329-10 Hallim-ro, Hallim-eup, Jeju","hours": "Aperta 24h \u00b7 Servizi giugno\u2013agosto","price": "Gratuito","duration": "Mezza giornata","desc": "Considerata la pi\u00f9 bella spiaggia di Jeju e tra le pi\u00f9 belle della Corea: sabbia bianca finissima (quarzo vulcanico) che contrasta con acque turchesi e azzurre straordinariamente limpide. A pochi metri dalla riva si trovano rocce laviche nere \u2014 il contrasto cromatico con la sabbia bianca e il mare verde-azzurro \u00e8 unico in Corea. A bassa marea si pu\u00f2 camminare fino all'isoletta di Biyang-do visibile all'orizzonte. La zona \u00e8 anche nota per il tramonto sull'isola.","tip": "Arrivare la mattina presto \u2014 la spiaggia si riempie rapidamente in estate. La parte nord (verso le rocce laviche) \u00e8 meno affollata e pi\u00f9 fotogenica.","maps": "https://maps.google.com/?q=Hyeopjae+Beach+Jeju","photos_html": "<div class=\"am-no-photo\">\ud83d\udcf7 Foto in caricamento</div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u00bd</span><span class=\"am-rating-num\">4.6</span><span class=\"am-rating-count\">(8,611 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#c0392b\">A</div><div class=\"am-family-text\"><strong>Alessandra</strong> \u2014 L'acqua \u00e8 bassa e sicura \u2014 perfetta per bambini. La laguna vicino alle rocce laviche ha pesciolini e gamberi.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#7b4f2e\">M</div><div class=\"am-family-text\"><strong>Michela</strong> \u2014 Il tramonto con l'isoletta di Biyang-do sullo sfondo \u00e8 uno degli scorci pi\u00f9 belli dell'isola.</div></div></div></div>"},
-"hallasan": {"name": "Hallasan National Park","kr": "\ud55c\ub77c\uc0b0\uad6d\ub9bd\uacf5\uc6d0","color": "#27ae60","emoji": "\ud83c\udf0b","city": "Jeju","type": "Vulcano UNESCO \u00b7 1.950m \u00b7 Trekking","address": "1100-ro 2070-61, Seogwipo, Jeju","hours": "Sentieri: 5:00\u201313:00 (salita) per arrivare in cima entro 15:00","price": "Gratuito \u00b7 Prenotazione permesso obbligatoria online","duration": "Sentiero Eorimok: 5\u20136 ore A/R \u00b7 Sentiero Gwaneumsa: 8\u20139 ore A/R","desc": "Il vulcano pi\u00f9 alto della Corea (1.950 m) e il punto pi\u00f9 elevato della penisola coreana, Hallasan \u00e8 il cuore geologico e spirituale dell'isola di Jeju. Patrimonio UNESCO, il vulcano \u00e8 dormiente da 1.000 anni e il suo cratere sommitale (Baengnokndam) ospita un lago vulcanico di straordinaria bellezza. I sentieri traversano zone climatiche diverse \u2014 dalla foresta subtropicale alla tundra alpina in poche ore. La vista dalla cima in una giornata limpida abbraccia tutto il mare di Jeju fino alle coste del Giappone.","tip": "PRENOTARE IL PERMESSO su jejuoneclick.com con almeno 2 settimane di anticipo. I permessi si esauriscono. Portare cibo, acqua abbondante e abbigliamento impermeabile \u2014 il meteo cambia rapidamente in quota.","maps": "https://maps.google.com/?q=Hallasan+National+Park+Jeju","photos_html": "<div class=\"am-no-photo\">\ud83d\udcf7 Foto in caricamento</div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u00bd</span><span class=\"am-rating-num\">4.7</span><span class=\"am-rating-count\">(3,837 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#1a3a5c\">S</div><div class=\"am-family-text\"><strong>Stefano</strong> \u2014 Il sentiero Eorimok (5,3 km, pi\u00f9 facile) porta a 1.700m con viste straordinarie senza salire alla cima \u2014 fattibile in 4 ore.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#7b4f2e\">M</div><div class=\"am-family-text\"><strong>Michela</strong> \u2014 I fiori di azalea in primavera e la foresta subtropicale nella prima parte del sentiero sono spettacolari.</div></div></div></div>"},
-"osulloc": {"name": "Osulloc Tea Museum","kr": "\uc624\uc124\ub85d \ud2f0\ubba4\uc9c0\uc5c4","color": "#27ae60","emoji": "\ud83c\udf3f","city": "Jeju","type": "Museo del t\u00e8 \u00b7 Piantagioni \u00b7 Caf\u00e9","address": "15 Sinhwayeoksa-ro, Andeok-myeon, Seogwipo, Jeju","hours": "9:00\u201318:00 tutti i giorni","price": "Ingresso gratuito \u00b7 Cibo/t\u00e8 8.000\u201318.000 KRW","duration": "1\u20131,5 ore","desc": "Il museo del t\u00e8 pi\u00f9 visitato della Corea, immerso nelle piantagioni verdi di Osulloc \u2014 la pi\u00f9 grande azienda produttrice di t\u00e8 dell'isola. Le terrazze di t\u00e8 verde si estendono per ettari sulle dolci colline vulcaniche: un paesaggio che ricorda il Giappone ma con colori ancora pi\u00f9 intensi. Il museo racconta 5.000 anni di storia del t\u00e8 in Corea e offre degustazioni di t\u00e8 invecchiato in botti (alcuni risalenti a decenni fa). Il caf\u00e9 vende prodotti esclusivi a base di matcha di Jeju: torte, gelato, noodles freddi, cioccolatini.","tip": "Accodarsi ordinando la torta matcha-fragola e il cold brew di t\u00e8 verde \u2014 le specialit\u00e0 pi\u00f9 apprezzate. Il negozio vende t\u00e8 sfuso a prezzi inferiori rispetto a Seoul.","maps": "https://maps.google.com/?q=Osulloc+Tea+Museum+Jeju","photos_html": "<div class=\"am-no-photo\">\ud83d\udcf7 Foto in caricamento</div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u2606</span><span class=\"am-rating-num\">4.1</span><span class=\"am-rating-count\">(23,785 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#7b4f2e\">M</div><div class=\"am-family-text\"><strong>Michela</strong> \u2014 Le piantagioni fotografate dall'alto del museo creano un tappeto verde uniforme \u2014 irresistibile.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#c0392b\">A</div><div class=\"am-family-text\"><strong>Alessandra</strong> \u2014 Il gelato matcha \u00e8 verde brillante e molto fotogenico \u2014 perfetto per i suoi video.</div></div></div></div>"},
-"cheonjiyeon": {"name": "Cascate Cheonjiyeon","kr": "\ucc9c\uc9c0\uc5f0\ud3ed\ud3ec","color": "#27ae60","emoji": "\ud83c\udf0a","city": "Jeju","type": "Cascata naturale \u00b7 Giardino \u00b7 Seogwipo","address": "Cheonjiyeon Waterfall, Seogwipo-si, Jeju","hours": "9:00\u201322:00 tutti i giorni","price": "2.000 KRW adulti \u00b7 1.000 KRW bambini","duration": "45\u201360 minuti","desc": "Una delle tre cascate pi\u00f9 famose di Jeju, il nome significa 'cielo e terra si incontrano' \u2014 un riferimento alla leggenda che vuole il luogo come punto di incontro tra il mondo celeste e quello terrestre. Il percorso di accesso attraversa un giardino tropicale rigoglioso lungo un ruscello, con koi giganti, tartarughe d'acqua e oltre 100 specie di piante. La cascata stessa cade per 22 metri in una pozza di acqua turchese. Di notte l'illuminazione trasforma il luogo in un ambiente onirico.","tip": "Visitare sia di giorno (per le piante e i pesci del ruscello) che al tramonto (illuminazione notturna). Si trova a 5 minuti a piedi dal centro di Seogwipo.","maps": "https://maps.google.com/?q=Cheonjiyeon+Waterfall+Jeju","photos_html": "<div class=\"am-no-photo\">\ud83d\udcf7 Foto in caricamento</div>","rating_html": "<div class=\"am-rating\"><span class=\"am-stars\">\u2605\u2605\u2605\u2605\u00bd</span><span class=\"am-rating-num\">4.4</span><span class=\"am-rating-count\">(687 recensioni Google)</span></div>","fam_section": "<div class=\"am-section\"><div class=\"am-section-label\">\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc67 Consigli per la famiglia</div><div class=\"am-family-grid\"><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#c0392b\">A</div><div class=\"am-family-text\"><strong>Alessandra</strong> \u2014 Il ruscello con i koi giganti \u00e8 la parte pi\u00f9 amata dai bambini \u2014 portare qualche granello di mangime.</div></div><div class=\"am-family-item\"><div class=\"am-family-dot\" style=\"background:#7b4f2e\">M</div><div class=\"am-family-text\"><strong>Michela</strong> \u2014 Il percorso notturno illuminato \u00e8 uno dei pi\u00f9 romantici di Jeju.</div></div></div></div>"}
+
+<!-- DETAIL MODAL -->
+<div id="dm-overlay"><div id="dm-box"></div></div>
+<script>
+var DM = {
+  "seul": {"name":"Seoul","kr":"\uc11c\uc6b8","color":"#1a3a5c","emoji":"\ud83c\udfef","days":"Giorni 1\u20135","highlights":[{"i": "\ud83c\udfef", "n": "Gyeongbokgung Palace", "d": "Il palazzo reale del 1395, cuore della dinastia Joseon. Entra in hanbok: ingresso gratuito. Cambio della guardia ore 10 e 14. Chiuso il luned\u00ec."}, {"i": "\ud83c\udf3f", "n": "Changdeokgung + Giardino Segreto", "d": "Palazzo UNESCO con giardino privato dei re. Visita guidata obbligatoria \u2014 prenotare su e-ticket.visitkorea.or.kr almeno 2 settimane prima."}, {"i": "\ud83c\udfd8\ufe0f", "n": "Bukchon Hanok Village", "d": "900 case tradizionali abitate. Visitare prima delle 10 o dopo le 16. Vicolo n.11 di Bukchon-ro per la foto iconica."}, {"i": "\ud83d\uded2", "n": "Mercato Gwangjang", "d": "Il mercato coperto pi\u00f9 antico di Corea (1905). Sedersi al bancone e ordinare bindaetteok + mayak gimbap + soju locale. Stefano: il suo posto preferito."}, {"i": "\ud83d\uddfc", "n": "N Seoul Tower", "d": "Vista 360\u00b0 sulla citt\u00e0 dal Monte Namsan. Tramonto consigliato. Lucchetti dell'amore per Elisabetta e Alessandra. Cable car o 1.000 scalini."}, {"i": "\ud83c\udfb5", "n": "HYBE Insight Museum", "d": "Museo interattivo di BTS e artisti HYBE. Prenotare OBBLIGATORIAMENTE online con 2\u20133 settimane di anticipo. 35.000 KRW. Elisabetta: tappa imperdibile."}, {"i": "\ud83c\udfa8", "n": "DDP \u2014 Dongdaemun Design Plaza", "d": "Capolavoro di Zaha Hadid. Mostre, design store, mercato notturno. Visitare sia di giorno che di notte."}],"practical":"Metro: Anguk (linea 3) per i palazzi \u00b7 Myeongdong (linea 4) per shopping \u00b7 Hongik Univ. (linea 2) per Hongdae","food":"Gwangjang per street food autentico \u00b7 Insadong per ristoranti tradizionali \u00b7 Seomyeon per galbi e samgyeopsal","tip":"Gyeongbokgung \u00e8 chiuso il LUNED\u00cc \u2014 pianificare di conseguenza. Changdeokgung chiude il LUNED\u00cc. Il noleggio hanbok vicino ai palazzi costa 10.000\u201315.000 KRW per 2 ore."},
+  "jeonju": {"name":"Jeonju","kr":"\uc804\uc8fc","color":"#b8870a","emoji":"\ud83c\udfd8\ufe0f","days":"Giorni 6\u20137","highlights":[{"i": "\ud83c\udfd8\ufe0f", "n": "Jeonju Hanok Village", "d": "700+ case tradizionali nel centro storico. Pi\u00f9 autentico e economico di Bukchon. Noleggio hanbok da 10.000 KRW. Location di Tastefully Yours (Netflix 2024)."}, {"i": "\ud83c\udf5a", "n": "Bibimbap autentico", "d": "Il piatto pi\u00f9 famoso della Corea. Ordinare il dolsot bibimbap (versione in pentola di pietra calda). I ristoranti migliori sono sul perimetro del villaggio."}, {"i": "\ud83d\udcc4", "n": "Laboratorio Hanji", "d": "Carta tradizionale di gelso. Creare un souvenir fatto a mano (ventaglio, libro, maschera). Economico, guidato, 1 ora. Alessandra: il suo momento preferito."}, {"i": "\ud83c\udf7a", "n": "Makgeolli e Mercato Nambu", "d": "Vino di riso servito con 12+ banchan gratuiti nei bar del villaggio. Mercato Nambu (mattina): il pi\u00f9 autentico della citt\u00e0, frequentato solo da locali."}, {"i": "\ud83d\uddfb", "n": "Maisan Provincial Park (gita)", "d": "40 min di taxi. Due pinnacoli vulcanici con tempio Tapsa costruito impilando pietre senza cemento. Torri alte 9 metri in equilibrio solo per gravit\u00e0."}],"practical":"Il villaggio si gira interamente a piedi \u00b7 Taxi per Maisan ~30.000 KRW \u00b7 Bus terminal a 5 min di taxi dall'hotel","food":"Bibimbap \u00b7 Kongnamul gukbap (zuppa di germogli) \u00b7 Hotteok e tteokbokki da street food","tip":"Dormire in un hanok guesthouse \u00e8 l'esperienza pi\u00f9 autentica \u2014 prenotare mesi prima in estate. Colazione tradizionale inclusa."},
+  "gyeongju": {"name":"Gyeongju","kr":"\uacbd\uc8fc","color":"#8e44ad","emoji":"\u26ea","days":"Giorni 8\u201310","highlights":[{"i": "\u26ea", "n": "Bulguksa Temple", "d": "UNESCO 751 d.C. Capolavoro del buddhismo coreano. Arrivare alle 9:00 per la pace del mattino. Bus 10/11 dalla citt\u00e0. Chiuso mai. 6.000 KRW."}, {"i": "\ud83e\udea8", "n": "Seokguram Grotto", "d": "UNESCO 774 d.C. Buddha di granito bianco in grotta artificiale, orientato verso il sole all'alba. No foto all'interno. Bus 12 da Bulguksa (10 min di panorama montano)."}, {"i": "\ud83c\udfdb\ufe0f", "n": "Museo Nazionale", "d": "GRATUITO. Corona d'oro Silla + vetro romano della Via della Seta + 30.000 reperti. Dedicare 2 ore. Sabato aperto fino alle 21:00."}, {"i": "\u26f0\ufe0f", "n": "Tumuli Park Daereungwon", "d": "23 tumuli reali nel centro citt\u00e0. Noleggiare una bici (200m dall'ingresso) per il giro al tramonto. Di notte illuminati. 3.000 KRW."}, {"i": "\ud83c\udf19", "n": "Lago Anapji di notte", "d": "VISITARE DI NOTTE \u2014 aperto fino alle 22:00. I padiglioni Silla si riflettono sull'acqua. Uno degli scorci pi\u00f9 belli della Corea. 3.000 KRW."}, {"i": "\ud83d\udd2d", "n": "Cheomseongdae", "d": "Osservatorio pi\u00f9 antico d'Asia (634 d.C.). 5 min dai tumuli. Spettacolo luci serale alle 18:30 (gratuito). Campo fiorito illuminato d'estate."}],"practical":"Centro storico tutto a piedi o in bici \u00b7 Taxi per Bulguksa ~12.000 KRW \u00b7 Bus 10/11/12 per i siti UNESCO","food":"Ssambap (riso in foglie) vicino a Bulguksa \u00b7 Dakgalbi (pollo piccante) in centro \u00b7 Bingsu (granita) d'estate","tip":"Anapji di notte \u00e8 imperdibile \u2014 non saltarla per stanchezza. Comprare il biglietto combinato Tumuli+Cheomseongdae+Anapji per risparmiare."},
+  "busan": {"name":"Busan","kr":"\ubd80\uc0b0","color":"#c0392b","emoji":"\ud83c\udfd6\ufe0f","days":"Giorni 11\u201314","highlights":[{"i": "\ud83c\udfa8", "n": "Gamcheon Culture Village", "d": "Il 'Santorini coreano'. Case colorate su una collina con murales, installazioni, caff\u00e8 nascosti. Arrivare prima delle 10. Mappa 2.000 KRW. Murale del Piccolo Principe in cima."}, {"i": "\ud83d\udc1f", "n": "Mercato Jagalchi", "d": "Il pi\u00f9 grande mercato del pesce della Corea. Scegliere il pesce vivo dalle vasche, farlo cucinare al piano superiore. Stefano: scegliere il granchio di neve (dungeness). Orari: 9\u201321."}, {"i": "\ud83c\udfd6\ufe0f", "n": "Spiagge: Haeundae e Gwangalli", "d": "Haeundae: 1,5 km di sabbia, vivacissima d'estate. Gwangalli: pi\u00f9 tranquilla, vista sul Gwangan Bridge illuminato di notte. Metro linea 2 per entrambe."}, {"i": "\u26e9\ufe0f", "n": "Haedong Yonggungsa", "d": "Unico tempio buddhista sul mare. Percorso con statue e lanterne sulla scogliera. Apre alle 4:00. Gratis. Bus dalla citt\u00e0 ~40 min. Tramonto spettacolare."}, {"i": "\ud83c\udfac", "n": "BIFF Square + Nampo-dong", "d": "Piazza del Festival del Cinema con impronte delle star. Negozi K-pop pi\u00f9 economici di Seoul. Elisabetta: merchandise K-pop. Acquario SEA LIFE Busan vicino (bambini)."}],"practical":"Metro linea 1 (centro) e linea 2 (Haeundae) \u00b7 Bus per Haedong Yonggungsa \u00b7 Taxi per Gamcheon ~10.000 KRW","food":"Jagalchi per pesce freschissimo \u00b7 Milmyeon (noodles freddi, tipico di Busan) \u00b7 Samgyeopsal a Seomyeon di sera","tip":"Per Jeju: lasciare le valigie in hotel o coin locker Busan Station (3.000\u20136.000 KRW/giorno) e partire con solo zaino. Risparmio significativo sui bagagli in stiva."},
+  "jeju": {"name":"Isola di Jeju","kr":"\uc81c\uc8fc\ub3c4","color":"#27ae60","emoji":"\ud83c\udf0b","days":"Giorni 15\u201319","highlights":[{"i": "\ud83c\udf05", "n": "Seongsan Ilchulbong", "d": "UNESCO. Cratere vulcanico sul mare. Svegliarsi alle 5:00 per l'alba \u2014 il momento pi\u00f9 bello di Jeju. Le haenyeo (pescatrici in apnea) emergono con il pescato ogni mattina. 5.000 KRW."}, {"i": "\ud83d\udd73\ufe0f", "n": "Grotte di Lava Manjanggul", "d": "UNESCO. 7 km di tunnel lavico (1 km visitabile). Temperatura interna 11\u00b0C \u2014 portare una giacca anche d'estate. Alessandra: l'avventura pi\u00f9 emozionante. 4.000 KRW. Chiuso marted\u00ec."}, {"i": "\ud83c\udfd6\ufe0f", "n": "Spiaggia di Hyeopjae", "d": "La pi\u00f9 bella di Jeju: sabbia bianca, acqua turchese, rocce laviche nere. A bassa marea si cammina verso l'isoletta Biyang-do. Ideale per bambini \u2014 acqua bassa e sicura."}, {"i": "\ud83c\udf3f", "n": "Osulloc Tea Museum", "d": "Piantagioni di t\u00e8 verde a terrazze. Ingresso gratuito. Gelato matcha e torta matcha-fragola nel caf\u00e9. Paesaggio come il Giappone. Negozio con t\u00e8 sfuso a prezzi inferiori di Seoul."}, {"i": "\ud83c\udf0b", "n": "Hallasan National Park", "d": "UNESCO. Vulcano 1.950m. Sentiero Eorimok (5,3 km, 4h A/R) per Stefano. Prenotare permesso su jejuoneclick.com con 2 settimane di anticipo. Portare acqua abbondante e impermeabile."}, {"i": "\ud83d\ude97", "n": "Consigli pratici Jeju", "d": "OBBLIGATORIO noleggiare l'auto in aeroporto \u2014 i mezzi pubblici non bastano. Prenotare da casa con Klook o Rentalcars. Guida a destra come in Italia. Budget benzina: ~30.000 KRW/giorno."}],"practical":"Auto a nolo obbligatoria \u00b7 GPS in coreano/inglese incluso \u00b7 Parcheggi gratuiti alla maggior parte dei siti \u00b7 Aeroporto al nord dell'isola","food":"Heukdwaeji (maiale nero di Jeju) \u2014 cena obbligatoria \u00b7 Galchi jorim (pesce sciabola piccante) \u00b7 Haemul ttukbaegi (zuppa frutti di mare)","tip":"Alloggiare a Seogwipo (costa sud) \u00e8 la posizione pi\u00f9 strategica: equidistante da Seongsan (est) e Hyeopjae (ovest). A 30 min dalle cascate Cheonjiyeon."}
 };
 
-function openAttr(key) {
-  var d = ATTR_DATA[key];
-  if (!d) { console.warn('Attraction not found:', key); return; }
-
-  var metaPills = [
-    d.hours ? '🕐 ' + d.hours : '',
-    d.price ? '💰 ' + d.price : '',
-    d.duration ? '⏱️ ' + d.duration : '',
-  ].filter(Boolean).map(function(t){
-    return '<div class="am-meta-pill">' + t + '</div>';
+function dmOpen(id) {
+  var d = DM[id];
+  if (!d) return;
+  var hlHtml = d.highlights.map(function(h) {
+    return '<div class="dm-item"><div class="dm-item-icon">'+h.i+'</div><div class="dm-item-body"><strong>'+h.n+'</strong><p>'+h.d+'</p></div></div>';
   }).join('');
-
-  var html =
-    '<div class="am-handle"></div>' +
-    '<div class="am-header" style="background:' + d.color + '">' +
-      '<button class="am-close" onclick="closeAttr()">✕</button>' +
-      '<div class="am-header-top">' +
-        '<div class="am-emoji">' + d.emoji + '</div>' +
-        '<div class="am-title-block">' +
-          '<div class="am-name">' + d.name + '</div>' +
-          '<div class="am-kr">' + d.kr + ' · ' + d.city + '</div>' +
-          '<div class="am-type">' + d.type + '</div>' +
-        '</div>' +
-      '</div>' +
+  document.getElementById('dm-box').innerHTML =
+    '<div class="dm-handle"></div>' +
+    '<div class="dm-head" style="background:'+d.color+'">' +
+      '<button class="dm-close-btn" onclick="dmClose()">✕</button>' +
+      '<div style="font-size:1.6rem;margin-bottom:0.3rem">'+d.emoji+'</div>' +
+      '<h2>'+d.name+' <span style="font-family:'Noto Sans KR',sans-serif;font-size:0.8rem;opacity:0.6">'+d.kr+'</span></h2>' +
+      '<div class="dm-sub">'+d.days+'</div>' +
     '</div>' +
-    '<div class="am-meta-strip">' + metaPills + '</div>' +
-    '<div class="am-body">' +
-      d.photos_html +
-      '<div class="am-section">' +
-        '<div class="am-section-label">📍 Indirizzo</div>' +
-        d.rating_html +
-        '<address>' + d.address + '</address>' +
-      '</div>' +
-      '<div class="am-section">' +
-        '<div class="am-section-label">Descrizione</div>' +
-        '<p>' + d.desc + '</p>' +
-      '</div>' +
-      '<div class="am-section">' +
-        '<div class="am-section-label">💡 Consiglio pratico</div>' +
-        '<p style="color:#7a6000;background:#fffbf0;padding:0.6rem 0.8rem;border-radius:0.4rem;border-left:3px solid #c9a84c">' + d.tip + '</p>' +
-      '</div>' +
-      d.fam_section +
-    '</div>' +
-    '<div class="am-cta">' +
-      '<button class="am-btn am-btn-maps" onclick="window.open('' + d.maps + '','_blank')">🗺️ Google Maps</button>' +
-      '<button class="am-btn am-btn-close" onclick="closeAttr()">✕ Chiudi</button>' +
+    '<div class="dm-scroll">' +
+      '<div class="dm-hl"><div class="dm-hl-title">Attrazioni principali</div>' + hlHtml + '</div>' +
+      '<div class="dm-info"><strong>Come muoversi</strong>' + d.practical + '</div>' +
+      '<div class="dm-info"><strong>Dove mangiare</strong>' + d.food + '</div>' +
+      '<div class="dm-tip">💡 ' + d.tip + '</div>' +
     '</div>';
-
-  document.getElementById('attr-modal').innerHTML = html;
-  document.getElementById('attr-modal-overlay').classList.add('open');
+  document.getElementById('dm-overlay').classList.add('on');
   document.body.style.overflow = 'hidden';
 }
 
-function closeAttr() {
-  document.getElementById('attr-modal-overlay').classList.remove('open');
+function dmClose() {
+  document.getElementById('dm-overlay').classList.remove('on');
   document.body.style.overflow = '';
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  var overlay = document.getElementById('attr-modal-overlay');
-  if (overlay) {
-    overlay.addEventListener('click', function(e) {
-      if (e.target === overlay) closeAttr();
-    });
-  }
-  // Touch swipe down to close modal
-  var modal = document.getElementById('attr-modal');
-  if (modal) {
-    var startY2 = 0;
-    modal.addEventListener('touchstart', function(e){ startY2 = e.touches[0].clientY; }, { passive:true });
-    modal.addEventListener('touchend', function(e){
-      if (e.changedTouches[0].clientY - startY2 > 70) closeAttr();
-    }, { passive:true });
-  }
+  var ov = document.getElementById('dm-overlay');
+  ov.addEventListener('click', function(e){ if(e.target===ov) dmClose(); });
+  // swipe down to close on mobile
+  var box = document.getElementById('dm-box');
+  var sy = 0;
+  box.addEventListener('touchstart', function(e){ sy = e.touches[0].clientY; }, {passive:true});
+  box.addEventListener('touchend', function(e){ if(e.changedTouches[0].clientY - sy > 60) dmClose(); }, {passive:true});
 });
 
-
-
-// ── Register button delegation — in same script so openAttr is guaranteed defined
-(function() {
-  function registerAttrDelegation() {
-    document.body.addEventListener('click', function(e) {
-      var el = e.target;
-      // walk up max 4 levels to find .attr-btn
-      for (var i = 0; i < 4; i++) {
-        if (!el || !el.tagName) break;
-        if (el.classList && el.classList.contains('attr-btn') && el.dataset && el.dataset.k) {
-          e.stopPropagation();
-          openAttr(el.dataset.k);
-          return;
-        }
-        el = el.parentElement;
-      }
-    });
-    console.log('[AttrModal] delegation OK, openAttr defined:', typeof openAttr);
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', registerAttrDelegation);
-  } else {
-    registerAttrDelegation();
-  }
-})();
 </script>
 </body>
 </html>
