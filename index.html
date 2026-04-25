@@ -1072,12 +1072,18 @@
 
 
   .attr-link {
-    cursor: pointer;
-    text-decoration: underline dotted;
+    cursor: pointer !important;
+    text-decoration: underline dotted !important;
     text-underline-offset: 2px;
     transition: color 0.15s;
   }
-  .attr-link:hover { color: var(--red); }
+  .attr-link:hover { color: var(--red) !important; }
+  [data-attr] {
+    cursor: pointer !important;
+    text-decoration: underline dotted !important;
+    text-underline-offset: 2px;
+  }
+  [data-attr]:hover { color: var(--red) !important; }
 
   /* MISSED SECTION */
   .missed-section {
@@ -1746,7 +1752,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">17:00</div>
                 <div class="itl-slot-icon">🏘️</div>
                 <div class="itl-slot-body">
-                  <strong class="attr-link" onclick="openAttr('bukchon')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Bukchon Hanok Village</strong>
+                  <strong class="attr-link" data-attr="bukchon">Bukchon Hanok Village</strong>
                   <span>Passeggiata tra i vicoli al tramonto</span>
                   <div class="itl-slot-tip">💡 Luce del pomeriggio perfetta per le foto</div>
                 </div>
@@ -1787,7 +1793,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">12:30</div>
                 <div class="itl-slot-icon">🛒</div>
                 <div class="itl-slot-body">
-                  <strong class="attr-link" onclick="openAttr('gwangjang')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Mercato Gwangjang</strong>
+                  <strong class="attr-link" data-attr="gwangjang">Mercato Gwangjang</strong>
                   <span>Pranzo tra i banchi: bindaetteok, gimbap, eomuk</span>
                   <div class="itl-slot-tip">💡 Stefano: il suo posto preferito di Seul</div>
                 </div>
@@ -1805,7 +1811,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">16:30</div>
                 <div class="itl-slot-icon">🗼</div>
                 <div class="itl-slot-body">
-                  <strong class="attr-link" onclick="openAttr('nseoul')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">N Seoul Tower</strong>
+                  <strong class="attr-link" data-attr="nseoul">N Seoul Tower</strong>
                   <span>Cable car o scalinata — tramonto sulla città</span>
                   <div class="itl-slot-tip">💡 Elisabetta e Alessandra: lucchetti dell'amore</div>
                 </div>
@@ -1837,7 +1843,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">10:00</div>
                 <div class="itl-slot-icon">🎵</div>
                 <div class="itl-slot-body">
-                  <strong class="attr-link" onclick="openAttr('hybe')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">HYBE Insight Museum</strong>
+                  <strong class="attr-link" data-attr="hybe">HYBE Insight Museum</strong>
                   <span>Museo BTS e HYBE — prenotare settimane prima!</span>
                   <div class="itl-slot-tip">💡 Elisabetta: tappa imperdibile. Durata 2h</div>
                 </div>
@@ -1855,7 +1861,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">14:00</div>
                 <div class="itl-slot-icon">🎨</div>
                 <div class="itl-slot-body">
-                  <strong class="attr-link" onclick="openAttr('ddp')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">DDP Dongdaemun Design Plaza</strong>
+                  <strong class="attr-link" data-attr="ddp">DDP Dongdaemun Design Plaza</strong>
                   <span>Zaha Hadid + mostra temporanea</span>
                   
                 </div>
@@ -2210,7 +2216,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">15:00</div>
                 <div class="itl-slot-icon">🏛️</div>
                 <div class="itl-slot-body">
-                  <strong class="attr-link" onclick="openAttr('gyeongju-museum')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Museo Nazionale</strong>
+                  <strong class="attr-link" data-attr="gyeongju-museum">Museo Nazionale</strong>
                   <span>Corona d'oro Silla + reperti Via della Seta</span>
                   <div class="itl-slot-tip">💡 Stefano: almeno 2 ore qui</div>
                 </div>
@@ -2278,7 +2284,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">16:30</div>
                 <div class="itl-slot-icon">🔭</div>
                 <div class="itl-slot-body">
-                  <strong class="attr-link" onclick="openAttr('cheomseongdae')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Cheomseongdae</strong>
+                  <strong class="attr-link" data-attr="cheomseongdae">Cheomseongdae</strong>
                   <span>Osservatorio astronomico 634 d.C.</span>
                   <div class="itl-slot-tip">💡 30 minuti bastano</div>
                 </div>
@@ -2408,7 +2414,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">17:30</div>
                 <div class="itl-slot-icon">⛩️</div>
                 <div class="itl-slot-body">
-                  <strong class="attr-link" onclick="openAttr('haedong')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Haedong Yonggungsa</strong>
+                  <strong class="attr-link" data-attr="haedong">Haedong Yonggungsa</strong>
                   <span>Tempio sul mare al tramonto</span>
                   <div class="itl-slot-tip">💡 Uno dei luoghi più fotogenici della Corea</div>
                 </div>
@@ -2440,7 +2446,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">09:30</div>
                 <div class="itl-slot-icon">🎨</div>
                 <div class="itl-slot-body">
-                  <strong class="attr-link" onclick="openAttr('gamcheon')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Gamcheon Culture Village</strong>
+                  <strong class="attr-link" data-attr="gamcheon">Gamcheon Culture Village</strong>
                   <span>Arrivo presto — meno folla</span>
                   <div class="itl-slot-tip">💡 Michela: murales e librerie indie</div>
                 </div>
@@ -2508,7 +2514,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">09:00</div>
                 <div class="itl-slot-icon">🏖️</div>
                 <div class="itl-slot-body">
-                  <strong class="attr-link" onclick="openAttr('haeundae')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Haeundae Beach</strong>
+                  <strong class="attr-link" data-attr="haeundae">Haeundae Beach</strong>
                   <span>Mattina presto — bagno e relax</span>
                   <div class="itl-slot-tip">💡 La spiaggia più grande della Corea</div>
                 </div>
@@ -2733,7 +2739,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">15:30</div>
                 <div class="itl-slot-icon">🌿</div>
                 <div class="itl-slot-body">
-                  <strong class="attr-link" onclick="openAttr('osulloc')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Osulloc Tea Museum</strong>
+                  <strong class="attr-link" data-attr="osulloc">Osulloc Tea Museum</strong>
                   <span>Piantagioni verdi + gelato matcha</span>
                   <div class="itl-slot-tip">💡 Michela: il paesaggio più bello dell'isola</div>
                 </div>
@@ -2851,7 +2857,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
                 <div class="itl-slot-time">15:00</div>
                 <div class="itl-slot-icon">🌊</div>
                 <div class="itl-slot-body">
-                  <strong class="attr-link" onclick="openAttr('cheonjiyeon')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Cascate Cheonjiyeon</strong>
+                  <strong class="attr-link" data-attr="cheonjiyeon">Cascate Cheonjiyeon</strong>
                   <span>Nel centro di Seogwipo — 15 min a piedi</span>
                   
                 </div>
@@ -3075,14 +3081,14 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
       <div>
         <div class="section-title">Imperdibili</div>
         <div class="items-grid">
-          <div class="item"><div class="item-icon">🏯</div><div class="item-text"><strong class="attr-link" onclick="openAttr('gyeongbokgung')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Gyeongbokgung</strong><span>Palazzo reale del 1395, cambio della guardia ogni ora</span></div></div>
+          <div class="item"><div class="item-icon">🏯</div><div class="item-text"><strong class="attr-link" data-attr="gyeongbokgung">Gyeongbokgung</strong><span>Palazzo reale del 1395, cambio della guardia ogni ora</span></div></div>
           <div class="item"><div class="item-icon">🏯</div><div class="item-text"><strong>Changdeokgung + Giardino Segreto</strong><span>UNESCO, solo con visita guidata — prenotare!</span></div></div>
-          <div class="item"><div class="item-icon">🏘️</div><div class="item-text"><strong class="attr-link" onclick="openAttr('bukchon')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Bukchon Hanok Village</strong><span>600 case tradizionali nel cuore della città</span></div></div>
+          <div class="item"><div class="item-icon">🏘️</div><div class="item-text"><strong class="attr-link" data-attr="bukchon">Bukchon Hanok Village</strong><span>600 case tradizionali nel cuore della città</span></div></div>
           <div class="item"><div class="item-icon">🛍️</div><div class="item-text"><strong>Insadong & Samcheong-dong</strong><span>Gallerie, tè tradizionale, negozietti artigianali</span></div></div>
           <div class="item"><div class="item-icon">🌃</div><div class="item-text"><strong>Hongdae</strong><span>Quartiere universitario, musica live, street art, nightlife</span></div></div>
           <div class="item"><div class="item-icon">🌃</div><div class="item-text"><strong>Itaewon & Hanam-dong</strong><span>Cucina internazionale, bar, atmosfera cosmopolita</span></div></div>
           <div class="item"><div class="item-icon">🗼</div><div class="item-text"><strong>N Seoul Tower (Namsan)</strong><span>Vista panoramica sulla città, lucchetti dell'amore</span></div></div>
-          <div class="item"><div class="item-icon">🛒</div><div class="item-text"><strong class="attr-link" onclick="openAttr('gwangjang')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Mercato di Gwangjang</strong><span>Il mercato coperto più antico di Corea, bibimbap e pajeon</span></div></div>
+          <div class="item"><div class="item-icon">🛒</div><div class="item-text"><strong class="attr-link" data-attr="gwangjang">Mercato di Gwangjang</strong><span>Il mercato coperto più antico di Corea, bibimbap e pajeon</span></div></div>
           <div class="item"><div class="item-icon">🌊</div><div class="item-text"><strong>Cheonggyecheon Stream</strong><span>Ruscello urbano recuperato — passeggiata rinfrescante</span></div></div>
           <div class="item"><div class="item-icon">🎨</div><div class="item-text"><strong>DDP (Dongdaemun Design Plaza)</strong><span>Architettura Zaha Hadid, mostre temporanee, mercato notturno</span></div></div>
         </div>
@@ -3152,7 +3158,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
               <div class="slot-time">17:00</div>
               <div class="slot-icon">🏘️</div>
               <div class="slot-content">
-                <strong class="attr-link" onclick="openAttr('bukchon')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Bukchon Hanok Village</strong>
+                <strong class="attr-link" data-attr="bukchon">Bukchon Hanok Village</strong>
                 <span>Passeggiata tra i vicoli dorati del tardo pomeriggio</span>
                 <div class="slot-tip">💡 La luce del pomeriggio è perfetta per le foto</div>
               </div>
@@ -3189,7 +3195,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
               <div class="slot-time">12:30</div>
               <div class="slot-icon">🛒</div>
               <div class="slot-content">
-                <strong class="attr-link" onclick="openAttr('gwangjang')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Mercato di Gwangjang</strong>
+                <strong class="attr-link" data-attr="gwangjang">Mercato di Gwangjang</strong>
                 <span>Pranzo tra i banchi: bindaetteok, mayak gimbap, eomuk</span>
                 <div class="slot-tip">💡 Stefano: questo è il suo momento</div>
               </div>
@@ -3235,7 +3241,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
               <div class="slot-time">10:00</div>
               <div class="slot-icon">🎵</div>
               <div class="slot-content">
-                <strong class="attr-link" onclick="openAttr('hybe')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">HYBE Insight Museum</strong>
+                <strong class="attr-link" data-attr="hybe">HYBE Insight Museum</strong>
                 <span>Museo BTS e artisti HYBE — prenotare settimane prima!</span>
                 <div class="slot-tip">💡 Elisabetta: tappa imperdibile. Durata: 2h</div>
               </div>
@@ -3253,7 +3259,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
               <div class="slot-time">14:00</div>
               <div class="slot-icon">🎨</div>
               <div class="slot-content">
-                <strong class="attr-link" onclick="openAttr('ddp')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">DDP Dongdaemun Design Plaza</strong>
+                <strong class="attr-link" data-attr="ddp">DDP Dongdaemun Design Plaza</strong>
                 <span>Architettura Zaha Hadid + mostra temporanea</span>
                 
               </div>
@@ -3504,7 +3510,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
       <div>
         <div class="section-title">Imperdibili</div>
         <div class="items-grid">
-          <div class="item"><div class="item-icon">🏘️</div><div class="item-text"><strong class="attr-link" onclick="openAttr('jeonju-hanok')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Jeonju Hanok Village</strong><span>700+ case tradizionali, negozietti, caffè nei cortili</span></div></div>
+          <div class="item"><div class="item-icon">🏘️</div><div class="item-text"><strong class="attr-link" data-attr="jeonju-hanok">Jeonju Hanok Village</strong><span>700+ case tradizionali, negozietti, caffè nei cortili</span></div></div>
           <div class="item"><div class="item-icon">🍚</div><div class="item-text"><strong>Bibimbap autentico</strong><span>Il piatto più famoso della Corea, qui è un'esperienza diversa</span></div></div>
           <div class="item"><div class="item-icon">👘</div><div class="item-text"><strong>Noleggio Hanbok</strong><span>Vestirsi in abiti tradizionali e passeggiare nel villaggio</span></div></div>
           <div class="item"><div class="item-icon">⛩️</div><div class="item-text"><strong>Tempio Jeondong Cattedrale Cattolica</strong><span>Bella chiesa gotica costruita nel 1914, simbolo della città</span></div></div>
@@ -3800,8 +3806,8 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
           <div class="item"><div class="item-icon">🪨</div><div class="item-text"><strong>Grotta Seokguram</strong><span>UNESCO · Buddha di granito del VIII sec., vista sul mare</span></div></div>
           <div class="item"><div class="item-icon">⛰️</div><div class="item-text"><strong>Daereungwon Tumuli Park</strong><span>23 tumuli reali Silla nel centro città, bici tra i tumuli</span></div></div>
           <div class="item"><div class="item-icon">🌙</div><div class="item-text"><strong>Lago Anapji (Donggung)</strong><span>Di notte è magico — riflessi del palazzo sull'acqua</span></div></div>
-          <div class="item"><div class="item-icon">🔭</div><div class="item-text"><strong class="attr-link" onclick="openAttr('cheomseongdae')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Cheomseongdae</strong><span>L'osservatorio astronomico più antico dell'Asia, 634 d.C.</span></div></div>
-          <div class="item"><div class="item-icon">🏛️</div><div class="item-text"><strong class="attr-link" onclick="openAttr('gyeongju-museum')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Museo Nazionale di Gyeongju</strong><span>Corona d'oro Silla e migliaia di reperti unici</span></div></div>
+          <div class="item"><div class="item-icon">🔭</div><div class="item-text"><strong class="attr-link" data-attr="cheomseongdae">Cheomseongdae</strong><span>L'osservatorio astronomico più antico dell'Asia, 634 d.C.</span></div></div>
+          <div class="item"><div class="item-icon">🏛️</div><div class="item-text"><strong class="attr-link" data-attr="gyeongju-museum">Museo Nazionale di Gyeongju</strong><span>Corona d'oro Silla e migliaia di reperti unici</span></div></div>
         </div>
       </div>
 
@@ -3867,7 +3873,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
               <div class="slot-time">15:00</div>
               <div class="slot-icon">🏛️</div>
               <div class="slot-content">
-                <strong class="attr-link" onclick="openAttr('gyeongju-museum')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Museo Nazionale di Gyeongju</strong>
+                <strong class="attr-link" data-attr="gyeongju-museum">Museo Nazionale di Gyeongju</strong>
                 <span>Corona d'oro Silla, cintura persiana, vetro romano</span>
                 <div class="slot-tip">💡 Stefano: dedicare almeno 2 ore</div>
               </div>
@@ -3931,7 +3937,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
               <div class="slot-time">16:30</div>
               <div class="slot-icon">🔭</div>
               <div class="slot-content">
-                <strong class="attr-link" onclick="openAttr('cheomseongdae')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Cheomseongdae</strong>
+                <strong class="attr-link" data-attr="cheomseongdae">Cheomseongdae</strong>
                 <span>Osservatorio astronomico del 634 d.C. — 15 min a piedi dai tumuli</span>
                 <div class="slot-tip">💡 Breve visita — 30 minuti bastano</div>
               </div>
@@ -4145,11 +4151,11 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
       <div>
         <div class="section-title">Imperdibili</div>
         <div class="items-grid">
-          <div class="item"><div class="item-icon">🎨</div><div class="item-text"><strong class="attr-link" onclick="openAttr('gamcheon')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Gamcheon Culture Village</strong><span>Il "Santorini coreano" — casette colorate su una collina</span></div></div>
+          <div class="item"><div class="item-icon">🎨</div><div class="item-text"><strong class="attr-link" data-attr="gamcheon">Gamcheon Culture Village</strong><span>Il "Santorini coreano" — casette colorate su una collina</span></div></div>
           <div class="item"><div class="item-icon">🐟</div><div class="item-text"><strong>Mercato del pesce Jagalchi</strong><span>Il più grande mercato del pesce della Corea — vivace e colorato</span></div></div>
-          <div class="item"><div class="item-icon">🏖️</div><div class="item-text"><strong class="attr-link" onclick="openAttr('haeundae')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Spiaggia di Haeundae</strong><span>La spiaggia più famosa della Corea, vivace d'estate</span></div></div>
+          <div class="item"><div class="item-icon">🏖️</div><div class="item-text"><strong class="attr-link" data-attr="haeundae">Spiaggia di Haeundae</strong><span>La spiaggia più famosa della Corea, vivace d'estate</span></div></div>
           <div class="item"><div class="item-icon">🏖️</div><div class="item-text"><strong>Spiaggia di Gwangalli</strong><span>Più tranquilla, vista sul Gwangan Bridge illuminato di notte</span></div></div>
-          <div class="item"><div class="item-icon">⛩️</div><div class="item-text"><strong class="attr-link" onclick="openAttr('haedong')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Haedong Yonggungsa</strong><span>Tempio buddhista sul mare — uno dei più fotografati della Corea</span></div></div>
+          <div class="item"><div class="item-icon">⛩️</div><div class="item-text"><strong class="attr-link" data-attr="haedong">Haedong Yonggungsa</strong><span>Tempio buddhista sul mare — uno dei più fotografati della Corea</span></div></div>
           <div class="item"><div class="item-icon">🎬</div><div class="item-text"><strong>BIFF Square</strong><span>Piazza del Festival del Cinema con impronte delle star</span></div></div>
           <div class="item"><div class="item-icon">🌉</div><div class="item-text"><strong>Oryukdo Skywalk</strong><span>Passerella di vetro sul mare con vista sulle isolette</span></div></div>
           <div class="item"><div class="item-icon">🏔️</div><div class="item-text"><strong>Geumjeongsan Fortress</strong><span>La fortezza di montagna più grande della Corea, trekking panoramico</span></div></div>
@@ -4209,7 +4215,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
               <div class="slot-time">17:30</div>
               <div class="slot-icon">⛩️</div>
               <div class="slot-content">
-                <strong class="attr-link" onclick="openAttr('haedong')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Haedong Yonggungsa</strong>
+                <strong class="attr-link" data-attr="haedong">Haedong Yonggungsa</strong>
                 <span>Tempio sul mare — 20 min di bus, visita al tramonto</span>
                 <div class="slot-tip">💡 Uno dei luoghi più fotogenici della Corea</div>
               </div>
@@ -4237,7 +4243,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
               <div class="slot-time">09:30</div>
               <div class="slot-icon">🎨</div>
               <div class="slot-content">
-                <strong class="attr-link" onclick="openAttr('gamcheon')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Gamcheon Culture Village</strong>
+                <strong class="attr-link" data-attr="gamcheon">Gamcheon Culture Village</strong>
                 <span>Arrivo presto — evita la folla del pomeriggio</span>
                 <div class="slot-tip">💡 Michela: murales e librerie indie</div>
               </div>
@@ -4301,7 +4307,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
               <div class="slot-time">09:00</div>
               <div class="slot-icon">🏖️</div>
               <div class="slot-content">
-                <strong class="attr-link" onclick="openAttr('haeundae')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Haeundae Beach</strong>
+                <strong class="attr-link" data-attr="haeundae">Haeundae Beach</strong>
                 <span>Mattina presto — meno affollata, bagno e relax</span>
                 <div class="slot-tip">💡 La spiaggia più grande della Corea</div>
               </div>
@@ -4534,13 +4540,13 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
         <div class="section-title">Imperdibili</div>
         <div class="items-grid">
           <div class="item"><div class="item-icon">🌋</div><div class="item-text"><strong>Hallasan (1.950m)</strong><span>UNESCO · Il vulcano più alto della Corea, trekking 6–9 ore</span></div></div>
-          <div class="item"><div class="item-icon">🌅</div><div class="item-text"><strong class="attr-link" onclick="openAttr('seongsan')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Seongsan Ilchulbong</strong><span>UNESCO · Cratere vulcanico sul mare, alba spettacolare</span></div></div>
+          <div class="item"><div class="item-icon">🌅</div><div class="item-text"><strong class="attr-link" data-attr="seongsan">Seongsan Ilchulbong</strong><span>UNESCO · Cratere vulcanico sul mare, alba spettacolare</span></div></div>
           <div class="item"><div class="item-icon">🕳️</div><div class="item-text"><strong>Grotte di lava di Manjanggul</strong><span>UNESCO · 7km di tunnel di lava, uno dei più lunghi al mondo</span></div></div>
-          <div class="item"><div class="item-icon">🏖️</div><div class="item-text"><strong class="attr-link" onclick="openAttr('hyeopjae')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Spiaggia di Hyeopjae</strong><span>Sabbia bianca e acqua turchese — la più bella dell'isola</span></div></div>
+          <div class="item"><div class="item-icon">🏖️</div><div class="item-text"><strong class="attr-link" data-attr="hyeopjae">Spiaggia di Hyeopjae</strong><span>Sabbia bianca e acqua turchese — la più bella dell'isola</span></div></div>
           <div class="item"><div class="item-icon">🤿</div><div class="item-text"><strong>Haenyeo in azione</strong><span>Le leggendarie pescatrici in apnea — spettacolo live a Seongsan</span></div></div>
           <div class="item"><div class="item-icon">🛣️</div><div class="item-text"><strong>Jeju Olle Trail</strong><span>26 percorsi costieri a piedi che girano tutta l'isola</span></div></div>
           <div class="item"><div class="item-icon">🍊</div><div class="item-text"><strong>Piantagioni di mandarini</strong><span>Jeju è famosa per i mandarini — visita e raccolta in stagione</span></div></div>
-          <div class="item"><div class="item-icon">☕</div><div class="item-text"><strong class="attr-link" onclick="openAttr('osulloc')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Osulloc Tea Museum</strong><span>Museo del tè verde immerso tra piantagioni meravigliose</span></div></div>
+          <div class="item"><div class="item-icon">☕</div><div class="item-text"><strong class="attr-link" data-attr="osulloc">Osulloc Tea Museum</strong><span>Museo del tè verde immerso tra piantagioni meravigliose</span></div></div>
         </div>
       </div>
 
@@ -4661,7 +4667,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
               <div class="slot-time">15:30</div>
               <div class="slot-icon">🌿</div>
               <div class="slot-content">
-                <strong class="attr-link" onclick="openAttr('osulloc')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Osulloc Tea Museum</strong>
+                <strong class="attr-link" data-attr="osulloc">Osulloc Tea Museum</strong>
                 <span>Piantagioni di tè verde — tè e gelato matcha</span>
                 <div class="slot-tip">💡 Michela: i campi di tè più belli dell'isola</div>
               </div>
@@ -4771,7 +4777,7 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
               <div class="slot-time">15:00</div>
               <div class="slot-icon">🌊</div>
               <div class="slot-content">
-                <strong class="attr-link" onclick="openAttr('cheonjiyeon')" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px;">Cascate Cheonjiyeon</strong>
+                <strong class="attr-link" data-attr="cheonjiyeon">Cascate Cheonjiyeon</strong>
                 <span>Cascata nel centro di Seogwipo — 15 minuti a piedi dall'hotel</span>
                 
               </div>
@@ -5489,6 +5495,21 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <script>
+
+// ── ATTRACTION MODAL — event delegation (no inline onclick) ──────────────
+// Delegate all data-attr clicks at document level
+document.addEventListener('click', function(e) {
+  var el = e.target;
+  // Walk up to find data-attr (in case click is on child element)
+  while (el && el !== document) {
+    if (el.dataset && el.dataset.attr) {
+      e.stopPropagation();
+      openAttr(el.dataset.attr);
+      return;
+    }
+    el = el.parentElement;
+  }
+});
 
 // ── ATTRACTION MODAL ──────────────────────────────────────────────────
 var ATTR_DATA = {
