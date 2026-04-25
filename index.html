@@ -317,6 +317,102 @@
     transition: flex 0.3s;
   }
 
+
+  /* MAP */
+  .map-section {
+    margin-bottom: 2.5rem;
+  }
+  .map-title {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .map-title h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 0.3rem;
+  }
+  .map-title p { color: var(--muted); font-size: 0.85rem; font-style: italic; }
+  #korea-map {
+    width: 100%;
+    height: 480px;
+    border-radius: 1rem;
+    border: 2px solid var(--border);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+
+  /* GALLERY */
+  .gallery-wrap { overflow: hidden; }
+  .gallery-strip {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) var(--border);
+  }
+  .gallery-strip::-webkit-scrollbar { height: 4px; }
+  .gallery-strip::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+  .gallery-strip img {
+    height: 200px;
+    width: auto;
+    min-width: 280px;
+    max-width: 380px;
+    object-fit: cover;
+    border-radius: 0.6rem;
+    scroll-snap-align: start;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    flex-shrink: 0;
+  }
+  .gallery-strip img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+  }
+  .gallery-hint {
+    text-align: right;
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+    font-style: italic;
+  }
+
+  /* LIGHTBOX */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .lightbox.active { display: flex; }
+  .lightbox img {
+    max-width: 92vw;
+    max-height: 82vh;
+    border-radius: 0.5rem;
+    object-fit: contain;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 1.2rem; right: 1.5rem;
+    color: white; font-size: 2rem;
+    cursor: pointer; line-height: 1;
+    background: none; border: none;
+  }
+  .lightbox-caption {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.85rem;
+    margin-top: 0.8rem;
+    font-style: italic;
+  }
+
   /* MISSED SECTION */
   .missed-section {
     margin-top: 3rem;
@@ -656,6 +752,16 @@
 
 <div class="container">
 
+
+  <!-- MAPPA INTERATTIVA -->
+  <div class="map-section">
+    <div class="map-title">
+      <h2>🗺️ Il vostro itinerario sulla mappa</h2>
+      <p>Clicca sui segnaposto per dettagli su ogni tappa — in ordine di visita</p>
+    </div>
+    <div id="korea-map"></div>
+  </div>
+
   <!-- FAMIGLIA -->
   <div class="family-section">
     <div class="family-title">
@@ -796,6 +902,18 @@
 
       <div class="curiosity">Seul è stata quasi completamente distrutta durante la Guerra di Corea (1950–53) e ricostruita in pochi decenni. Oggi è una delle città con la connessione internet più veloce al mondo e il tasso di istruzione universitaria più alto del pianeta.</div>
 
+
+      <div class="gallery-wrap">
+        <div class="section-title">📷 Galleria fotografica — Seul</div>
+        <div class="gallery-strip">
+        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZOCRkndVoebLlrcTzojB8U_YmKQYStFUG6Fv_tjLtlfQ5cjIU0ybHP-NG3sXqg5i0_0VsvmUMohF-89A5zf1IGJHZCzPtKEdq5nRiobEXyeoCxJhhlE3-1A-7M4SdE2m3AOFzZJM6LOtr2BCJE=s1200-w1200-h800" alt="Gyeongbokgung Palace — Palazzo reale del 1395" title="Gyeongbokgung Palace — Palazzo reale del 1395" onclick="openLightbox(this)" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZPpj_KB1Q9Mkwddq7aTCRKC1vqB2i6TYBdg3ktzCjZ325txcHk8ttKpBuM3LfXcn0b4BzpDAmJ7ny7eT7kqk-0N-7cKMkEFVeZBRolFkIbeUUj8DeIh2JMQKlAKoKJ6HFlFMVbsgBiAPbhOEQ=s1200-w1200-h800" alt="Cambio della guardia a Gyeongbokgung" title="Cambio della guardia a Gyeongbokgung" onclick="openLightbox(this)" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZPttlwkB2ZGaD_WHS33J0SvrgUd2dhId_xmzEH2zGjb76eP--qJYQfOMvqV8QqHWchCIFr_c8Z3WV9MJr0JGYU9i1z81zN2syHr_eAZWg3ciZ4FFVcOB7og2N_WC7uqXUwDnTWxBVg-wX5d1A5j-kxz=s1200-w1200-h800" alt="Yongdusan Park — panorama su Seul" title="Yongdusan Park — panorama su Seul" onclick="openLightbox(this)" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZMf6KMQwr8PxxPUwluD0EPcM3kwmwMiKsSHPXJJWAzSQxIZfhPBwjLuTUsTU43k-ta1pldtTmU5ZnyLtzHE4FhlG0ff_Yce6BVD6d6RlsB-x6ZVTQyP7yLk_j6-EJruksWWamsItsygLp81suo=s1200-w1200-h800" alt="Seul dall'alto" title="Seul dall'alto" onclick="openLightbox(this)" loading="lazy">
+        </div>
+        <div class="gallery-hint">← scorri per vedere altre foto · clicca per ingrandire →</div>
+      </div>
+
       <div class="family-stop-section">
         <div class="family-stop-title">👨‍👩‍👧‍👧 Consigli personalizzati — Seul</div>
         <div class="persona-tip">
@@ -864,6 +982,18 @@
       </div>
 
       <div class="curiosity">A Jeonju viene prodotta la hanji, la carta tradizionale coreana ricavata dalla corteccia del gelso. È così resistente che viene usata per restaurare antichi manoscritti in tutto il mondo. Nelle case hanok, la hanji ricopre pavimenti, pareti e soffitti come isolante naturale.</div>
+
+
+      <div class="gallery-wrap">
+        <div class="section-title">📷 Galleria fotografica — Jeonju</div>
+        <div class="gallery-strip">
+        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZNKJfdV_YxVZe87HCuZcivBW144a2V5H4wq0YXEpw4hq31VmPxd5t0gRIzOltOOeI5J7lrpZCyTQXBUh8sCpIx9K9Qlr5b-MjC-Hd09b7XitzrEzLoyQtyXiFOFx2iwYyyivCl-yX6xX21zdwqhzq9NYw=s1200-w1200-h800" alt="Jeonju Hanok Village dall'alto" title="Jeonju Hanok Village dall'alto" onclick="openLightbox(this)" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZMnb-H02XyTSVAUtmOM9ez0EtsPn7lFd6ZV3PysHm4Egulv4IzTMToMg_DDRe7wqpP0aqrxG8Am8gfrfaY4lTxoc-vTQmzAx0g9sgPv1qgRCtkWBIV7Rfd2FMIkPG_tuOIH_aTMESwekF7CCg=s1200-w1200-h800" alt="Vicoli del Hanok Village" title="Vicoli del Hanok Village" onclick="openLightbox(this)" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZOjhKWDgG2oLNB0XpLB7lCOgh5XEM9cH3mt3pum5MAtN6vifKJWP2iECsGGeF0a-w-KCf18nPItaRvs15UOcFi5wrWsV3RmYX8yiZP-eoUMPuvNKrEczvLMXzmhUM--AyCMMVYxj9WMWbpHVw=s1200-w1200-h800" alt="Tetti tradizionali hanok a Jeonju" title="Tetti tradizionali hanok a Jeonju" onclick="openLightbox(this)" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZNwxxHFVmUUREAQsSQPwgpV6h83-ao37G9JbiPerTVEMF9Yow2JsB7DQUUPeUCiOa3k0Aml0Pm34gtDOK2rvBm4-7LIgMzR3TxNdmbhf_413Ei7W4MXr569N8msVPsBWHQIvrs8QLzj5AuACA=s1200-w1200-h800" alt="Strada interna al villaggio" title="Strada interna al villaggio" onclick="openLightbox(this)" loading="lazy">
+        </div>
+        <div class="gallery-hint">← scorri per vedere altre foto · clicca per ingrandire →</div>
+      </div>
 
       <div class="family-stop-section">
         <div class="family-stop-title">👨‍👩‍👧‍👧 Consigli personalizzati — Jeonju</div>
@@ -935,6 +1065,18 @@
       </div>
 
       <div class="curiosity">In una tomba Silla di Gyeongju è stato trovato un vetro romano risalente al V secolo. Conferma che il regno Silla era connesso alla Via della Seta e commerciava con il Mediterraneo. Alcune corone d'oro Silla somigliano stranamente agli ornamenti degli Sciti del Mar Nero.</div>
+
+
+      <div class="gallery-wrap">
+        <div class="section-title">📷 Galleria fotografica — Gyeongju</div>
+        <div class="gallery-strip">
+        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZOWGjRlhXv0pIOdHsobRWFreMyKEU4wuWTaLdv_UzNP2xoJygEVok0giQQfBmJc4guXaA9OZ7nAJ32piM96n7hMUBGTCyR4vKSSV2hWCWybWVCqqcmLVbDmHOEQo4o6H0tBiD4iXdRT1Qax4ZY=s1200-w1200-h800" alt="Gyeongju — paesaggio storico" title="Gyeongju — paesaggio storico" onclick="openLightbox(this)" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZPxB76XpcX3bmubKoqeQE2MxWlo-QvN4TkSLwUifrcTQPoDQ_enotqJeInqfwv6j2OCOl_07F-6tLHWB14k9aUa3T-z9MK_-wwans0zR4mjO4Nfy9BFXddDINqHY6e3oxIJP2ooGSKXVTss1g=s1200-w1200-h800" alt="Tempio Bulguksa — capolavoro UNESCO" title="Tempio Bulguksa — capolavoro UNESCO" onclick="openLightbox(this)" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZMRDJ_Ye74hvygOI0cjIr1HIQh8OEtxng31S9CgV7l9I9zrEx1c2L--AKOBHSQJfCYvaYrhnZBEFaGR14C2A-XP9qpHZ9PIAm82yu1PZ_n1fbCr6YZ0qlXwsgq-CLtU1kyW0Oq21PZpzIOnug=s1200-w1200-h800" alt="Tumuli reali Silla a Gyeongju" title="Tumuli reali Silla a Gyeongju" onclick="openLightbox(this)" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZOJ_qlVycz_c9EDJAtbOk5UbpQ-NkAdnPixe9LD1vx2ENcyBnUj-3rn8BeiR2LLcqiZLpRZtaMZgq2f_DiUY3PmfBbFtQ8vz59ZY-Ygut2uTWC6KbmBBkbGFaujguunCFOOH-4Wmr6xtk53Ug=s1200-w1200-h800" alt="Architettura Silla — vista sul parco" title="Architettura Silla — vista sul parco" onclick="openLightbox(this)" loading="lazy">
+        </div>
+        <div class="gallery-hint">← scorri per vedere altre foto · clicca per ingrandire →</div>
+      </div>
 
       <div class="family-stop-section">
         <div class="family-stop-title">👨‍👩‍👧‍👧 Consigli personalizzati — Gyeongju</div>
@@ -1009,6 +1151,18 @@
 
       <div class="curiosity">Durante la Guerra di Corea, Busan fu l'unica città mai conquistata dai nordcoreani — rimase l'ultimo bastione del Sud. Migliaia di rifugiati vi arrivarono da tutto il paese, creando quartieri improvvisati sulle colline come Gamcheon, oggi tra le mete più visitate.</div>
 
+
+      <div class="gallery-wrap">
+        <div class="section-title">📷 Galleria fotografica — Busan</div>
+        <div class="gallery-strip">
+        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZOCrcOZ4yFGhGrJTgeeH3YQ_Kwhy0Pk8VRIGF7iSWibjK4QfkPKqowdFPvjGfiODBvkn-MPw2M6p0BjXcVYDzbpDFVTvsZbkJX9WLAy84uyh0WaUGJ-9fjW7lh2pF7Cy1E10rT1-2p8QcQ2uJU=s1200-w1200-h800" alt="Seoraksan — montagne di granito" title="Seoraksan — montagne di granito" onclick="openLightbox(this)" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZPDUGov8ymKgxxGZwaCD6SZaRQZtZwpYMePPAnELGP7Oy4EdZOEQFeNetXm1P3A23jRTWHhzy0gqmrjS_tuLRrRyRF0BwSM3lrao0q1CKIU6YjNsj62DPYOp0aVfCvA9JWnakscNBURMkV6fQ=s1200-w1200-h800" alt="Gamcheon Culture Village — il Santorini coreano" title="Gamcheon Culture Village — il Santorini coreano" onclick="openLightbox(this)" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZNKJfdV_YxVZe87HCuZcivBW144a2V5H4wq0YXEpw4hq31VmPxd5t0gRIzOltOOeI5J7lrpZCyTQXBUh8sCpIx9K9Qlr5b-MjC-Hd09b7XitzrEzLoyQtyXiFOFx2iwYyyivCl-yX6xX21zdwqhzq9NYw=s1200-w1200-h800" alt="Busan — panorama sulla città" title="Busan — panorama sulla città" onclick="openLightbox(this)" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZMKZNVRlgthNrrQs-v3Bi8ehZ-JfsnrJTlFZTgzSpdojdmqRzBqzJmHxkXwsP97QZ9QfmdKFlt4vu6ErFL8FGNHFm6vtow2EvD_iZs74nv3-fsLKnkuqqllw63v3sL36k61Dkc478Ba77uXAg=s1200-w1200-h800" alt="Paesaggio costiero — Corea del Sud" title="Paesaggio costiero — Corea del Sud" onclick="openLightbox(this)" loading="lazy">
+        </div>
+        <div class="gallery-hint">← scorri per vedere altre foto · clicca per ingrandire →</div>
+      </div>
+
       <div class="family-stop-section">
         <div class="family-stop-title">👨‍👩‍👧‍👧 Consigli personalizzati — Busan</div>
         <div class="persona-tip">
@@ -1081,6 +1235,18 @@
       </div>
 
       <div class="curiosity">Le haenyeo — le pescatrici in apnea di Jeju — sono patrimonio UNESCO dal 2016. Immerse senza bombole fino a 20 metri per raccogliere abaloni, polpi e ricci di mare, possono trattenere il respiro per 2–3 minuti. Tradizionalmente erano le donne a mantenere la famiglia: a Jeju si è sviluppata per secoli una società a guida femminile unica in Asia.</div>
+
+
+      <div class="gallery-wrap">
+        <div class="section-title">📷 Galleria fotografica — Jeju</div>
+        <div class="gallery-strip">
+        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZNQbSvBeVVuQLwqVKD-mHUl3mCCLi5c7D_mBxB7PWErlngPQXHzzl7J2iHlBsFs53w15Kn4KkgXarze-cU4LNQ2xkDesAAoV6o6yZtqrChLUzYshoEU61AAjhcffu3-RQqrD5sbAyqUR5n59w=s1200-w1200-h800" alt="Jeju — paesaggio vulcanico" title="Jeju — paesaggio vulcanico" onclick="openLightbox(this)" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZNHCItvl6q0-L1Dng1QRVlfk_nGyTpHacfu-tCIafXdsi7Anebc1QqcyW4cWOKas9OJ244Ipgw4YN7vAL9b__cEtbNUpzCTBIrEiUl7ALg5AfQTb729NH5Ul6aOQsj6OUtiHXfwbw3qOPG=s1200-w1200-h800" alt="Costa di Jeju — scogliere vulcaniche" title="Costa di Jeju — scogliere vulcaniche" onclick="openLightbox(this)" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZOCRkndVoebLlrcTzojB8U_YmKQYStFUG6Fv_tjLtlfQ5cjIU0ybHP-NG3sXqg5i0_0VsvmUMohF-89A5zf1IGJHZCzPtKEdq5nRiobEXyeoCxJhhlE3-1A-7M4SdE2m3AOFzZJM6LOtr2BCJE=s1200-w1200-h800" alt="Seongsan Ilchulbong — cratere UNESCO" title="Seongsan Ilchulbong — cratere UNESCO" onclick="openLightbox(this)" loading="lazy">
+        <img src="https://lh3.googleusercontent.com/place-photos/AJRVUZNV_nedzCIGkUkNu5Paw9wsg15Sykvb5iGzXmhr3zqHIPyTA-VuM9Zu1JlbRk6Q8aXjNpt_T2Lccx8X2cu42uWTG_Xat_J0Qk_fh46oiK4B6PeLwM31FuA6W6MRvxaxltEIIc0tg0B4bNyw=s1200-w1200-h800" alt="Natura di Jeju — verde vulcanico" title="Natura di Jeju — verde vulcanico" onclick="openLightbox(this)" loading="lazy">
+        </div>
+        <div class="gallery-hint">← scorri per vedere altre foto · clicca per ingrandire →</div>
+      </div>
 
       <div class="family-stop-section">
         <div class="family-stop-title">👨‍👩‍👧‍👧 Consigli personalizzati — Jeju</div>
@@ -1272,26 +1438,149 @@
   <div class="footer-note">Buon viaggio · 좋은 여행 되세요 · Joeun yeohaeng doeseyo</div>
 </div>
 
+
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+
+<!-- Lightbox overlay -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
 <script>
-  function toggleStop(header) {
-    const stop = header.parentElement;
-    stop.classList.toggle('open');
-  }
+// ── Lightbox ──────────────────────────────────────────────────────
+function openLightbox(img) {
+  document.getElementById('lightbox-img').src = img.src;
+  document.getElementById('lightbox-caption').textContent = img.title;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeLightbox(); });
 
-  function showAll() {
-    document.querySelectorAll('.stop').forEach(s => { s.style.display = ''; s.classList.add('open'); });
-    document.querySelectorAll('.day-chip').forEach(c => c.classList.remove('active'));
-    document.querySelector('.day-chip').classList.add('active');
-  }
+// ── Existing nav functions ────────────────────────────────────────
+function toggleStop(header) {
+  const stop = header.parentElement;
+  stop.classList.toggle('open');
+}
+function showAll() {
+  document.querySelectorAll('.stop').forEach(s => { s.style.display = ''; s.classList.add('open'); });
+  document.querySelectorAll('.day-chip').forEach(c => c.classList.remove('active'));
+  document.querySelector('.day-chip').classList.add('active');
+}
+function filterStop(idx) {
+  document.querySelectorAll('.stop').forEach((s, i) => {
+    s.style.display = i === idx ? '' : 'none';
+    if (i === idx) s.classList.add('open');
+  });
+  document.querySelectorAll('.day-chip').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.day-chip')[idx + 1].classList.add('active');
+}
 
-  function filterStop(idx) {
-    document.querySelectorAll('.stop').forEach((s, i) => {
-      s.style.display = i === idx ? '' : 'none';
-      if (i === idx) s.classList.add('open');
-    });
-    document.querySelectorAll('.day-chip').forEach(c => c.classList.remove('active'));
-    document.querySelectorAll('.day-chip')[idx + 1].classList.add('active');
+// ── Map ───────────────────────────────────────────────────────────
+const map = L.map('korea-map', { zoomControl: true, scrollWheelZoom: false }).setView([36.5, 127.8], 7);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap contributors',
+  maxZoom: 18
+}).addTo(map);
+
+const stops = [
+  {
+    num: '①', name: 'Seoul', kr: '서울',
+    lat: 37.5665, lng: 126.978,
+    days: 'Giorni 1–5',
+    color: '#1a3a5c',
+    highlights: ['Gyeongbokgung', 'Bukchon Hanok Village', 'Hongdae', 'Mercato Gwangjang', 'N Seoul Tower'],
+    family: ['Stefano → Mercato Gwangjang, cibo autentico', 'Michela → Librerie manhwa Hongdae', 'Elisabetta → HYBE Museum BTS', 'Alessandra → Kakao Friends Store']
+  },
+  {
+    num: '②', name: 'Jeonju', kr: '전주',
+    lat: 35.8175, lng: 127.152,
+    days: 'Giorni 6–7',
+    color: '#c9a84c',
+    highlights: ['Hanok Village', 'Bibimbap autentico', 'Noleggio Hanbok', 'Makgeolli', 'Cattedrale Jeondong'],
+    family: ['Stefano → Colazione in hanok, mercato notturno', 'Michela → Pungnam Festival estivo', 'Elisabetta → Hanbok più economico e autentico', 'Alessandra → Laboratorio hanji per bambini']
+  },
+  {
+    num: '③', name: 'Gyeongju', kr: '경주',
+    lat: 35.8562, lng: 129.224,
+    days: 'Giorni 8–10',
+    color: '#8e44ad',
+    highlights: ['Bulguksa UNESCO', 'Seokguram UNESCO', 'Tumuli reali Silla', 'Lago Anapji', 'Cheomseongdae'],
+    family: ['Stefano → Museo Nazionale, corona d'oro Silla', 'Michela → Villaggio Yangdong autentico', 'Elisabetta → Location drama Hwarang (Netflix)', 'Alessandra → Caccia ai draghi nei templi']
+  },
+  {
+    num: '④', name: 'Busan', kr: '부산',
+    lat: 35.1796, lng: 129.0756,
+    days: 'Giorni 11–14',
+    color: '#c0392b',
+    highlights: ['Gamcheon Culture Village', 'Mercato Jagalchi', 'Haeundae Beach', 'Haedong Yonggungsa', 'BIFF Square'],
+    family: ['Stefano → Pesce vivo scelto dalla vasca', 'Michela → Murales Gamcheon + librerie Seomyeon', 'Elisabetta → Negozi K-pop Nampo-dong più economici', 'Alessandra → Acquario SEA LIFE Busan']
+  },
+  {
+    num: '⑤', name: 'Isola di Jeju', kr: '제주도',
+    lat: 33.489, lng: 126.498,
+    days: 'Giorni 15–19',
+    color: '#27ae60',
+    highlights: ['Hallasan UNESCO', 'Seongsan Ilchulbong UNESCO', 'Grotte lava UNESCO', 'Haenyeo', 'Spiaggia Hyeopjae'],
+    family: ['Stefano → Maiale nero heukdwaeji, villaggi pescatori', 'Michela → Haenyeo Festival luglio/agosto', 'Elisabetta → Jeju Trick Art Museum, location MV IU', 'Alessandra → Hello Kitty Island, grotte di lava']
   }
+];
+
+// Custom icon factory
+function makeIcon(stop) {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="36" height="46" viewBox="0 0 36 46">
+    <path d="M18 0C8.06 0 0 8.06 0 18c0 13.5 18 28 18 28s18-14.5 18-28C36 8.06 27.94 0 18 0z" fill="${stop.color}"/>
+    <text x="18" y="23" text-anchor="middle" font-size="13" font-family="serif" fill="white" font-weight="bold">${stop.num}</text>
+  </svg>`;
+  return L.divIcon({
+    html: svg,
+    className: '',
+    iconSize: [36, 46],
+    iconAnchor: [18, 46],
+    popupAnchor: [0, -48]
+  });
+}
+
+// Route line
+const routeCoords = stops.map(s => [s.lat, s.lng]);
+// Dashed animated route
+L.polyline(routeCoords, {
+  color: '#c9a84c',
+  weight: 2.5,
+  opacity: 0.7,
+  dashArray: '8, 6'
+}).addTo(map);
+
+// Markers
+stops.forEach((stop, i) => {
+  const familyRows = stop.family.map(f => `<li style="font-size:0.78rem;color:#555;margin-bottom:3px;">👤 ${f}</li>`).join('');
+  const hlRows = stop.highlights.map(h => `<li style="font-size:0.8rem;margin-bottom:2px;">• ${h}</li>`).join('');
+  const popupContent = `
+    <div style="font-family:sans-serif;min-width:220px;max-width:270px;">
+      <div style="background:${stop.color};color:white;padding:8px 12px;border-radius:6px 6px 0 0;margin:-12px -12px 10px -12px;">
+        <strong style="font-size:1.05rem;">${stop.num} ${stop.name}</strong>
+        <div style="font-size:0.75rem;opacity:0.8;">${stop.kr} · ${stop.days}</div>
+      </div>
+      <ul style="padding-left:0;list-style:none;margin-bottom:8px;">${hlRows}</ul>
+      <div style="border-top:1px solid #eee;padding-top:7px;">
+        <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:.1em;color:#999;margin-bottom:4px;">Per la famiglia</div>
+        <ul style="padding-left:0;list-style:none;">${familyRows}</ul>
+      </div>
+    </div>
+  `;
+  L.marker([stop.lat, stop.lng], { icon: makeIcon(stop) })
+    .addTo(map)
+    .bindPopup(popupContent, { maxWidth: 280 });
+});
 </script>
+
 </body>
 </html>
