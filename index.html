@@ -130,6 +130,9 @@
     gap: 1.25rem;
     cursor: pointer;
     user-select: none;
+    min-height: 44px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .stop-num {
@@ -679,6 +682,9 @@
     transition: all 0.2s;
     background: var(--cream);
     position: relative;
+    min-height: 44px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
   .itl-day-pill:hover { border-color: var(--gold); background: #fffbf0; transform: translateY(-1px); }
   .itl-day-pill.open { border-color: var(--gold); background: #fffbf0; }
@@ -810,16 +816,21 @@
   box-shadow: 0 4px 20px rgba(0,0,0,0.4);
   display: flex; align-items: center; justify-content: center;
   transition: background 0.2s, transform 0.25s;
+  touch-action: manipulation;
 }
 #nav-toggle:hover { background: var(--gold); color: var(--ink); }
 #nav-toggle.open { background: #7b0d1e; transform: translateY(-50%) rotate(45deg); }
+@media (max-width: 600px) {
+  #nav-toggle.open { transform: rotate(45deg); }
+}
 
 #nav-panel {
   position: fixed; right: -310px; top: 0; height: 100vh; width: 290px;
   background: #0d1e2e; z-index: 9999;
   display: flex; flex-direction: column;
   box-shadow: -8px 0 40px rgba(0,0,0,0.5);
-  transition: right 0.3s cubic-bezier(0.4,0,0.2,1);
+  transition: right 0.3s cubic-bezier(0.4,0,0.2,1), bottom 0.3s cubic-bezier(0.4,0,0.2,1);
+  overflow: hidden;
 }
 #nav-panel.open { right: 0; }
 
@@ -1228,6 +1239,227 @@
     margin-top: 2rem;
     font-style: italic;
   }
+
+/* ═══════════════════════════════════════════════
+   MOBILE OPTIMIZATION — comprehensive
+   Target: 360px–430px phones (iPhone SE → 14 Pro Max)
+═══════════════════════════════════════════════ */
+
+/* ── Base touch targets ── */
+button, [onclick] { -webkit-tap-highlight-color: transparent; }
+
+/* ── Hero ── */
+@media (max-width: 600px) {
+  .hero { padding: 2rem 1rem 1.75rem; }
+  .hero h1 { font-size: 1.6rem; }
+  .hero-sub { font-size: 0.82rem; }
+  .days-strip { gap: 0.35rem; margin-top: 1.2rem; }
+  .day-chip { font-size: 0.68rem; padding: 0.3rem 0.7rem; }
+}
+
+/* ── Container padding ── */
+@media (max-width: 600px) {
+  .container { padding: 1.5rem 0.85rem 3rem; }
+}
+
+/* ── Map ── */
+@media (max-width: 600px) {
+  #korea-map { height: 320px; }
+  .map-title h2 { font-size: 1.1rem; }
+  .map-title p { font-size: 0.78rem; }
+}
+
+/* ── Family grid ── */
+@media (max-width: 600px) {
+  .family-grid { grid-template-columns: 1fr; }
+  .family-title h2 { font-size: 1.1rem; }
+}
+
+/* ── Timeline strip — horizontal scroll on mobile ── */
+@media (max-width: 600px) {
+  .itl-strip {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 0.6rem;
+    flex-wrap: nowrap;
+  }
+  .itl-seg {
+    min-width: 68px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    padding: 0.75rem 0.35rem 0.65rem;
+  }
+  .itl-seg-num { font-size: 0.95rem; }
+  .itl-seg-name { font-size: 0.56rem; }
+  .itl-seg-days { font-size: 0.5rem; }
+  .itl-header h2 { font-size: 1.1rem; }
+  .itl-header p { font-size: 0.78rem; }
+  .itl-days-grid { grid-template-columns: 1fr; gap: 0.5rem; padding: 0.75rem; }
+  .itl-day-pill { padding: 0.55rem 0.75rem; }
+  .itl-day-pill-title { font-size: 0.8rem; }
+  .itl-stop-banner h3 { font-size: 1.1rem; }
+  .itl-stop-banner-sub { font-size: 0.75rem; }
+  .itl-slots { padding: 0.6rem 0.75rem; gap: 0.4rem; }
+  .itl-slot { padding: 0.45rem 0.55rem; gap: 0.5rem; }
+  .itl-slot-time { font-size: 0.63rem; min-width: 38px; }
+  .itl-slot-body strong { font-size: 0.78rem; }
+  .itl-slot-body span { font-size: 0.72rem; }
+  .itl-connector { padding: 0.45rem 0.75rem; }
+  .itl-connector-body strong { font-size: 0.76rem; }
+  .itl-connector-body span { font-size: 0.7rem; }
+}
+
+/* ── Stop cards ── */
+@media (max-width: 600px) {
+  .stop { margin-bottom: 1.5rem; border-radius: 0.75rem; }
+  .stop-header { padding: 1rem 1rem 0.85rem; gap: 0.85rem; }
+  .stop-num { font-size: 1.8rem; min-width: 1.8rem; }
+  .stop-name { font-size: 1.25rem; }
+  .stop-body { padding: 1.1rem; gap: 1.1rem; }
+  .section-title { font-size: 0.6rem; }
+}
+
+/* ── Items grid ── */
+@media (max-width: 600px) {
+  .items-grid { grid-template-columns: 1fr; }
+  .item { padding: 0.55rem 0.7rem; }
+  .item-text strong { font-size: 0.82rem; }
+  .item-text span { font-size: 0.75rem; }
+}
+
+/* ── Why box ── */
+@media (max-width: 600px) {
+  .why-box { font-size: 0.88rem; padding: 0.85rem 1rem; }
+}
+
+/* ── Daytrips ── */
+@media (max-width: 600px) {
+  .daytrip { font-size: 0.82rem; padding: 0.65rem 0.85rem; }
+}
+
+/* ── Daily plan ── */
+@media (max-width: 600px) {
+  .day-block-head { padding: 0.5rem 0.85rem; font-size: 0.74rem; }
+  .day-slots { padding: 0.6rem 0.75rem; gap: 0.4rem; }
+  .slot { gap: 0.5rem; font-size: 0.8rem; }
+  .slot-time { font-size: 0.65rem; min-width: 42px; }
+  .slot-content strong { font-size: 0.79rem; }
+  .slot-content span { font-size: 0.73rem; }
+  .slot-tip { font-size: 0.72rem; }
+  .day-note { font-size: 0.72rem; padding: 0.4rem 0.85rem; }
+}
+
+/* ── Hotel section ── */
+@media (max-width: 600px) {
+  .hotel-section { padding: 0.85rem; }
+  .hotel-zone-body strong { font-size: 0.82rem; }
+  .hotel-zone-body p { font-size: 0.77rem; }
+  .htag { font-size: 0.65rem; }
+}
+
+/* ── Transport card ── */
+@media (max-width: 600px) {
+  .transport-head { padding: 0.7rem 0.9rem; }
+  .transport-head strong { font-size: 0.85rem; }
+  .transport-rows { padding: 0.7rem 0.9rem; }
+  .t-row-body strong { font-size: 0.77rem; }
+  .t-row-body span { font-size: 0.72rem; }
+  .transport-tip { padding: 0.55rem 0.9rem; font-size: 0.72rem; }
+}
+
+/* ── Gallery ── */
+@media (max-width: 600px) {
+  .gallery-strip img { height: 160px; min-width: 220px; }
+  .gallery-hint { font-size: 0.65rem; }
+}
+
+/* ── Pop tags ── */
+@media (max-width: 600px) {
+  .pop-tag { font-size: 0.72rem; padding: 0.28rem 0.6rem; }
+}
+
+/* ── Curiosity ── */
+@media (max-width: 600px) {
+  .curiosity { font-size: 0.81rem; padding: 0.8rem 0.9rem 0.8rem 1.8rem; }
+}
+
+/* ── Family stop section ── */
+@media (max-width: 600px) {
+  .family-stop-section { padding: 0.85rem; }
+  .ptip-text { font-size: 0.79rem; }
+  .family-stop-title { font-size: 0.6rem; }
+}
+
+/* ── Missed section ── */
+@media (max-width: 600px) {
+  .missed-grid { grid-template-columns: 1fr; }
+  .missed-name { font-size: 0.92rem; }
+  .missed-desc { font-size: 0.8rem; }
+  .missed-why { font-size: 0.75rem; }
+  .missed-header h2 { font-size: 1.2rem; }
+  .missed-legend { gap: 0.85rem; }
+  .legend-item { font-size: 0.73rem; }
+}
+
+/* ── Persona cards ── */
+@media (max-width: 600px) {
+  .persona-wish { font-size: 0.79rem; }
+}
+
+/* ── NAV WIDGET — mobile full optimization ── */
+@media (max-width: 600px) {
+  /* Toggle — bottom right, always reachable with thumb */
+  #nav-toggle {
+    top: auto;
+    bottom: 1.2rem;
+    right: 1rem;
+    transform: none;
+    width: 52px;
+    height: 52px;
+    font-size: 1.3rem;
+  }
+  #nav-toggle.open {
+    transform: rotate(45deg);
+  }
+
+  /* Panel — full width on small screens */
+  #nav-panel {
+    width: 100%;
+    right: -100%;
+    top: auto;
+    bottom: 0;
+    height: 75vh;
+    border-radius: 1.2rem 1.2rem 0 0;
+    box-shadow: 0 -8px 40px rgba(0,0,0,0.5);
+  }
+  #nav-panel.open { right: 0; }
+
+  .np-head { padding: 0.8rem 1rem 0.65rem; }
+  .np-head h3 { font-size: 0.9rem; }
+
+  .nps-head { padding: 0.55rem 0.8rem; }
+  .nps-name { font-size: 0.82rem; }
+  .nps-link { font-size: 0.74rem; padding: 0.3rem 0.6rem; }
+  .nps-day { font-size: 0.7rem; padding: 0.25rem 0.5rem; }
+  .np-qbtn { font-size: 0.68rem; padding: 0.24rem 0.58rem; }
+
+  /* Breadcrumb — above the toggle */
+  #nav-crumb {
+    bottom: 5rem;
+    right: 0.75rem;
+    font-size: 0.62rem;
+  }
+}
+
+/* ── Very small phones (SE, 375px) ── */
+@media (max-width: 390px) {
+  .hero h1 { font-size: 1.4rem; }
+  .day-chip { font-size: 0.62rem; padding: 0.25rem 0.55rem; }
+  .stop-name { font-size: 1.1rem; }
+  .itl-seg { min-width: 60px; }
+}
+
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 </head>
@@ -1265,7 +1497,7 @@
   <div class="itl-section" id="sec-timeline">
     <div class="itl-header">
       <h2>📅 Timeline interattiva del viaggio</h2>
-      <p>Clicca su una tappa per espanderla · poi clicca sul giorno per vedere gli orari nel dettaglio</p>
+      <p>Tocca una tappa · poi il giorno · per vedere gli orari nel dettaglio</p>
     </div>
 
     <div class="itl-strip">
@@ -5072,5 +5304,25 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </div>
 <div id="nav-crumb"></div>
+
+// Touch swipe to close nav panel on mobile
+(function(){
+  var panel = document.getElementById('nav-panel');
+  if (!panel) return;
+  var startY = 0, startX = 0;
+  panel.addEventListener('touchstart', function(e){
+    startY = e.touches[0].clientY;
+    startX = e.touches[0].clientX;
+  }, { passive: true });
+  panel.addEventListener('touchend', function(e){
+    var dy = e.changedTouches[0].clientY - startY;
+    var dx = e.changedTouches[0].clientX - startX;
+    // Swipe down on bottom sheet = close
+    if (dy > 60 && Math.abs(dx) < 40) NW.close();
+    // Swipe right on side panel = close (desktop)
+    if (dx > 60 && Math.abs(dy) < 40 && window.innerWidth > 600) NW.close();
+  }, { passive: true });
+})();
+
 </body>
 </html>
