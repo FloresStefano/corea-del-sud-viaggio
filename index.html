@@ -732,6 +732,7 @@
     font-style: italic;
   }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 </head>
 <body>
 
@@ -1439,19 +1440,11 @@
 </div>
 
 
-<!-- Leaflet -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-
-<!-- Lightbox overlay -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-  <img id="lightbox-img" src="" alt="">
-  <div class="lightbox-caption" id="lightbox-caption"></div>
-</div>
-
 <script>
-// ── Lightbox ──────────────────────────────────────────────────────
+// Lightbox
 function openLightbox(img) {
   document.getElementById('lightbox-img').src = img.src;
   document.getElementById('lightbox-caption').textContent = img.title;
@@ -1462,125 +1455,99 @@ function closeLightbox() {
   document.getElementById('lightbox').classList.remove('active');
   document.body.style.overflow = '';
 }
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeLightbox(); });
+document.addEventListener('keydown', function(e) { if(e.key==='Escape') closeLightbox(); });
 
-// ── Existing nav functions ────────────────────────────────────────
+// Navigation
 function toggleStop(header) {
-  const stop = header.parentElement;
-  stop.classList.toggle('open');
+  header.parentElement.classList.toggle('open');
 }
 function showAll() {
-  document.querySelectorAll('.stop').forEach(s => { s.style.display = ''; s.classList.add('open'); });
-  document.querySelectorAll('.day-chip').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.stop').forEach(function(s){ s.style.display=''; s.classList.add('open'); });
+  document.querySelectorAll('.day-chip').forEach(function(c){ c.classList.remove('active'); });
   document.querySelector('.day-chip').classList.add('active');
 }
 function filterStop(idx) {
-  document.querySelectorAll('.stop').forEach((s, i) => {
-    s.style.display = i === idx ? '' : 'none';
-    if (i === idx) s.classList.add('open');
+  document.querySelectorAll('.stop').forEach(function(s,i){
+    s.style.display = i===idx ? '' : 'none';
+    if(i===idx) s.classList.add('open');
   });
-  document.querySelectorAll('.day-chip').forEach(c => c.classList.remove('active'));
-  document.querySelectorAll('.day-chip')[idx + 1].classList.add('active');
+  document.querySelectorAll('.day-chip').forEach(function(c){ c.classList.remove('active'); });
+  document.querySelectorAll('.day-chip')[idx+1].classList.add('active');
 }
 
-// ── Map ───────────────────────────────────────────────────────────
-const map = L.map('korea-map', { zoomControl: true, scrollWheelZoom: false }).setView([36.5, 127.8], 7);
+// Map — wrapped in DOMContentLoaded so div exists
+document.addEventListener('DOMContentLoaded', function() {
+  var map = L.map('korea-map', { zoomControl: true, scrollWheelZoom: false }).setView([36.2, 127.8], 7);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '© OpenStreetMap contributors',
-  maxZoom: 18
-}).addTo(map);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors',
+    maxZoom: 18
+  }).addTo(map);
 
-const stops = [
-  {
-    num: '①', name: 'Seoul', kr: '서울',
-    lat: 37.5665, lng: 126.978,
-    days: 'Giorni 1–5',
-    color: '#1a3a5c',
-    highlights: ['Gyeongbokgung', 'Bukchon Hanok Village', 'Hongdae', 'Mercato Gwangjang', 'N Seoul Tower'],
-    family: ['Stefano → Mercato Gwangjang, cibo autentico', 'Michela → Librerie manhwa Hongdae', 'Elisabetta → HYBE Museum BTS', 'Alessandra → Kakao Friends Store']
-  },
-  {
-    num: '②', name: 'Jeonju', kr: '전주',
-    lat: 35.8175, lng: 127.152,
-    days: 'Giorni 6–7',
-    color: '#c9a84c',
-    highlights: ['Hanok Village', 'Bibimbap autentico', 'Noleggio Hanbok', 'Makgeolli', 'Cattedrale Jeondong'],
-    family: ['Stefano → Colazione in hanok, mercato notturno', 'Michela → Pungnam Festival estivo', 'Elisabetta → Hanbok più economico e autentico', 'Alessandra → Laboratorio hanji per bambini']
-  },
-  {
-    num: '③', name: 'Gyeongju', kr: '경주',
-    lat: 35.8562, lng: 129.224,
-    days: 'Giorni 8–10',
-    color: '#8e44ad',
-    highlights: ['Bulguksa UNESCO', 'Seokguram UNESCO', 'Tumuli reali Silla', 'Lago Anapji', 'Cheomseongdae'],
-    family: ['Stefano → Museo Nazionale, corona d'oro Silla', 'Michela → Villaggio Yangdong autentico', 'Elisabetta → Location drama Hwarang (Netflix)', 'Alessandra → Caccia ai draghi nei templi']
-  },
-  {
-    num: '④', name: 'Busan', kr: '부산',
-    lat: 35.1796, lng: 129.0756,
-    days: 'Giorni 11–14',
-    color: '#c0392b',
-    highlights: ['Gamcheon Culture Village', 'Mercato Jagalchi', 'Haeundae Beach', 'Haedong Yonggungsa', 'BIFF Square'],
-    family: ['Stefano → Pesce vivo scelto dalla vasca', 'Michela → Murales Gamcheon + librerie Seomyeon', 'Elisabetta → Negozi K-pop Nampo-dong più economici', 'Alessandra → Acquario SEA LIFE Busan']
-  },
-  {
-    num: '⑤', name: 'Isola di Jeju', kr: '제주도',
-    lat: 33.489, lng: 126.498,
-    days: 'Giorni 15–19',
-    color: '#27ae60',
-    highlights: ['Hallasan UNESCO', 'Seongsan Ilchulbong UNESCO', 'Grotte lava UNESCO', 'Haenyeo', 'Spiaggia Hyeopjae'],
-    family: ['Stefano → Maiale nero heukdwaeji, villaggi pescatori', 'Michela → Haenyeo Festival luglio/agosto', 'Elisabetta → Jeju Trick Art Museum, location MV IU', 'Alessandra → Hello Kitty Island, grotte di lava']
-  }
-];
+  var stops = [
+    {
+      num: '1', label: '①', name: 'Seoul', kr: '서울',
+      lat: 37.5665, lng: 126.978, days: 'Giorni 1-5', color: '#1a3a5c',
+      highlights: ['Gyeongbokgung', 'Bukchon Hanok Village', 'Hongdae', 'Mercato Gwangjang', 'N Seoul Tower'],
+      family: ['Stefano: Mercato Gwangjang, cibo autentico', 'Michela: Librerie manhwa Hongdae', 'Elisabetta: HYBE Museum BTS', 'Alessandra: Kakao Friends Store']
+    },
+    {
+      num: '2', label: '②', name: 'Jeonju', kr: '전주',
+      lat: 35.8175, lng: 127.152, days: 'Giorni 6-7', color: '#b8870a',
+      highlights: ['Hanok Village', 'Bibimbap autentico', 'Noleggio Hanbok', 'Makgeolli'],
+      family: ['Stefano: Colazione in hanok, mercato notturno', 'Michela: Pungnam Festival estivo', 'Elisabetta: Hanbok piu economico e autentico', 'Alessandra: Laboratorio hanji per bambini']
+    },
+    {
+      num: '3', label: '③', name: 'Gyeongju', kr: '경주',
+      lat: 35.8562, lng: 129.224, days: 'Giorni 8-10', color: '#8e44ad',
+      highlights: ['Bulguksa UNESCO', 'Seokguram UNESCO', 'Tumuli reali Silla', 'Lago Anapji'],
+      family: ['Stefano: Museo Nazionale, corona oro Silla', 'Michela: Villaggio Yangdong autentico', 'Elisabetta: Location drama Hwarang Netflix', 'Alessandra: Caccia ai draghi nei templi']
+    },
+    {
+      num: '4', label: '④', name: 'Busan', kr: '부산',
+      lat: 35.1796, lng: 129.0756, days: 'Giorni 11-14', color: '#c0392b',
+      highlights: ['Gamcheon Village', 'Mercato Jagalchi', 'Haeundae Beach', 'Haedong Yonggungsa'],
+      family: ['Stefano: Pesce fresco scelto dalla vasca', 'Michela: Murales Gamcheon + librerie', 'Elisabetta: Negozi K-pop Nampo-dong', 'Alessandra: Acquario SEA LIFE Busan']
+    },
+    {
+      num: '5', label: '⑤', name: 'Isola di Jeju', kr: '제주도',
+      lat: 33.489, lng: 126.498, days: 'Giorni 15-19', color: '#27ae60',
+      highlights: ['Hallasan UNESCO', 'Seongsan Ilchulbong', 'Grotte di lava', 'Haenyeo', 'Spiaggia Hyeopjae'],
+      family: ['Stefano: Maiale nero heukdwaeji, villaggi pescatori', 'Michela: Haenyeo Festival luglio/agosto', 'Elisabetta: Jeju Trick Art Museum', 'Alessandra: Hello Kitty Island, grotte lava']
+    }
+  ];
 
-// Custom icon factory
-function makeIcon(stop) {
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="36" height="46" viewBox="0 0 36 46">
-    <path d="M18 0C8.06 0 0 8.06 0 18c0 13.5 18 28 18 28s18-14.5 18-28C36 8.06 27.94 0 18 0z" fill="${stop.color}"/>
-    <text x="18" y="23" text-anchor="middle" font-size="13" font-family="serif" fill="white" font-weight="bold">${stop.num}</text>
-  </svg>`;
-  return L.divIcon({
-    html: svg,
-    className: '',
-    iconSize: [36, 46],
-    iconAnchor: [18, 46],
-    popupAnchor: [0, -48]
+  // Route line
+  var coords = stops.map(function(s){ return [s.lat, s.lng]; });
+  L.polyline(coords, { color: '#c9a84c', weight: 3, opacity: 0.8, dashArray: '10,7' }).addTo(map);
+
+  // Markers
+  stops.forEach(function(stop) {
+    var svgIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="38" height="50" viewBox="0 0 38 50">'
+      + '<path d="M19 0C8.5 0 0 8.5 0 19c0 14 19 31 19 31s19-17 19-31C38 8.5 29.5 0 19 0z" fill="' + stop.color + '"/>'
+      + '<circle cx="19" cy="19" r="10" fill="rgba(255,255,255,0.2)"/>'
+      + '<text x="19" y="24" text-anchor="middle" font-size="14" font-family="Georgia,serif" fill="white" font-weight="bold">' + stop.num + '</text>'
+      + '</svg>';
+
+    var icon = L.divIcon({ html: svgIcon, className: '', iconSize: [38,50], iconAnchor: [19,50], popupAnchor: [0,-52] });
+
+    var hlHtml = stop.highlights.map(function(h){ return '<li style="margin:2px 0;font-size:0.8rem">&bull; ' + h + '</li>'; }).join('');
+    var famHtml = stop.family.map(function(f){ return '<li style="margin:3px 0;font-size:0.78rem;color:#444">' + f + '</li>'; }).join('');
+
+    var popup = '<div style="font-family:sans-serif;min-width:210px">'
+      + '<div style="background:' + stop.color + ';color:#fff;padding:8px 12px;border-radius:6px 6px 0 0;margin:-12px -12px 10px">'
+      + '<strong>' + stop.label + ' ' + stop.name + '</strong>'
+      + '<div style="font-size:0.75rem;opacity:0.8">' + stop.kr + ' &middot; ' + stop.days + '</div>'
+      + '</div>'
+      + '<ul style="list-style:none;padding:0;margin:0 0 8px">' + hlHtml + '</ul>'
+      + '<div style="border-top:1px solid #eee;padding-top:6px">'
+      + '<div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.1em;color:#aaa;margin-bottom:4px">Famiglia</div>'
+      + '<ul style="list-style:none;padding:0;margin:0">' + famHtml + '</ul>'
+      + '</div></div>';
+
+    L.marker([stop.lat, stop.lng], { icon: icon }).addTo(map).bindPopup(popup, { maxWidth: 270 });
   });
-}
-
-// Route line
-const routeCoords = stops.map(s => [s.lat, s.lng]);
-// Dashed animated route
-L.polyline(routeCoords, {
-  color: '#c9a84c',
-  weight: 2.5,
-  opacity: 0.7,
-  dashArray: '8, 6'
-}).addTo(map);
-
-// Markers
-stops.forEach((stop, i) => {
-  const familyRows = stop.family.map(f => `<li style="font-size:0.78rem;color:#555;margin-bottom:3px;">👤 ${f}</li>`).join('');
-  const hlRows = stop.highlights.map(h => `<li style="font-size:0.8rem;margin-bottom:2px;">• ${h}</li>`).join('');
-  const popupContent = `
-    <div style="font-family:sans-serif;min-width:220px;max-width:270px;">
-      <div style="background:${stop.color};color:white;padding:8px 12px;border-radius:6px 6px 0 0;margin:-12px -12px 10px -12px;">
-        <strong style="font-size:1.05rem;">${stop.num} ${stop.name}</strong>
-        <div style="font-size:0.75rem;opacity:0.8;">${stop.kr} · ${stop.days}</div>
-      </div>
-      <ul style="padding-left:0;list-style:none;margin-bottom:8px;">${hlRows}</ul>
-      <div style="border-top:1px solid #eee;padding-top:7px;">
-        <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:.1em;color:#999;margin-bottom:4px;">Per la famiglia</div>
-        <ul style="padding-left:0;list-style:none;">${familyRows}</ul>
-      </div>
-    </div>
-  `;
-  L.marker([stop.lat, stop.lng], { icon: makeIcon(stop) })
-    .addTo(map)
-    .bindPopup(popupContent, { maxWidth: 280 });
 });
 </script>
-
 </body>
 </html>
