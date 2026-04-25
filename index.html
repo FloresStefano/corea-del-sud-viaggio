@@ -1643,31 +1643,6 @@ button, [onclick] { -webkit-tap-highlight-color: transparent; }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 
-<script>
-// Attraction button delegation — registered on DOMContentLoaded
-document.addEventListener('DOMContentLoaded', function() {
-  document.body.addEventListener('click', function(e) {
-    var btn = e.target.closest ? e.target.closest('.attr-btn') : null;
-    if (!btn) {
-      // fallback for older browsers
-      var el = e.target;
-      while (el && el.tagName) {
-        if (el.className && el.className.indexOf && el.className.indexOf('attr-btn') >= 0) { btn = el; break; }
-        el = el.parentNode;
-      }
-    }
-    if (btn && btn.dataset && btn.dataset.k) {
-      e.stopPropagation();
-      if (typeof openAttr === 'function') {
-        openAttr(btn.dataset.k);
-      } else {
-        alert('openAttr not loaded yet, key: ' + btn.dataset.k);
-      }
-    }
-  });
-  console.log('[AttrModal] body click delegation registered');
-});
-</script>
 </head>
 <body>
 
@@ -5645,6 +5620,32 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+
+
+// ── Register button delegation — in same script so openAttr is guaranteed defined
+(function() {
+  function registerAttrDelegation() {
+    document.body.addEventListener('click', function(e) {
+      var el = e.target;
+      // walk up max 4 levels to find .attr-btn
+      for (var i = 0; i < 4; i++) {
+        if (!el || !el.tagName) break;
+        if (el.classList && el.classList.contains('attr-btn') && el.dataset && el.dataset.k) {
+          e.stopPropagation();
+          openAttr(el.dataset.k);
+          return;
+        }
+        el = el.parentElement;
+      }
+    });
+    console.log('[AttrModal] delegation OK, openAttr defined:', typeof openAttr);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', registerAttrDelegation);
+  } else {
+    registerAttrDelegation();
+  }
+})();
 </script>
 </body>
 </html>
