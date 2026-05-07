@@ -741,7 +741,7 @@ function toggleDetail(key) {
   });
   el.classList.toggle('open', !isOpen);
   // Toggle button state
-  var btn = body.querySelector('.info-btn[onclick="toggleDetail('' + key + '')"]');
+  var btn = body.querySelector('.info-btn[onclick*="' + key + '"]');
   if (btn) btn.classList.toggle('active', !isOpen);
   if (!isOpen) setTimeout(function() {
     el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -780,13 +780,13 @@ function initMap() {
       + s.color + '"/><text x="17" y="22" text-anchor="middle" font-size="12" '
       + 'font-family="Georgia,serif" fill="white" font-weight="bold">' + (i+1) + '</text></svg>';
     var icon = L.divIcon({ html:svg, className:'', iconSize:[34,46], iconAnchor:[17,46], popupAnchor:[0,-48] });
-    var popup = '<div style="font-family:sans-serif;min-width:140px">'
-      + '<div style="background:' + s.color + ';color:#fff;padding:6px 10px;border-radius:4px 4px 0 0;margin:-8px -8px 6px">'
-      + '<strong>' + s.num + ' ' + s.name + '</strong><br>'
-      + '<span style="font-size:0.72rem;opacity:0.75">' + s.dates + '</span></div>'
-      + '<button onclick="showPage('page-' + s.id + '');this.closest('.leaflet-popup').style.display='none'" '
-      + 'style="width:100%;background:' + s.color + ';color:#fff;border:none;padding:5px;'
-      + 'border-radius:4px;cursor:pointer;font-size:0.78rem;margin-top:2px">Vai alla tappa →</button></div>';
+    var sid = s.id;
+    var popup = '<div style="font-family:sans-serif;min-width:150px">'
+      + '<div style="background:' + s.color + ';color:#fff;padding:8px 10px;border-radius:6px 6px 0 0;margin:-8px -8px 8px">'
+      + '<strong>' + s.num + ' ' + s.name + '</strong>'
+      + '<div style="font-size:0.72rem;opacity:0.75">' + s.dates + '</div></div>'
+      + '<div style="padding:4px 0 6px;font-size:0.8rem;color:#555">Usa il menu ☰ per aprire la tappa</div>'
+      + '</div>';
     L.marker([s.lat, s.lng], { icon:icon }).addTo(map).bindPopup(popup, { maxWidth:200 });
   });
 }
