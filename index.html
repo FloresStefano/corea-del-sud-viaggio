@@ -814,9 +814,13 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <!-- SheetJS for Excel export -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
 <script>
 function exportExcel() {
+  if (typeof XLSX === 'undefined') {
+    alert('Export in caricamento, riprova tra qualche secondo');
+    return;
+  }
   var wb = XLSX.utils.book_new();
 
   // ── Sheet 1: Riepilogo itinerario ──────────────────────────────
@@ -1029,3 +1033,4 @@ function exportExcel() {
 }
 </script>
 </body>
+</html>
