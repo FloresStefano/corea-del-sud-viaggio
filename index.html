@@ -311,6 +311,19 @@ body{height:100%;display:flex;flex-direction:column;font-family:'Inter',sans-ser
 .ts-tip{font-size:0.77rem;color:#7a6000;background:#fffbf0;
   padding:0.5rem 1rem;border-top:1px solid #f0e8c0;line-height:1.5}
 
+/* ── EXCEL BUTTON ─────────────────────────────────────────────── */
+.hdr-excel-btn{
+  display:flex;align-items:center;gap:5px;
+  background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);
+  color:#fff;padding:0.3rem 0.65rem;border-radius:6px;
+  font-size:0.75rem;font-weight:600;cursor:pointer;flex-shrink:0;
+  transition:background 0.15s;-webkit-tap-highlight-color:transparent;
+  font-family:'Inter',sans-serif;
+}
+.hdr-excel-btn:hover{background:rgba(255,255,255,0.22)}
+.hdr-excel-btn svg{flex-shrink:0}
+@media(max-width:400px){.hdr-excel-btn span{display:none}}
+
 /* ── LIGHTBOX ─────────────────────────────────────────────────── */
 .lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);
   z-index:9999;align-items:center;justify-content:center}
@@ -333,7 +346,10 @@ body{height:100%;display:flex;flex-direction:column;font-family:'Inter',sans-ser
     <p>Famiglia Flores · 7–27 agosto</p>
   </div>
   <div class="hdr-page-name" id="hdr-page-name">Mappa</div>
-</header>
+  <button class="hdr-excel-btn" onclick="exportExcel()" title="Scarica itinerario Excel">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
+    <span>Excel</span>
+  </button>
 
 <!-- LAYOUT -->
 <div class="layout">
@@ -797,5 +813,219 @@ document.addEventListener('DOMContentLoaded', function() {
   initMap();
 });
 </script>
+<!-- SheetJS for Excel export -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+function exportExcel() {
+  var wb = XLSX.utils.book_new();
+
+  // ── Sheet 1: Riepilogo itinerario ──────────────────────────────
+  var riepilogo = [
+    ['COREA DEL SUD 2026 — Famiglia Flores', '', '', '', ''],
+    ['Partenza', '6 agosto 2026 13:30', 'VRN → ICN (scalo MUC) · 13h 25min', 'Codice: 95IXW8', ''],
+    ['Arrivo Seoul', '7 agosto 2026 09:55', 'Aeroporto Incheon (ICN)', '', ''],
+    ['Ritorno', '27 agosto 2026 11:40', 'ICN → VRN (scalo MUC) · 15h 40min', 'Codice: 95IXW8', ''],
+    ['', '', '', '', ''],
+    ['TAPPA', 'DATE', 'NOTTI', 'TRASPORTO SUCCESSIVO', 'NOTE'],
+    ['① Seoul', '7–11 agosto 2026', '5', 'Volo Seoul→Jeju (GMP→CJU) · 1h', 'Check-in hotel 7 agosto pomeriggio'],
+    ['② Jeju', '12–15 agosto 2026', '4', 'Volo Jeju→Busan (CJU→PUS) · 55min', 'Noleggio auto obbligatorio in aeroporto · 15 ago = Festa Nazionale'],
+    ['③ Busan', '16–18 agosto 2026', '3', 'KTX Busan→Singyeongju · 38 min', 'Metro BGL per aeroporto Gimhae · ~30 min'],
+    ['④ Gyeongju', '19–21 agosto 2026', '3', 'Bus Gyeongju→Jeonju · 3h 30min', 'Taxi per Singyeongju Station ~15 min'],
+    ['⑤ Jeonju', '22–24 agosto 2026', '3', 'KTX Jeonju→Seoul · 1h 40min', 'Taxi per il bus terminal ~5 min'],
+    ['Seoul (finale)', '25–26 agosto 2026', '2', 'AREX Seoul Station→Incheon · 43 min', 'Prendere AREX alle 7:45 del 27 agosto'],
+    ['', '', '', '', ''],
+    ['TOTALE', '7–27 agosto', '20 notti', '21 giorni', ''],
+  ];
+  var ws1 = XLSX.utils.aoa_to_sheet(riepilogo);
+  ws1['!cols'] = [{wch:20},{wch:22},{wch:8},{wch:42},{wch:38}];
+  ws1['A1'].s = {font:{bold:true,sz:13}};
+  XLSX.utils.book_append_sheet(wb, ws1, 'Riepilogo');
+
+  // ── Sheet 2: Programma giornaliero completo ────────────────────
+  var programma = [
+    ['DATA', 'GIORNO', 'TAPPA', 'ORARIO', 'ATTIVITÀ', 'DESCRIZIONE', 'CONSIGLIO'],
+  ];
+  var giorni = [
+    // Seoul
+    ['7 ago', 'Giorno 1', 'Seoul', 'Pomeriggio', 'Arrivo e check-in', 'Prima passeggiata libera nel quartiere', 'Jet lag — niente programma serrato'],
+    ['7 ago', 'Giorno 1', 'Seoul', '12:00', 'Primo pasto coreano', 'Kimchi jjigae in un locale vicino all\'hotel', 'Ordina con le foto — i menu coreani le hanno sempre'],
+    ['7 ago', 'Giorno 1', 'Seoul', '14:00', 'Gyeongbokgung Palace', 'Palazzo reale del 1395, cambio guardia ore 10 e 14', 'Chiuso il lunedì — verifica il giorno'],
+    ['7 ago', 'Giorno 1', 'Seoul', '17:00', 'Bukchon Hanok Village', 'Passeggiata tra i vicoli al tramonto', 'Luce del pomeriggio perfetta per le foto'],
+    ['7 ago', 'Giorno 1', 'Seoul', '19:30', 'Cena a Insadong', 'Ristorante tradizionale, galbi o bulgogi', ''],
+    ['8 ago', 'Giorno 2', 'Seoul', '09:00', 'Changdeokgung + Giardino Segreto', 'Visita guidata UNESCO — prenotare online prima di partire', 'Solo 50 persone per turno — esaurisce in fretta'],
+    ['8 ago', 'Giorno 2', 'Seoul', '12:30', 'Mercato Gwangjang', 'Pranzo autentico: bindaetteok, gimbap, eomuk', 'Stefano: sedersi al bancone davanti alla cuoca'],
+    ['8 ago', 'Giorno 2', 'Seoul', '14:30', 'Insadong', 'Artigianato, hanji, tè, manhwa per Michela', ''],
+    ['8 ago', 'Giorno 2', 'Seoul', '16:30', 'N Seoul Tower', 'Tramonto dalla cima — cable car o scalinata', 'Elisabetta e Alessandra: lucchetti dell\'amore'],
+    ['9 ago', 'Giorno 3', 'Seoul', '10:00', 'HYBE Insight Museum', 'Museo BTS e artisti HYBE — 2 ore', 'PRENOTARE OBBLIGATORIAMENTE online 2-3 settimane prima!'],
+    ['9 ago', 'Giorno 3', 'Seoul', '14:00', 'DDP Dongdaemun', 'Zaha Hadid + mostra temporanea', ''],
+    ['9 ago', 'Giorno 3', 'Seoul', '16:00', 'Myeongdong', 'K-beauty, cosmetici, Kakao Friends Store', 'Alessandra: action figure e gadget qui'],
+    ['9 ago', 'Giorno 3', 'Seoul', '19:30', 'Hongdae di sera', 'Musica live, street food, street art', ''],
+    ['10 ago', 'Giorno 4', 'Seoul', '08:00', 'Tour DMZ', 'Tunnel n.3 + Osservatorio Dora + Ponte della Libertà', 'Prenotare tour con guida. Portare passaporto.'],
+    ['11 ago', 'Giorno 5', 'Seoul', '09:00', 'Colazione e check-out', 'Lascia i bagagli, ultima passeggiata', ''],
+    ['11 ago', 'Giorno 5', 'Seoul', '12:30', 'Volo per Jeju', 'Da Seoul Gimpo (GMP) · 1 ora', 'Partenza consigliata 9-11 del mattino'],
+    // Jeju
+    ['12 ago', 'Giorno 6', 'Jeju', '17:00', 'Ritiro auto e check-in', 'Costa ovest — area Hallim/Hyeopjae', 'Prenotare auto da casa con Klook o Rentalcars'],
+    ['12 ago', 'Giorno 6', 'Jeju', '18:30', 'Spiaggia Hyeopjae', 'Sabbia bianca, acqua turchese — bagno di benvenuto', 'La più bella spiaggia dell\'isola'],
+    ['12 ago', 'Giorno 6', 'Jeju', '20:00', 'Cena heukdwaeji', 'Maiale nero di Jeju — specialità obbligatoria', 'Stefano: il piatto simbolo dell\'isola'],
+    ['13 ago', 'Giorno 7', 'Jeju', '05:30', 'Alba a Seongsan Ilchulbong', 'Cratere UNESCO sul mare — il momento più bello di Jeju', 'Svegliarsi presto è il segreto'],
+    ['13 ago', 'Giorno 7', 'Jeju', '08:00', 'Haenyeo a Seongsan', 'Pescatrici in apnea — spettacolo gratuito', 'Michela: momento indimenticabile'],
+    ['13 ago', 'Giorno 7', 'Jeju', '11:00', 'Grotte Manjanggul', 'Tunnel di lava 7km — 11°C dentro', 'Portare una giacca. Alessandra: avventura sotterranea.'],
+    ['13 ago', 'Giorno 7', 'Jeju', '15:30', 'Osulloc Tea Museum', 'Piantagioni di tè verde a terrazze', 'Gelato matcha + negozio tè sfuso'],
+    ['14 ago', 'Giorno 8', 'Jeju', '07:00', 'Hallasan o spiagge (scelta famiglia)', 'Sentiero Eorimok 5,3km per Stefano / Spiagge per le altre', 'Prenotare permesso Hallasan su jejuoneclick.com'],
+    ['14 ago', 'Giorno 8', 'Jeju', '14:00', 'Hello Kitty Island / Trick Art', 'Pomeriggio per Elisabetta e Alessandra', ''],
+    ['14 ago', 'Giorno 8', 'Jeju', '18:00', 'Tramonto a Seopjikoji', 'Scogliere di lava — tramonto spettacolare', '15 min da Seongsan'],
+    ['15 ago', 'Giorno 9', 'Jeju', '09:00', 'Olle Trail Corso 8', 'Tratto costiero 4km — scogli e villaggio pescatori', '15 agosto = Festa Nazionale: trasporti affollati'],
+    ['15 ago', 'Giorno 9', 'Jeju', '13:00', 'Pranzo a Seogwipo', 'Haemul ttukbaegi (zuppa frutti di mare)', ''],
+    ['15 ago', 'Giorno 9', 'Jeju', '15:00', 'Cascate Cheonjiyeon', 'Cascata 22m nel centro di Seogwipo', 'Alessandra: koi giganti nel ruscello'],
+    ['15 ago', 'Giorno 9', 'Jeju', 'Sera', 'Volo Jeju → Busan', 'CJU → PUS · 55 minuti · Air Busan', ''],
+    // Busan
+    ['16 ago', 'Giorno 10', 'Busan', 'Pomeriggio', 'Arrivo e check-in', 'Deposita i bagagli — subito al mare', ''],
+    ['16 ago', 'Giorno 10', 'Busan', '15:30', 'Spiaggia Gwangalli', 'Prima immersione', 'Vista notturna del Gwangan Bridge'],
+    ['16 ago', 'Giorno 10', 'Busan', '17:30', 'Haedong Yonggungsa', 'Tempio sul mare al tramonto', 'Apre alle 4:00 — gratuito'],
+    ['16 ago', 'Giorno 10', 'Busan', '19:30', 'Cena al Jagalchi', 'Scegli il pesce dalle vasche, cucinano al piano sopra', 'Stefano: scegliere il granchio di neve (dungeness)'],
+    ['17 ago', 'Giorno 11', 'Busan', '09:30', 'Gamcheon Culture Village', 'Case colorate su collina — arrivare presto', 'Michela: murales e caffè nascosti'],
+    ['17 ago', 'Giorno 11', 'Busan', '13:00', 'Mercato Gukje', 'Street food e souvenir', 'Alessandra: gadget a prezzi bassi'],
+    ['17 ago', 'Giorno 11', 'Busan', '15:00', 'BIFF Square / Nampo-dong', 'Impronte star + negozi K-pop', 'Elisabetta: merchandise più economico di Seoul'],
+    ['18 ago', 'Giorno 12', 'Busan', '09:00', 'Haeundae Beach', 'Mattina presto — bagno e relax', 'La spiaggia più grande della Corea'],
+    ['18 ago', 'Giorno 12', 'Busan', '15:00', 'Tempio Beomeosa', 'Tempio buddista sul monte — sereno', '20 min di metro + camminata'],
+    ['18 ago', 'Giorno 12', 'Busan', '20:00', 'Cena a Seomyeon', 'Galbi e samgyeopsal', ''],
+    // Gyeongju
+    ['19 ago', 'Giorno 13', 'Gyeongju', '09:00', 'Tempio Bulguksa', 'UNESCO 751 d.C. — arrivare all\'apertura', 'Bus 10/11 dalla città'],
+    ['19 ago', 'Giorno 13', 'Gyeongju', '11:00', 'Grotta Seokguram', 'Buddha di granito 774 d.C.', 'No foto all\'interno'],
+    ['19 ago', 'Giorno 13', 'Gyeongju', '15:00', 'Museo Nazionale', 'GRATUITO — corona d\'oro Silla + vetro romano Via della Seta', 'Dedicare 2 ore'],
+    ['19 ago', 'Giorno 13', 'Gyeongju', '17:30', 'Bici ai Tumuli reali', 'Giro al tramonto tra le colline erbose', 'Alessandra: correre sulle colline verdi'],
+    ['19 ago', 'Giorno 13', 'Gyeongju', '20:00', 'Lago Anapji di notte', 'Riflessi del palazzo sull\'acqua', 'VISITARE DI NOTTE — aperto fino alle 22:00'],
+    ['20 ago', 'Giorno 14', 'Gyeongju', '09:30', 'Cheomseongdae', 'Osservatorio astronomico 634 d.C.', 'Spettacolo luci serale 18:30'],
+    ['20 ago', 'Giorno 14', 'Gyeongju', '11:00', 'Tempio Golgulsa (opzionale)', 'Tempio nella roccia + sunmudo buddista', '20 min di taxi'],
+    ['21 ago', 'Giorno 15', 'Gyeongju', '09:00', 'Revisit e bingsu', 'Granita di latte estiva + ritorno al sito preferito', 'Gyeongju merita lentezza'],
+    ['21 ago', 'Giorno 15', 'Gyeongju', 'Pomeriggio', 'Bus per Jeonju', 'Da Gyeongju Intercity Bus Terminal · 3h 30min', 'Partenza consigliata 13-15'],
+    // Jeonju
+    ['22 ago', 'Giorno 16', 'Jeonju', '09:00', 'Hanok Village mattina', 'Meno turisti, vicoli quieti e dorati', ''],
+    ['22 ago', 'Giorno 16', 'Jeonju', '10:30', 'Noleggio Hanbok', 'Più economico e con più scelta rispetto a Seoul', 'Elisabetta e Alessandra: il momento più atteso'],
+    ['22 ago', 'Giorno 16', 'Jeonju', '12:30', 'Bibimbap autentico', 'Set completo con dolsot (pietra calda)', 'Stefano: chiedere la versione con 12 banchan'],
+    ['22 ago', 'Giorno 16', 'Jeonju', '14:30', 'Laboratorio Hanji', 'Alessandra crea il suo souvenir fatto a mano', 'Economico, guidato, circa 1h'],
+    ['22 ago', 'Giorno 16', 'Jeonju', '18:30', 'Makgeolli tour', 'Vino di riso con 12+ banchan gratuiti', 'Solo adulti — bambini: sikhye (bibita di riso dolce)'],
+    ['23 ago', 'Giorno 17', 'Jeonju', '08:30', 'Colazione in hanok', 'Tofu fatto in casa, kimchi, riso, zuppa di miso', ''],
+    ['23 ago', 'Giorno 17', 'Jeonju', '10:00', 'Mercato Nambu', 'Il mercato più autentico — frequentato solo da locali', 'Stefano: acquistare gochujang artigianale'],
+    ['24 ago', 'Giorno 18', 'Jeonju', '09:00', 'Maisan Provincial Park (opzionale)', 'Due pinnacoli vulcanici con tempio Tapsa', '40 min di taxi — torri di pietre in equilibrio'],
+    ['24 ago', 'Giorno 18', 'Jeonju', '15:00', 'KTX per Seoul', 'Da Jeonju Station · 1h 40min', 'Partenza consigliata 10-12'],
+    // Seoul finale
+    ['25 ago', 'Giorno 19', 'Seoul', 'Pomeriggio', 'Check-in a Seoul', 'Ultima notte/due notti a Seoul', ''],
+    ['25 ago', 'Giorno 19', 'Seoul', 'Sera', 'Shopping finale Myeongdong', 'K-beauty, souvenir, ultimi acquisti', ''],
+    ['26 ago', 'Giorno 20', 'Seoul', 'Tutto il giorno', 'Giornata libera / buffer pre-volo', 'Riposo, shopping, cena di commiato', 'Samgyeopsal + soju — chiusura del cerchio'],
+    ['27 ago', 'Giorno 21', 'Seoul', '07:45', 'AREX da Seoul Station', 'Treno per Incheon Airport · 43 min', 'PARTIRE ALLE 7:45 AL MASSIMO'],
+    ['27 ago', 'Giorno 21', 'Seoul', '08:30', 'Check-in Incheon Airport', 'Essere in aeroporto almeno 3h prima', 'Volo ICN 11:40 · Codice: 95IXW8'],
+    ['27 ago', 'Giorno 21', 'In volo', '11:40', 'Decollo ICN → VRN', 'Scalo Monaco (MUC) · 15h 40min totali', 'Arrivo Verona 20:20'],
+  ];
+  programma = programma.concat(giorni);
+  var ws2 = XLSX.utils.aoa_to_sheet(programma);
+  ws2['!cols'] = [{wch:8},{wch:10},{wch:10},{wch:10},{wch:30},{wch:48},{wch:42}];
+  XLSX.utils.book_append_sheet(wb, ws2, 'Programma giornaliero');
+
+  // ── Sheet 3: Trasporti ─────────────────────────────────────────
+  var trasporti = [
+    ['DATA', 'TRATTA', 'MEZZO', 'DURATA', 'COSTO STIMATO', 'DETTAGLI', 'CONSIGLIO'],
+    ['6 ago 2026', 'Verona (VRN) → Seoul (ICN)', 'Volo internazionale', '13h 25min', 'Già prenotato', 'Scalo Monaco (MUC) · Cod. 95IXW8 · Partenza 13:30 · Arrivo 09:55+1', 'AREX da Incheon a Seoul Station · 43 min · 9.500 KRW'],
+    ['11 ago 2026', 'Seoul Gimpo (GMP) → Jeju (CJU)', 'Volo domestico', '~1 ora', '~25-40€ p.p.', 'Jeju Air o Air Seoul · Prenotare con 6-8 settimane anticipo', 'Ritirare auto a noleggio direttamente in aeroporto'],
+    ['15 ago 2026', 'Jeju (CJU) → Busan Gimhae (PUS)', 'Volo domestico', '55 min', '~20-35€ p.p.', 'Air Busan o Jeju Air · 15 agosto = Festa Nazionale — prenotare presto', 'Metro BGL da aeroporto al centro Busan · ~30 min'],
+    ['18 ago 2026', 'Busan → Gyeongju (Singyeongju)', 'KTX Alta Velocità', '38 min', '~10€ p.p.', 'Da Busan Station · Ogni 30 min · Prenota Korail.com · Posti numerati', 'Taxi da Singyeongju Station per hotel ~15 min · 12.000 KRW'],
+    ['21 ago 2026', 'Gyeongju → Jeonju', 'Bus interurbano', '3h 30min', '~12€ p.p.', 'Da Gyeongju Intercity Bus Terminal · Nessun cambio · Partenza 13-15', 'Con bagagli è più comodo del treno con scalo · Taxi per terminal ~5 min'],
+    ['24 ago 2026', 'Jeonju → Seoul', 'KTX Alta Velocità', '1h 40min', '~16€ p.p.', 'Da Jeonju Station · Partenza consigliata 10-12 · Arrivo Seoul Station', 'Ultimi 2 giorni a Seoul — nessun programma serrato'],
+    ['27 ago 2026', 'Seoul (ICN) → Verona (VRN)', 'Volo internazionale', '15h 40min', 'Già prenotato', 'Scalo Monaco (MUC) · Cod. 95IXW8 · Partenza 11:40 · Arrivo 20:20', 'AREX da Seoul Station alle 7:45 MAX · Essere in aeroporto alle 8:30'],
+  ];
+  var ws3 = XLSX.utils.aoa_to_sheet(trasporti);
+  ws3['!cols'] = [{wch:12},{wch:30},{wch:18},{wch:10},{wch:16},{wch:50},{wch:42}];
+  XLSX.utils.book_append_sheet(wb, ws3, 'Trasporti');
+
+  // ── Sheet 4: Consigli famiglia ─────────────────────────────────
+  var famiglia = [
+    ['PERSONA', 'TAPPA', 'GIORNO', 'ATTIVITÀ', 'CONSIGLIO PERSONALIZZATO'],
+    // Stefano
+    ['Stefano 🧔', 'Seoul', 'Gg 1', 'Gyeongbokgung', 'Audiotour in inglese: spiega la filosofia confuciana che regolava la vita di corte'],
+    ['Stefano 🧔', 'Seoul', 'Gg 2', 'Mercato Gwangjang', 'Sedersi al bancone, ordinare bindaetteok + soju locale. Interagire con le cuoche.'],
+    ['Stefano 🧔', 'Seoul', 'Gg 4', 'Tour DMZ', 'JSA Panmunjom: ci si trova a 50cm dalla Corea del Nord. Prenotazione separata 3 settimane prima.'],
+    ['Stefano 🧔', 'Jeju', 'Gg 6', 'Heukdwaeji', 'Ordinare samgyeopsal + moksal per confrontare i tagli. Il maiale nero ha sapore completamente diverso.'],
+    ['Stefano 🧔', 'Jeju', 'Gg 7', 'Seongsan Ilchulbong', 'La salita al cratere con la luce rosa dell\'alba è uno dei momenti più belli del viaggio'],
+    ['Stefano 🧔', 'Jeju', 'Gg 8', 'Hallasan', 'Sentiero Eorimok 5,3km: foresta subtropicale → tundra alpina in 4 ore. Permesso su jejuoneclick.com'],
+    ['Stefano 🧔', 'Busan', 'Gg 10', 'Jagalchi', 'Scegliere il granchio di neve dalla vasca — uno dei momenti gastronomici più memorabili'],
+    ['Stefano 🧔', 'Gyeongju', 'Gg 13', 'Museo Nazionale', 'Corona d\'oro Silla + vetro romano nella stessa teca — il collegamento con la Via della Seta'],
+    ['Stefano 🧔', 'Gyeongju', 'Gg 13', 'Seokguram', 'Chiedere della tecnologia idraulica usata per raffreddare la grotta nel VIII secolo'],
+    ['Stefano 🧔', 'Jeonju', 'Gg 16', 'Bibimbap', 'Ordinare il dolsot bibimbap e mescolare tutto vigorosamente prima di mangiare'],
+    ['Stefano 🧔', 'Jeonju', 'Gg 17', 'Mercato Nambu', 'Acquistare doenjang (pasta di soia) e gochujang artigianali da portare a casa'],
+    // Michela
+    ['Michela 👩', 'Seoul', 'Gg 2', 'Insadong', 'Librerie manhwa e negozi carta hanji artigianale — cercare i portoni verdi'],
+    ['Michela 👩', 'Seoul', 'Gg 3', 'DDP', 'Mostre temporanee spesso su arte pop e fumetti contemporanei'],
+    ['Michela 👩', 'Jeju', 'Gg 7', 'Haenyeo Seongsan', 'Le pescatrici emergono con il pescato verso le 8:00 — spettacolo gratuito e commovente'],
+    ['Michela 👩', 'Jeju', 'Gg 9', 'Olle Trail', 'Tratto costiero lento, scogli lavici, nessun turista — la Jeju autentica'],
+    ['Michela 👩', 'Busan', 'Gg 11', 'Gamcheon', 'Girare senza meta nei vicoli secondari — le gemme migliori non sono sulla mappa'],
+    ['Michela 👩', 'Gyeongju', 'Gg 14', 'Yangdong Folk Village', 'Risaie attorno al villaggio, silenzio assoluto — il luogo più fuori dal tempo della Corea'],
+    ['Michela 👩', 'Gyeongju', 'Gg 13', 'Lago Anapji', 'Portare macchina fotografica con treppiede per i riflessi notturni'],
+    ['Michela 👩', 'Jeonju', 'Gg 17', 'Maisan', 'Le torri di pietre bilanciate sono tra i soggetti più fotografici della Corea'],
+    // Elisabetta
+    ['Elisabetta 👧 (11 anni)', 'Seoul', 'Gg 3', 'HYBE Museum', 'PRENOTARE SUBITO su hybe-insight.com — i biglietti si esauriscono settimane prima in estate'],
+    ['Elisabetta 👧 (11 anni)', 'Seoul', 'Gg 2', 'Gyeongbokgung', 'Entrare in hanbok — ingresso gratuito e foto imperdibili nel cortile principale'],
+    ['Elisabetta 👧 (11 anni)', 'Seoul', 'Gg 3', 'Myeongdong', 'Negozi SM/YG/JYP ufficiali — merchandise esclusivo non disponibile altrove'],
+    ['Elisabetta 👧 (11 anni)', 'Jeju', 'Gg 8', 'Hello Kitty Island', 'Installazioni fotografiche esclusive di Jeju — souvenir non si trovano altrove'],
+    ['Elisabetta 👧 (11 anni)', 'Busan', 'Gg 11', 'BIFF Square', 'G-Dragon (BIGBANG) è di Busan — le sue impronte sono in piazza. Negozi K-pop a Nampo-dong.'],
+    ['Elisabetta 👧 (11 anni)', 'Gyeongju', 'Gg 13', 'Bulguksa', 'Location reale del drama Hwarang (Netflix) con Park Seo-joon e BTS V'],
+    ['Elisabetta 👧 (11 anni)', 'Jeonju', 'Gg 16', 'Hanbok', 'Più modelli e più economici di Seoul — ambientazione perfetta per le foto'],
+    // Alessandra
+    ['Alessandra 🧒 (8 anni)', 'Seoul', 'Gg 3', 'Kakao Friends Store', 'Myeongdong — peluche e action figure dei personaggi coreani animati'],
+    ['Alessandra 🧒 (8 anni)', 'Seoul', 'Gg 2', 'N Seoul Tower', 'Appendere il lucchetto con il nome di tutta la famiglia'],
+    ['Alessandra 🧒 (8 anni)', 'Jeju', 'Gg 6', 'Hyeopjae Beach', 'Acqua bassa e sicura — la laguna vicino alle rocce ha pesciolini e gamberi da osservare'],
+    ['Alessandra 🧒 (8 anni)', 'Jeju', 'Gg 7', 'Grotte Manjanggul', 'Il tunnel sembra uscito da Minecraft — avventura sotterranea reale. Portare giacca!'],
+    ['Alessandra 🧒 (8 anni)', 'Busan', 'Gg 11', 'Gukje Market', 'Gadget e souvenir coloratissimi a prezzi bassi — budget souvenir dura a lungo'],
+    ['Alessandra 🧒 (8 anni)', 'Gyeongju', 'Gg 13', 'Bulguksa', 'Caccia ai draghi: i tetti buddisti sono decorati con animali mitologici — trovarli tutti'],
+    ['Alessandra 🧒 (8 anni)', 'Gyeongju', 'Gg 13', 'Tumuli Park', 'Il prato verde sopra le tombe è un campo da gioco naturale — correre sulle colline'],
+    ['Alessandra 🧒 (8 anni)', 'Jeonju', 'Gg 16', 'Laboratorio Hanji', 'Creare un ventaglio decorato da portare a casa — souvenir unico fatto a mano'],
+  ];
+  var ws4 = XLSX.utils.aoa_to_sheet(famiglia);
+  ws4['!cols'] = [{wch:22},{wch:12},{wch:8},{wch:22},{wch:65}];
+  XLSX.utils.book_append_sheet(wb, ws4, 'Consigli famiglia');
+
+  // ── Sheet 5: Info pratiche ─────────────────────────────────────
+  var info = [
+    ['INFO PRATICHE — COREA DEL SUD 2026', '', ''],
+    ['', '', ''],
+    ['VOLI', '', ''],
+    ['Codice prenotazione', '95IXW8', ''],
+    ['Andata', 'VRN 13:30 → MUC → ICN 09:55+1 (7 ago)', '6 agosto 2026'],
+    ['Ritorno', 'ICN 11:40 → MUC → VRN 20:20', '27 agosto 2026'],
+    ['', '', ''],
+    ['MONETA E PAGAMENTI', '', ''],
+    ['Valuta', 'KRW (Won coreano)', '~1.500 KRW = 1 EUR circa'],
+    ['Pagamenti', 'Carte accettate ovunque nelle città', 'Portare 100-200€ in contanti per emergenze'],
+    ['ATM', 'Disponibili in aeroporti, stazioni, 7-Eleven', 'Commissioni basse con carte Revolut/Wise'],
+    ['', '', ''],
+    ['TRASPORTI INTERNI', '', ''],
+    ['T-money card', 'Tessera ricaricabile per metro e bus', 'Acquistare in aeroporto ICN appena arrivati'],
+    ['Metro Seoul', '9 linee — copre tutta la città', 'App Kakao Metro per navigazione in italiano'],
+    ['KTX', 'Alta velocità — prenota su Korail.com', 'Posti numerati — prenotare con anticipo in agosto'],
+    ['', '', ''],
+    ['SIM E CONNESSIONE', '', ''],
+    ['SIM turistica', 'Acquistare all\'aeroporto ICN', 'KT, SK Telecom o LG U+ — dati illimitati ~10€/settimana'],
+    ['Wifi portabile', 'Pocket WiFi in noleggio', 'Prenotare online prima della partenza'],
+    ['', '', ''],
+    ['APP ESSENZIALI', '', ''],
+    ['Kakao Metro', 'Navigazione metro Seoul', 'Disponibile in italiano'],
+    ['Kakao Maps', 'Mappe e navigazione', 'Meglio di Google Maps in Corea'],
+    ['Naver Papago', 'Traduttore italiano-coreano', 'Con camera translate per i menu'],
+    ['Korail', 'Prenotazione treni KTX', 'Necessario per Gyeongju e Jeonju'],
+    ['', '', ''],
+    ['NUMERI UTILI', '', ''],
+    ['Emergenze', '119 (ambulanza)', '112 (polizia)'],
+    ['Turismo', '1330 (help line turistica)', 'Risponde anche in italiano'],
+    ['', '', ''],
+    ['DATE IMPORTANTI', '', ''],
+    ['15 agosto 2026', 'Gwangbokjeol — Festa Nazionale della Liberazione', 'Musei chiusi o ridotti · Siete a Jeju ✓'],
+    ['Agosto 2026', 'Piena stagione balneare', 'Prenotare TUTTO in anticipo'],
+  ];
+  var ws5 = XLSX.utils.aoa_to_sheet(info);
+  ws5['!cols'] = [{wch:22},{wch:42},{wch:38}];
+  XLSX.utils.book_append_sheet(wb, ws5, 'Info pratiche');
+
+  // ── Download ───────────────────────────────────────────────────
+  XLSX.writeFile(wb, 'Corea_del_Sud_2026_Famiglia_Flores.xlsx');
+}
+</script>
 </body>
-</html>
