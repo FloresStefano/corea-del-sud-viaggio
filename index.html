@@ -275,7 +275,8 @@ html,body{height:100%;overflow:hidden;font-family:'Inter',sans-serif;background:
       </div>
     </div>
     <div class="sb-sep">Panoramica</div>
-    <button class="ni" data-p="page-map" onclick="go('page-map')"><span class="ni-icon">🗺️</span><span class="ni-lbl">Mappa</span></button><button class="ni" data-p="page-family" onclick="go('page-family')"><span class="ni-icon">👨‍👩‍👧‍👧</span><span class="ni-lbl">I 4 viaggiatori</span></button><button class="ni" data-p="page-seul" onclick="go('page-seul')"><span class="ni-icon">🏯</span><span class="ni-lbl">① Seoul · 7–11 ago</span></button><button class="ni" data-p="page-jeju" onclick="go('page-jeju')"><span class="ni-icon">🌋</span><span class="ni-lbl">② Jeju · 11–15 ago</span></button><button class="ni" data-p="page-busan" onclick="go('page-busan')"><span class="ni-icon">🏖️</span><span class="ni-lbl">③ Busan · 15–18 ago</span></button><button class="ni" data-p="page-gyeongju" onclick="go('page-gyeongju')"><span class="ni-icon">⛪</span><span class="ni-lbl">④ Gyeongju · 18–21 ago</span></button><button class="ni" data-p="page-jeonju" onclick="go('page-jeonju')"><span class="ni-icon">🏘️</span><span class="ni-lbl">⑤ Jeonju · 21–24 ago</span></button><button class="ni" data-p="page-transport" onclick="go('page-transport')"><span class="ni-icon">🚄</span><span class="ni-lbl">Trasporti</span></button>
+    <button class="ni" data-p="page-map" onclick="go('page-map')"><span class="ni-icon">🗺️</span><span class="ni-lbl">Mappa</span></button><button class="ni" data-p="page-family" onclick="go('page-family')"><span class="ni-icon">👨‍👩‍👧‍👧</span><span class="ni-lbl">I 4 viaggiatori</span></button><button class="ni" data-p="page-seul" onclick="go('page-seul')"><span class="ni-icon">🏯</span><span class="ni-lbl">① Seoul · 7–11 ago</span></button><button class="ni" data-p="page-jeju" onclick="go('page-jeju')"><span class="ni-icon">🌋</span><span class="ni-lbl">② Jeju · 11–15 ago</span></button><button class="ni" data-p="page-busan" onclick="go('page-busan')"><span class="ni-icon">🏖️</span><span class="ni-lbl">③ Busan · 15–18 ago</span></button><button class="ni" data-p="page-gyeongju" onclick="go('page-gyeongju')"><span class="ni-icon">⛪</span><span class="ni-lbl">④ Gyeongju · 18–21 ago</span></button><button class="ni" data-p="page-jeonju" onclick="go('page-jeonju')"><span class="ni-icon">🏘️</span><span class="ni-lbl">⑤ Jeonju · 21–24 ago</span></button><button class="ni" data-p="page-seul-finale" onclick="go('page-seul-finale')"><span class="ni-icon">🏙️</span><span class="ni-lbl">⑥ Seoul finale · 24–27 ago</span></button>
+    <button class="ni" data-p="page-transport" onclick="go('page-transport')"><span class="ni-icon">🚄</span><span class="ni-lbl">Trasporti</span></button>
   </nav>
 
   <div id="overlay" onclick="navClose()"></div>
@@ -540,7 +541,114 @@ html,body{height:100%;overflow:hidden;font-family:'Inter',sans-serif;background:
     </button>
     <div class="sa-body"><div class="tc"><div class="tc-ic">✈️+🚄</div><div class="tc-body"><div class="tc-lbl">Jeju → Busan → Seoul</div><div class="tc-dt">Volo Jeju→Busan (solo zaino) · 55 min · poi recupero valigie a Busan · KTX Busan→Seoul · 2h 40min · Arrivi a Seoul Station nel cuore della città — più comodo di Gimpo</div></div></div></div>
   </div>
-</section><section id="page-transport" class="pg">
+</section>
+<section id="page-seul-finale" class="pg">
+  <div class="sh" style="background:#1a3a5c">
+    <div class="sh-em">🏙️</div>
+    <div class="sh-i">
+      <h2>Seoul finale <span class="sh-kr">서울</span></h2>
+      <div class="sh-dt">24–27 agosto · 3 notti</div>
+    </div>
+  </div>
+
+  <div class="sa">
+    <button class="sa-btn op" onclick="sa(this)">
+      <span>📅 Programma</span>
+      <svg class="sa-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="sa-body op">
+      <div class="db">
+        <button class="db-btn" onclick="toggleDay(this)">
+          <span class="db-day">24 ago</span>
+          <span class="db-title">Arrivo da Jeonju — KTX</span>
+          <svg class="db-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="db-body">
+          <div class="ar"><div class="ar-t">Mattina</div><div class="ar-ic">🚄</div><div class="ar-b"><div class="ar-n">KTX Jeonju → Seoul</div><div class="ar-d">1h 40min · Arrivo Seoul Station · Centro città</div></div></div>
+          <div class="ar"><div class="ar-t">Pomeriggio</div><div class="ar-ic">🏨</div><div class="ar-b"><div class="ar-n">Check-in hotel</div><div class="ar-d">Zona Myeongdong o Hongdae — comoda per shopping e trasporti</div></div></div>
+          <div class="ar"><div class="ar-t">Sera</div><div class="ar-ic">🛍️</div><div class="ar-b"><div class="ar-n">Shopping e cena</div><div class="ar-d">Myeongdong per ultimi acquisti K-beauty e souvenir</div></div></div>
+        </div>
+      </div>
+      <div class="db">
+        <button class="db-btn" onclick="toggleDay(this)">
+          <span class="db-day">25 ago</span>
+          <span class="db-title">Giornata libera a Seoul</span>
+          <svg class="db-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="db-body">
+          <div class="ar"><div class="ar-t">Tutto il giorno</div><div class="ar-ic">🗺️</div><div class="ar-b"><div class="ar-n">Visite rimaste in sospeso</div><div class="ar-d">Suwon Hwaseong (30 min di KTX) · oppure Insadong · oppure N Seoul Tower di notte</div><div class="ar-tip">💡 Nessun programma fisso — usate la giornata liberamente</div></div></div>
+          <div class="ar"><div class="ar-t">Sera</div><div class="ar-ic">🍽️</div><div class="ar-b"><div class="ar-n">Cena di commiato</div><div class="ar-d">Samgyeopsal + soju — l'ultima cena coreana del viaggio</div></div></div>
+        </div>
+      </div>
+      <div class="db">
+        <button class="db-btn" onclick="toggleDay(this)">
+          <span class="db-day">26 ago</span>
+          <span class="db-title">Ultimo giorno — preparativi partenza</span>
+          <svg class="db-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="db-body">
+          <div class="ar"><div class="ar-t">Mattina</div><div class="ar-ic">🛍️</div><div class="ar-b"><div class="ar-n">Shopping finale</div><div class="ar-d">Dongdaemun Market · souvenir last minute · k-beauty</div></div></div>
+          <div class="ar"><div class="ar-t">Pomeriggio</div><div class="ar-ic">🧳</div><div class="ar-b"><div class="ar-n">Preparazione bagagli</div><div class="ar-d">Sistemare i bagagli, pesarli, preparare tutto per l'aeroporto</div><div class="ar-tip">💡 Volo domani ore 11:40 — AREX alle 7:45, check-in alle 8:30</div></div></div>
+          <div class="ar"><div class="ar-t">Sera</div><div class="ar-ic">🌙</div><div class="ar-b"><div class="ar-n">Relax e riposo</div><div class="ar-d">Ultima notte a Seoul — andare a dormire presto</div></div></div>
+        </div>
+      </div>
+      <div class="db">
+        <button class="db-btn" onclick="toggleDay(this)">
+          <span class="db-day">27 ago</span>
+          <span class="db-title">Partenza per Verona</span>
+          <svg class="db-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="db-body">
+          <div class="ar"><div class="ar-t">07:45</div><div class="ar-ic">🚇</div><div class="ar-b"><div class="ar-n">AREX da Seoul Station</div><div class="ar-d">43 minuti fino a Incheon Airport · NON PERDERE QUESTO TRENO</div><div class="ar-tip">💡 Partire alle 7:45 MAX — il volo è alle 11:40, check-in chiude alle 9:40</div></div></div>
+          <div class="ar"><div class="ar-t">08:30</div><div class="ar-ic">🛂</div><div class="ar-b"><div class="ar-n">Incheon Airport · Check-in</div><div class="ar-d">Terminal 2 · Codice prenotazione 95IXW8 · Sicurezza e controllo passaporti</div></div></div>
+          <div class="ar"><div class="ar-t">11:40</div><div class="ar-ic">✈️</div><div class="ar-b"><div class="ar-n">ICN → Monaco (MUC) → Verona (VRN)</div><div class="ar-d">Scalo Monaco · Arrivo Verona ore 20:20 · 15h 40min totali</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sa">
+    <button class="sa-btn" onclick="sa(this)">
+      <span>👨‍👩‍👧‍👧 Consigli per la famiglia</span>
+      <svg class="sa-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="sa-body">
+      <div class="ftg">
+        <div class="ftp"><div class="ftp-hd" style="background:#1a3a5c">🧔 Stefano</div><div class="ftp-rows">
+          <div class="ft-r"><span class="ft-dy">25 ago</span><span>🛍️</span><span class="ft-tx">Dongdaemun Market per spezie, gochujang e doenjang artigianale da portare a casa</span></div>
+          <div class="ft-r"><span class="ft-dy">26 ago</span><span>📱</span><span class="ft-tx">Akihabara coreana: Yongsan Electronics Market per gadget tech coreani</span></div>
+        </div></div>
+        <div class="ftp"><div class="ftp-hd" style="background:#7b4f2e">👩 Michela</div><div class="ftp-rows">
+          <div class="ft-r"><span class="ft-dy">25 ago</span><span>📖</span><span class="ft-tx">Ultima visita Insadong per libri illustrati e hanji — i migliori souvenir culturali</span></div>
+        </div></div>
+        <div class="ftp"><div class="ftp-hd" style="background:#8e44ad">👧 Elisabetta</div><div class="ftp-rows">
+          <div class="ft-r"><span class="ft-dy">25 ago</span><span>🎵</span><span class="ft-tx">SM Town COEX o negozi K-pop Myeongdong — ultimo giro per photocard e merchandise</span></div>
+        </div></div>
+        <div class="ftp"><div class="ftp-hd" style="background:#c0392b">🧒 Alessandra</div><div class="ftp-rows">
+          <div class="ft-r"><span class="ft-dy">25 ago</span><span>🎎</span><span class="ft-tx">Lotte World o Times Square per ultimi souvenir e action figure coreani</span></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sa">
+    <button class="sa-btn" onclick="sa(this)">
+      <span>✈️ Volo di ritorno</span>
+      <svg class="sa-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="sa-body">
+      <div class="tc">
+        <div class="tc-ic">✈️</div>
+        <div>
+          <div class="tc-lbl">ICN 11:40 → VRN 20:20 · 27 agosto</div>
+          <div class="tc-dt">Codice prenotazione: 95IXW8 · Scalo Monaco (MUC) · 15h 40min<br>
+          ⚠️ AREX da Seoul Station alle <strong>7:45</strong> — essere in aeroporto alle 8:30</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="page-transport" class="pg">
   <div class="ph"><h2>🚄 Trasporti</h2><p>Tutti gli spostamenti del viaggio</p></div>
   <div class="ts" style="--tc:#1a3a5c"><div class="ts-hd"><div class="ts-ic">✈️</div><div><div class="ts-date">6 agosto 2026</div><div class="ts-lbl">Verona → Seoul</div><div class="ts-type">Volo internazionale</div></div></div><div class="ts-segs"><div class="ts-row"><div class="ts-tm">13:30</div><div class="ts-dc"><div class="ts-dot"></div><div class="ts-line"></div></div><div class="ts-info"><strong>VRN — Verona</strong></div></div><div class="ts-row"><div class="ts-tm">~15:00</div><div class="ts-dc"><div class="ts-dot"></div><div class="ts-line"></div></div><div class="ts-info"><strong>MUC — Monaco</strong><span>Scalo</span></div></div><div class="ts-row"><div class="ts-tm">09:55+1</div><div class="ts-dc"><div class="ts-dot"></div></div><div class="ts-info"><strong>ICN — Seoul Incheon</strong><span>Arrivo 7 agosto</span></div></div></div><div class="ts-det">Lufthansa o partner · Codice prenotazione 95IXW8 · Economy · 1 scalo Monaco (MUC) · Durata totale 13h 25min</div><div class="ts-tip">💡 Dall'aeroporto di Incheon al centro di Seoul: AREX Express ogni 30 min fino a Seoul Station · 43 min · 9.500 KRW. Non prendere i taxi fuori dall'area ufficiale.</div></div><div class="ts" style="--tc:#27ae60"><div class="ts-hd"><div class="ts-ic">✈️</div><div><div class="ts-date">11 agosto 2026</div><div class="ts-lbl">Seoul → Jeju</div><div class="ts-type">Volo domestico</div></div></div><div class="ts-segs"><div class="ts-row"><div class="ts-tm">Mattina</div><div class="ts-dc"><div class="ts-dot"></div><div class="ts-line"></div></div><div class="ts-info"><strong>GMP — Seoul Gimpo</strong><span>Partenza consigliata 9:00–11:00</span></div></div><div class="ts-row"><div class="ts-tm">~1h dopo</div><div class="ts-dc"><div class="ts-dot"></div></div><div class="ts-info"><strong>CJU — Jeju</strong><span>Arrivo</span></div></div></div><div class="ts-det">ZE 219 · Jeju Air · GMP 14:40 → CJU 15:35 · Prenotazione PY1SJD · Confermato e pagato · 11 agosto 2026ipo · Bagaglio in stiva incluso o a pagamento a seconda della tariffa</div><div class="ts-tip">💡 Ritirare l'auto a noleggio direttamente in aeroporto. Prenotare da casa su Klook o Rentalcars — agosto è il mese più richiesto.</div></div><div class="ts" style="--tc:#c0392b"><div class="ts-hd"><div class="ts-ic">✈️</div><div><div class="ts-date">15 agosto 2026</div><div class="ts-lbl">Jeju → Busan</div><div class="ts-type">Volo domestico</div></div></div><div class="ts-segs"><div class="ts-row"><div class="ts-tm">Mattina</div><div class="ts-dc"><div class="ts-dot"></div><div class="ts-line"></div></div><div class="ts-info"><strong>CJU — Jeju</strong><span>Partenza consigliata 9:00–11:00</span></div></div><div class="ts-row"><div class="ts-tm">~55 min dopo</div><div class="ts-dc"><div class="ts-dot"></div></div><div class="ts-info"><strong>PUS — Busan Gimhae</strong><span>Arrivo</span></div></div></div><div class="ts-det">KE 1538 · Korean Air · CJU 14:50 → PUS 15:55 · 15 agosto · Economy · Diretto · 1h 05min · Il 15 agosto è Festa Nazionale — trasporti affollati</div><div class="ts-tip">💡 Il 15 agosto è la Festa della Liberazione coreana. Trasporti affollati — prenotare tutto in anticipo. L'aeroporto di Gimhae dista 30 min dal centro di Busan.</div></div><div class="ts" style="--tc:#8e44ad"><div class="ts-hd"><div class="ts-ic">🚄</div><div><div class="ts-date">18 agosto 2026</div><div class="ts-lbl">Busan → Gyeongju</div><div class="ts-type">KTX — Alta velocità</div></div></div><div class="ts-segs"><div class="ts-row"><div class="ts-tm">Mattina</div><div class="ts-dc"><div class="ts-dot"></div><div class="ts-line"></div></div><div class="ts-info"><strong>Busan Station</strong><span>Partenza consigliata 10:00–12:00</span></div></div><div class="ts-row"><div class="ts-tm">38 min dopo</div><div class="ts-dc"><div class="ts-dot"></div></div><div class="ts-info"><strong>Singyeongju Station</strong><span>Arrivo · Ogni 30 min</span></div></div></div><div class="ts-det">KTX · ~10€ p.p. · Prenota su Korail.com · Posti numerati · Da Singyeongju Station taxi per l'hotel ~15 min, 12.000 KRW</div><div class="ts-tip">💡 La tratta più breve del viaggio — 38 minuti e si cambia completamente atmosfera. Non serve prenotare con troppo anticipo.</div></div><div class="ts" style="--tc:#b8870a"><div class="ts-hd"><div class="ts-ic">🚌</div><div><div class="ts-date">21 agosto 2026</div><div class="ts-lbl">Gyeongju → Jeonju</div><div class="ts-type">Bus interurbano</div></div></div><div class="ts-segs"><div class="ts-row"><div class="ts-tm">Pomeriggio</div><div class="ts-dc"><div class="ts-dot"></div><div class="ts-line"></div></div><div class="ts-info"><strong>Gyeongju Intercity Bus Terminal</strong><span>Partenza consigliata 13:00–15:00</span></div></div><div class="ts-row"><div class="ts-tm">3h 30min dopo</div><div class="ts-dc"><div class="ts-dot"></div></div><div class="ts-info"><strong>Jeonju Express Bus Terminal</strong><span>Arrivo</span></div></div></div><div class="ts-det">Bus diretto · ~12€ p.p. · Nessun cambio · Con bagagli è più comodo del treno con scalo</div><div class="ts-tip">💡 Con 4 persone e bagagli il bus è più comodo del KTX con cambio — meno scale, meno stress. Taxi dall'hotel al terminal ~5 min, 5.000 KRW.</div></div><div class="ts" style="--tc:#1a3a5c"><div class="ts-hd"><div class="ts-ic">🚄</div><div><div class="ts-date">24 agosto 2026</div><div class="ts-lbl">Jeonju → Seoul</div><div class="ts-type">KTX — Alta velocità</div></div></div><div class="ts-segs"><div class="ts-row"><div class="ts-tm">Mattina</div><div class="ts-dc"><div class="ts-dot"></div><div class="ts-line"></div></div><div class="ts-info"><strong>Jeonju Station</strong><span>Partenza consigliata 10:00–12:00</span></div></div><div class="ts-row"><div class="ts-tm">1h 40min dopo</div><div class="ts-dc"><div class="ts-dot"></div></div><div class="ts-info"><strong>Seoul Station</strong><span>Arrivo · Centro città</span></div></div></div><div class="ts-det">KTX · ~16€ p.p. · Prenota su Korail.com · Arrivo diretto a Seoul Station — nessun transfer aeroportuale</div><div class="ts-tip">💡 Gli ultimi 2 giorni a Seoul sono il buffer pre-volo. Niente programma serrato — shopping, cena di commiato, relax.</div></div><div class="ts" style="--tc:#7b0d1e"><div class="ts-hd"><div class="ts-ic">✈️</div><div><div class="ts-date">27 agosto 2026</div><div class="ts-lbl">Seoul → Verona</div><div class="ts-type">Volo internazionale</div></div></div><div class="ts-segs"><div class="ts-row"><div class="ts-tm">07:45</div><div class="ts-dc"><div class="ts-dot"></div><div class="ts-line"></div></div><div class="ts-info"><strong>Seoul Station</strong><span>AREX Express per Incheon — partire alle 7:45 MAX</span></div></div><div class="ts-row"><div class="ts-tm">08:30</div><div class="ts-dc"><div class="ts-dot"></div><div class="ts-line"></div></div><div class="ts-info"><strong>ICN — Seoul Incheon</strong><span>Essere in aeroporto · Check-in e sicurezza</span></div></div><div class="ts-row"><div class="ts-tm">11:40</div><div class="ts-dc"><div class="ts-dot"></div><div class="ts-line"></div></div><div class="ts-info"><strong>ICN — Decollo</strong></div></div><div class="ts-row"><div class="ts-tm">~14:00</div><div class="ts-dc"><div class="ts-dot"></div><div class="ts-line"></div></div><div class="ts-info"><strong>MUC — Monaco</strong><span>Scalo</span></div></div><div class="ts-row"><div class="ts-tm">20:20</div><div class="ts-dc"><div class="ts-dot"></div></div><div class="ts-info"><strong>VRN — Verona</strong><span>Arrivo</span></div></div></div><div class="ts-det">Codice prenotazione 95IXW8 · Economy · 1 scalo Monaco (MUC) · Durata totale 15h 40min</div><div class="ts-tip">💡 AREX Express da Seoul Station parte ogni 30 min — prendere quello delle 7:45 AL MASSIMO per essere sicuri. Non affidarsi ai taxi la mattina del volo.</div></div>
 </section>
